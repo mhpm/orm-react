@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
-const key = '';
 
 type IMessage = {
   role: string;
@@ -20,7 +19,7 @@ const useGpt = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${key}`,
+        Authorization: `Bearer`,
       },
       body: JSON.stringify(requestBody),
     });
