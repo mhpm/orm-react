@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
-const key = 'sk-proj-fJHw9gIwQWiUGVSPlrV4T3BlbkFJgJ9oWh0n48hUiooJlA0T';
+const key = '';
 
 type IMessage = {
   role: string;
