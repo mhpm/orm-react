@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "id": "2837",
+      "name": "Michelle Perez Morales",
+      "email": "mhpm@gmail.com"
+    },
+    {
+      "id": "ea6a",
+      "name": "Michelle Perez Morales",
+      "email": "mhpm@gmail.com"
+    },
+    {
+      "id": "f5cd",
+      "name": "Michelle Perez Morales",
+      "email": "mhpm@gmail.com"
+    },
+    {
+      "id": "d92a",
+      "name": "Michelle Perez Morales",
+      "email": "mhpm@gmail.com"
+    },
+    {
+      "id": "e326",
+      "name": "Michelle Perez Morales",
+      "email": "mhpm@gmail.com"
+    }
+  ],
+  "news": [
+    {
+      "id": "1",
+      "title": "Billionaire Launches Space Tour Agency for Pets",
+      "content": "In an unprecedented move, tech billionaire Mark Zoltar has announced the launch of the world's first space tour agency exclusively for pets."
+    },
+    {
+      "id": "2",
+      "title": "Mysterious Underwater City Discovered in the Caribbean",
+      "content": "In an astonishing discovery, marine archaeologists have uncovered the remnants of an ancient underwater city in the Caribbean Sea."
+    }
+  ]
+}
