@@ -7,12 +7,42 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import UserPage from './pages/users/UserPage.tsx'
+import EditUserPage from './pages/users/EditUserPage.tsx'
+import NewsPage from './pages/news/NewsPage.tsx'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <UserPage />,
+
+      },
+      {
+        path: "users/edit/:id",
+        element: <EditUserPage />,
+      },
+      {
+        path: "news",
+        element: <NewsPage />,
+      },
+    ],
+  },
+]);
+
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>,
 )
