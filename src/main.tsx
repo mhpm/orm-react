@@ -11,9 +11,9 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import UserPage from './pages/users/UserPage.tsx'
-import EditUserPage from './pages/users/EditUserPage.tsx'
-import NewsPage from './pages/news/NewsPage.tsx'
+import UserPage from '@/pages/users/UserPage.tsx'
+import EditUserPage from '@/pages/users/EditUserPage.tsx'
+import NewsPage from '@/pages/news/NewsPage.tsx'
 
 const router = createBrowserRouter([
   {
