@@ -1,23 +1,11 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchUsers, createUser, deleteUser } from '@/api/users';
 import { faker } from '@faker-js/faker';
 import { Link } from "react-router-dom";
 import { User } from '@/types/User';
+import { useUser } from '@/hooks/useUser';
 
 function UserPage() {
-  const queryClient = useQueryClient();
-
-  const { data: users, isLoading } = useQuery<User[]>({
-    queryKey: ['users'],
-    queryFn: () => fetchUsers(),
-  });
-
-  const createMutation = useMutation({
-    mutationFn: createUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] });
-    },
-  });
+  const { useGetUsers, createMutation, deleteMutation } = useUser()
+  const { data: users, isLoading } = useGetUsers()
 
   const handleCreate = () => {
     createMutation.mutate({
@@ -26,13 +14,6 @@ function UserPage() {
       email: faker.internet.email(),
     });
   };
-
-  const deleteMutation = useMutation({
-    mutationFn: deleteUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] });
-    },
-  });
 
   return (
     <div className="main h-[100vh] w-[100vw]">
@@ -45,7 +26,7 @@ function UserPage() {
             </button>
           </h2>
           <div className="w-[800px] h-[500px] rounded-lg">
-            {users?.map((item) => (
+            {users?.map((item:User) => (
               <div
                 key={item.id}
                 className="flex justify-between text-left border-b border-gray-600 p-2 px-4 mb-3"
