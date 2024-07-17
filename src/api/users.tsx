@@ -9,15 +9,13 @@ export const fetchUsers = async () => {
   return response.data;
 };
 
-export const fetchUser = async (id: string): Promise<User> => {
+export const fetchUserById = async (id: string): Promise<User> => {
   const response = await axios.get<User>(`${API_URL}/${id}`);
   return response.data;
 };
 
-export const createUser = async (user: User) => {
-  const response = await axios.post(API_URL, user);
-  return response.data;
-};
+export const createUser = async (user: User) =>
+  (await axios.post(API_URL, user)).data;
 
 export const updateUser = async (user: User) => {
   const response = await axios.put(`${API_URL}/${user.id}`, user);

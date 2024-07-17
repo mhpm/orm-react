@@ -2,35 +2,23 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {
   useForm,
 } from 'react-hook-form';
-import { fetchUser, updateUser } from '@/api/users';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { User } from '@/types/User';
 import { FormField } from '@/types/formField';
 import Form from '@/components/form/Form';
+import { useUser } from '@/hooks/useUser';
 
 function EditUserPage() {
-  const { id } = useParams<{ id: string }>();
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  
+  const { useGetUserById, updateMutation } = useUser()
+  const { data:user, isLoading } = useGetUserById(id as string)
 
   const formController = useForm<User>();
 
-  const { data, isLoading } = useQuery<User>({
-    queryKey: ['user', id],
-    queryFn: () => fetchUser(String(id)),
-  });
-
-  const onSubmit = (data: User) => {
-    updateMutation.mutate(data);
+  const onSubmit = (user: User) => {
+    updateMutation.mutate(user);
   };
-
-  const updateMutation = useMutation({
-    mutationFn: updateUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] });
-      navigate('/');
-    },
-  });
 
   const formFields: FormField<User>[] = [
     { name: 'id', label: '', type: 'hidden' },
@@ -46,12 +34,13 @@ function EditUserPage() {
         ) : (
           <div className="p-4 rounded-lg">
             <h2 className="text-center mb-3 text-lg">User Info</h2>
-            {data && (
+            {user && (
               <Form<User>
                 formController={formController}
-                initialData={data}
+                initialData={user}
                 formFields={formFields}
                 onSubmit={onSubmit}
+                onCancel={() => navigate('/')}
               />
             )}
           </div>
