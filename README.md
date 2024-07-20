@@ -14,6 +14,6 @@ Driscolls Challenge
 
 ## Instructions
 
-- clone the proyect
+- clone the project
 - install dependencies `npm install`
-- run the porject `npm run start`
+- run the project `npm run start`
