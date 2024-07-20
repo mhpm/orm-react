@@ -3,9 +3,15 @@
   "description": "This is a multi-language application.",
   "userList": "User List",
   "addUser": "Add User",
+  "userInfo": "User Info",
   "users": "Users",
   "news": "News",
   "edit": "Edit",
   "delete": "Delete",
-  "loading": "Loading"
+  "loading": "Loading",
+  "name": "Name",
+  "email": "E-Mail",
+  "save": "Save",
+  "cancel": "Cancel",
+  "fieldRquired": "This field is required"
 }
