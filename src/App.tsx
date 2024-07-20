@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '@/components';
+import { Toaster } from "@/components/ui/toaster"
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <div className="w-full">
         <Outlet />
       </div>
+      <Toaster />
     </div>
   );
 }

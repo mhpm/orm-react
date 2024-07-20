@@ -4,8 +4,11 @@ import { User } from '@/types/User';
 import { useUser } from '@/hooks/useUser';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useToast } from "@/components/ui/use-toast"
+
 
 function EditUserPage() {
+  const { toast } = useToast()
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
@@ -21,8 +24,10 @@ function EditUserPage() {
   } = useForm<User>();
 
   const onSubmit = (user: User) => {
-    console.log(user);
     updateMutation.mutate(user);
+    toast({
+      title: "User Updated",
+    })
   };
 
   useEffect(() => {
@@ -39,7 +44,7 @@ function EditUserPage() {
         `${t('loading')}...`
       ) : (
         <div className="p-4 rounded-lg">
-          <h2 className="text-center mb-3 text-lg">{t('userInfo')}</h2>
+          <h2 className="text-center font-bold text-lg">{t('userInfo')}</h2>
           {user && (
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -51,7 +56,7 @@ function EditUserPage() {
                     {t('name')}:
                   </label>
                   <input
-                    className="p-2 px-4 rounded-lg w-[300px]"
+                    className="p-3 px-4 rounded-lg w-[300px]"
                     id="name"
                     type="text"
                     {...register('name', {
@@ -69,7 +74,7 @@ function EditUserPage() {
                     {t('email')}:
                   </label>
                   <input
-                    className="p-2 px-4 rounded-lg w-[300px]"
+                    className="p-3 px-4 rounded-lg w-[300px]"
                     id="email"
                     type="email"
                     {...register('email', {
@@ -83,7 +88,7 @@ function EditUserPage() {
               </div>
               <div className="flex justify-center p-6">
                 <button
-                  className="text-sm mx-1 px-4 text-green-400 rounded-lg bg-woodsmoke-950"
+                  className="button text-sm text-green-400 mx-2"
                   type="submit"
                   disabled={isSubmitting}
                 >
@@ -92,7 +97,7 @@ function EditUserPage() {
 
                 <button
                   onClick={() => navigate('/')}
-                  className="text-sm text-red-400 mx-1"
+                  className="button text-sm text-red-400 mx-2"
                 >
                   {t('cancel')}
                 </button>
