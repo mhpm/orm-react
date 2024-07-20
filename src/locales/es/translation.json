@@ -3,9 +3,15 @@
   "description": "Esta es una aplicación multilingüe.",
   "userList": "Lista de Usuarios",
   "addUser": "Agregar Usuario",
+  "userInfo": "Informacion de Usuario",
   "users": "Usuarios",
   "news": "Noticias",
   "edit": "Editar",
   "delete": "Eliminar",
-  "loading": "Cargando"
+  "loading": "Cargando",
+  "name": "Nombre",
+  "email": "Correr Electronico",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "fieldRquired": "Este campo es obligatorio"
 }

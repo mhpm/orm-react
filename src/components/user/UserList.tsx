@@ -16,6 +16,7 @@ const UserList = () => {
       email: faker.internet.email(),
     });
   };
+  
   return (
     <div>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
