@@ -1,0 +1,11 @@
+{
+  "welcome": "Welcome",
+  "description": "This is a multi-language application.",
+  "userList": "User List",
+  "addUser": "Add User",
+  "users": "Users",
+  "news": "News",
+  "edit": "Edit",
+  "delete": "Delete",
+  "loading": "Loading"
+}

@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import './i18n.ts';
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -11,6 +13,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 import UserPage from '@/pages/users/UserPage.tsx'
 import EditUserPage from '@/pages/users/EditUserPage.tsx'
 import NewsPage from '@/pages/news/NewsPage.tsx'
