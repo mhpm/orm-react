@@ -12,6 +12,7 @@
     "start": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
+    "@radix-ui/react-toast": "^1.2.1",
     "@tanstack/react-query": "^5.49.2",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.7.2",

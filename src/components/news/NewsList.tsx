@@ -1,15 +1,17 @@
 import { faker } from '@faker-js/faker';
 import { useNews } from '@/hooks/useNews';
 import { News } from '@/types/News';
+import { useTranslation } from 'react-i18next';
 
 const NewsList = () => {
+  const { t } = useTranslation();
   const { useGetNews, createNewMutation, deleteNewMutation } = useNews();
   const { data: news, isLoading } = useGetNews();
 
   const handleCreate = () => {
     createNewMutation.mutate({
       id: faker.string.alphanumeric(4),
-      title: `News Title: ${faker.string.alphanumeric(4)}`,
+      title: `${faker.company.name()}`,
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex.',
     });
@@ -17,9 +19,9 @@ const NewsList = () => {
   return (
     <div>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
-        {isLoading ? 'Loading...' : `User List: ${news?.length}`}
-        <button className="text-sm" onClick={handleCreate}>
-          {createNewMutation.isPending ? 'Loading...' : 'Add News'}
+        {isLoading ? t('loading') : `${t('newsList')}: ${news?.length}`}
+        <button className="text-sm button" onClick={handleCreate}>
+          {createNewMutation.isPending ? t('loading') : t('addNew')}
         </button>
       </h2>
       <div className="rounded-lg flex flex-wrap">
@@ -33,9 +35,9 @@ const NewsList = () => {
               <div className="text-right p-4">
                 <button
                   onClick={() => deleteNewMutation.mutate(item.id as string)}
-                  className="text-red-400 text-xs p-2"
+                  className="text-red-400 text-xs button"
                 >
-                  Delete
+                  {t('delete')}
                 </button>
               </div>
             </div>

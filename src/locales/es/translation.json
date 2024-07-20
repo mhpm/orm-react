@@ -3,6 +3,7 @@
   "description": "Esta es una aplicación multilingüe.",
   "userList": "Lista de Usuarios",
   "addUser": "Agregar Usuario",
+  "addNew": "Agregar Noticia",
   "userInfo": "Informacion de Usuario",
   "users": "Usuarios",
   "news": "Noticias",
@@ -13,5 +14,6 @@
   "email": "Correr Electronico",
   "save": "Guardar",
   "cancel": "Cancelar",
-  "fieldRquired": "Este campo es obligatorio"
+  "fieldRquired": "Este campo es obligatorio",
+  "newsList": "Lista de Noticias"
 }

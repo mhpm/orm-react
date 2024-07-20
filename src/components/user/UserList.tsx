@@ -16,12 +16,14 @@ const UserList = () => {
       email: faker.internet.email(),
     });
   };
-  
+
   return (
     <div>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
-        {isLoading ? `${t('loading')}...` : `${t('userList')}: ${users?.length}`}
-        <button className="text-sm" onClick={handleCreate}>
+        {isLoading
+          ? `${t('loading')}...`
+          : `${t('userList')}: ${users?.length}`}
+        <button className="text-sm button" onClick={handleCreate}>
           {createMutation.isPending ? `${t('loading')}...` : t('addUser')}
         </button>
       </h2>
@@ -38,13 +40,13 @@ const UserList = () => {
             <div className="w-[250px]">{item.email}</div>
             <Link
               to={`users/edit/${item.id}`}
-              className="text-green-600 text-xs p-2"
+              className="text-green-600 text-sm button"
             >
               {t('edit')}
             </Link>
             <button
               onClick={() => deleteMutation.mutate(item.id as string)}
-              className="text-red-400 text-xs p-2"
+              className="text-red-400 text-sm button"
             >
               {t('delete')}
             </button>

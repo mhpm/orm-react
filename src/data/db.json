@@ -1,26 +1,6 @@
 {
   "users": [
     {
-      "name": "Michelle",
-      "email": "michelleeepm@gmail.com",
-      "id": "hohg"
-    },
-    {
-      "id": "0tcx",
-      "name": "Dr. Eugene Frami Jr.",
-      "email": "Vincent87@gmail.com"
-    },
-    {
-      "id": "FKAs",
-      "name": "Krista Metz IV",
-      "email": "Gabriel.Thiel2@hotmail.com"
-    },
-    {
-      "id": "iXAe",
-      "name": "Carolyn Haley",
-      "email": "Archibald51@gmail.com"
-    },
-    {
       "id": "agTD",
       "name": "Roberto Volkman",
       "email": "Otilia_Collins10@gmail.com"
@@ -34,32 +14,67 @@
       "id": "nPhC",
       "name": "Alex Towne PhD",
       "email": "Hertha.Smitham57@yahoo.com"
+    },
+    {
+      "id": "pxoI",
+      "name": "Darrel Gutmann",
+      "email": "Darby46@yahoo.com"
+    },
+    {
+      "id": "eWi5",
+      "name": "Teresa Dietrich",
+      "email": "Justina75@yahoo.com"
+    },
+    {
+      "id": "6Ct9",
+      "name": "Danielle Brakus",
+      "email": "Cornell_Cassin@hotmail.com"
+    },
+    {
+      "id": "mPAn",
+      "name": "Janis Conroy DVM",
+      "email": "Katrina.Hilll82@yahoo.com"
+    },
+    {
+      "id": "4K7F",
+      "name": "Otis Homenick",
+      "email": "Tevin.Upton@hotmail.com"
     }
   ],
   "news": [
     {
-      "id": "wOCj",
-      "title": "News Title: zTKE",
+      "id": "Y8Xb",
+      "title": "Adams, Jerde and Lakin",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
     },
     {
-      "id": "2S1u",
-      "title": "News Title: nuPW",
+      "id": "YpZX",
+      "title": "Greenholt - Boehm",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
     },
     {
-      "id": "y0LD",
-      "title": "News Title: yu1B",
+      "id": "2MrH",
+      "title": "Mayert, Kassulke and Rodriguez",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
     },
     {
-      "id": "lXpM",
-      "title": "News Title: VHBj",
+      "id": "Jtla",
+      "title": "Jenkins - Breitenberg",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
     },
     {
-      "id": "L2KN",
-      "title": "News Title: wfdz",
+      "id": "Z3Ra",
+      "title": "Langosh, Collier and Kling",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "8uFO",
+      "title": "Koepp Group",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "kKyI",
+      "title": "Morissette, Jaskolski and Stanton",
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
     }
   ]
