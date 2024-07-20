@@ -1,0 +1,11 @@
+{
+  "welcome": "Bienvenido",
+  "description": "Esta es una aplicación multilingüe.",
+  "userList": "Lista de Usuarios",
+  "addUser": "Agregar Usuario",
+  "users": "Usuarios",
+  "news": "Noticias",
+  "edit": "Editar",
+  "delete": "Eliminar",
+  "loading": "Cargando"
+}
