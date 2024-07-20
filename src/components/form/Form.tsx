@@ -33,7 +33,7 @@ function Form<T extends FieldValues>({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="border rounded-xl p-7 border-gray-500 shadow-lg shadow-gray-700 w-[400px]"
+      className="rounded-xl p-7 w-[400px] bg-shark-900"
     >
       <div className='flex flex-col items-center'>
         {formFields.map((field) => (
