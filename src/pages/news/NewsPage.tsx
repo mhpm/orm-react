@@ -1,6 +1,10 @@
+import { NewsList } from "@/components"
+
 const NewsPage = () => {
   return (
-    <div>NewsPage</div>
+    <div className="flex justify-center w-full p-[20px]">
+      <NewsList />
+    </div>
   )
 }
 
