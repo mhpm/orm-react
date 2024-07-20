@@ -2,7 +2,7 @@
 
 Driscolls Challenge
 
-# this project was made with:
+## this project was made with:
 - React
 - Vite
 - Typescript
@@ -14,6 +14,6 @@ Driscolls Challenge
 
 ## Instructions
 
-- clone the project
-- install dependencies `npm install`
-- run the project `npm run start`
+- Clone the project
+- Install dependencies `npm install`
+- Run the project `npm run start`
