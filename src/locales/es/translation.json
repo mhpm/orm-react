@@ -15,5 +15,11 @@
   "save": "Guardar",
   "cancel": "Cancelar",
   "fieldRquired": "Este campo es obligatorio",
-  "newsList": "Lista de Noticias"
+  "newsList": "Lista de Noticias",
+  "backToHome": "Volver al Inicio",
+  "sorry": "Lo sentimos, la paguina no se econtró",
+  "back": "Volver",
+  "home": "Inicio",
+  "user": "Usuario",
+  "updated": "Actualizado"
 }

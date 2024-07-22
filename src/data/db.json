@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "id": "agTD",
       "name": "Roberto Volkman",
-      "email": "Otilia_Collins10@gmail.com"
+      "email": "Otilia_Collins10@gmail.com",
+      "id": "agTD"
     },
     {
       "id": "pULo",
@@ -39,6 +39,21 @@
       "id": "4K7F",
       "name": "Otis Homenick",
       "email": "Tevin.Upton@hotmail.com"
+    },
+    {
+      "id": "03Ya",
+      "name": "Marjorie Berge",
+      "email": "Bernadette_Mante1@gmail.com"
+    },
+    {
+      "name": "Valentina",
+      "email": "vale@hotmail.com",
+      "id": "uiMb"
+    },
+    {
+      "id": "V6Df",
+      "name": "Phyllis Strosin",
+      "email": "Camila_Abshire@hotmail.com"
     }
   ],
   "news": [

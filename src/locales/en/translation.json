@@ -15,5 +15,11 @@
   "save": "Save",
   "cancel": "Cancel",
   "fieldRquired": "This field is required",
-  "newsList": "News List"
+  "newsList": "News List",
+  "backToHome": "Back to Home",
+  "sorry": "Sorry, we couldn't find this page.",
+  "back": "Back",
+  "home": "Home",
+  "user": "User",
+  "updated": "Updated"
 }

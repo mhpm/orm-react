@@ -17,6 +17,7 @@ import {
 import UserPage from '@/pages/users/UserPage.tsx'
 import EditUserPage from '@/pages/users/EditUserPage.tsx'
 import NewsPage from '@/pages/news/NewsPage.tsx'
+import NotFound from '@/pages/NotFound.tsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "news",
         element: <NewsPage />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

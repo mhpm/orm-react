@@ -26,7 +26,8 @@ function EditUserPage() {
   const onSubmit = (user: User) => {
     updateMutation.mutate(user);
     toast({
-      title: "User Updated",
+      className: 'bg-woodsmoke-950 text-green-500 p-4',
+      title: `${t('user')} ${t('updated')}`,
     })
   };
 
@@ -48,7 +49,7 @@ function EditUserPage() {
           {user && (
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="rounded-xl p-7 w-[400px] bg-shark-900"
+              className="rounded-xl p-7 w-[400px]"
             >
               <div className="flex flex-col items-center">
                 <div className="my-4 flex flex-col">
@@ -99,7 +100,7 @@ function EditUserPage() {
                   onClick={() => navigate('/')}
                   className="button text-sm text-red-400 mx-2"
                 >
-                  {t('cancel')}
+                  {t('back')}
                 </button>
               </div>
             </form>
