@@ -9,6 +9,6 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
-  base: 'https://mhpm.github.io/driscolls',
+  // base: 'https://mhpm.github.io/driscolls',
   plugins: [react()],
 })
