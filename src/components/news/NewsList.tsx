@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker';
 import { useNews } from '@/hooks/useNews';
 import { News } from '@/types/News';
 import { useTranslation } from 'react-i18next';
+import styles from './NewsList.module.css'
 
 const NewsList = () => {
   const { t } = useTranslation();
@@ -16,6 +17,11 @@ const NewsList = () => {
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex.',
     });
   };
+  
+  function getSize(size: number) {
+    return size > 300 ? 'md:col-span-2': 'md:col-span-1' 
+  }
+
   return (
     <div>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
@@ -24,15 +30,20 @@ const NewsList = () => {
           {createNewMutation.isPending ? t('loading') : t('addNew')}
         </button>
       </h2>
-      <div className="rounded-lg flex flex-wrap">
-        {news?.map((item: News) => (
-          <div key={item.id} className="sm:w-full md:w-1/2 lg:w-1/3 p-2">
-            <div className="flex flex-col justify-between text-left border rounded-xl hover:scale-[1.03] border-cyan-900 shadow-lg hover:shadow-cyan-800/50  p-2 px-4 mb-3 h-[300px] transition ease-in-out duration-500">
-              <div className="w-full font-bold text-xl py-2 text-cyan-500">
+      <div className={`${styles.list} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5`}>
+          {news?.map((item: News) => (
+            <figure
+              key={item.id}
+              className={`p-6 bg-woodsmoke-900 rounded dark:bg-gray-800 h-full flex flex-col justify-between col-span-full row-span-2  ${getSize(item.content.length)}`}
+            >
+              <blockquote className='text-sm text-gray-200 dark:text-white/90'>
+
+              <h3 className="text-2xl font-semibold leading-tight text-cyan-500 dark:text-white text-balance">
                 {item.title}
-              </div>
-              <div className=" font-semibold">{item.content}</div>
-              <div className="text-right p-4">
+              </h3>
+              <p className="my-4">{item.content}</p>
+              </blockquote>
+              <div className="text-right">
                 <button
                   onClick={() => deleteNewMutation.mutate(item.id as string)}
                   className="text-red-400 text-xs button"
@@ -40,9 +51,8 @@ const NewsList = () => {
                   {t('delete')}
                 </button>
               </div>
-            </div>
-          </div>
-        ))}
+            </figure>
+          ))}
       </div>
     </div>
   );
