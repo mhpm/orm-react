@@ -1,28 +1,33 @@
 import { User } from '../types/User';
-
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL_USERS as string;
 
+const apiClient = axios.create({
+  baseURL: API_URL,
+});
+
 export const fetchUsers = async () => {
-  const response = await axios.get<User[]>(API_URL);
-  return response.data;
+  const { data } = await apiClient.get<User[]>('/');
+  return data;
 };
 
 export const fetchUserById = async (id: string): Promise<User> => {
-  const response = await axios.get<User>(`${API_URL}/${id}`);
-  return response.data;
+  const { data } = await apiClient.get<User>(`/${id}`);
+  return data;
 };
 
-export const createUser = async (user: User) =>
-  (await axios.post(API_URL, user)).data;
+export const createUser = async (user: User) => {
+  const { data } = await apiClient.post<User>('/', user);
+  return data;
+};
 
 export const updateUser = async (user: User) => {
-  const response = await axios.put(`${API_URL}/${user.id}`, user);
-  return response.data;
+  const { data } = await apiClient.put<User>(`/${user.id}`, user);
+  return data;
 };
 
 export const deleteUser = async (id: string) => {
-  const response = await axios.delete(`${API_URL}/${id}`);
-  return response.data;
+  const { data } = await apiClient.delete<User>(`/${id}`);
+  return data;
 };
