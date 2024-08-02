@@ -38,7 +38,7 @@ const NewsList = () => {
         </button>
       </h2>
       <div
-        className={`${styles.list} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5`}
+        className={`${styles.list} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 h-fit`}
       >
         {news?.map((item: News) => (
           <figure
