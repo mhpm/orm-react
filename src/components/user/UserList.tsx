@@ -3,17 +3,43 @@ import { Link } from 'react-router-dom';
 import { faker } from '@faker-js/faker';
 import { useUser } from '@/hooks/useUser';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { ArrowPathIcon } from '@heroicons/react/24/outline';
+import { useToast } from '@/components/ui/use-toast';
 
 const UserList = () => {
   const { t } = useTranslation();
+  const { toast } = useToast();
   const { useGetUsers, createMutation, deleteMutation } = useUser();
   const { data: users, isLoading } = useGetUsers();
+  const [deletingUserId, setDeletingUserId] = useState<string | null>(null);
 
   const handleCreate = () => {
     createMutation.mutate({
       id: faker.string.alphanumeric(4),
       name: faker.person.fullName(),
       email: faker.internet.email(),
+    });
+  };
+
+  const handleDelete = (userId: string) => {
+    setDeletingUserId(userId);
+    deleteMutation.mutate(userId, {
+      onSuccess: () => {
+        toast({
+          className: 'bg-woodsmoke-950 text-green-400 p-4',
+          title: `${t('user')} eliminado correctamente`,
+        });
+      },
+      onError: () => {
+        toast({
+          className: 'bg-woodsmoke-950 text-red-400 p-4',
+          title: `Error, usuario no se pudo eliminar`,
+        });
+      },
+      onSettled: () => {
+        setDeletingUserId(null);
+      },
     });
   };
 
@@ -24,7 +50,11 @@ const UserList = () => {
           ? `${t('loading')}...`
           : `${t('userList')}: ${users?.length}`}
         <button className="text-sm button" onClick={handleCreate}>
-          {createMutation.isPending ? `${t('loading')}...` : t('addUser')}
+          {createMutation.isPending ? (
+            <ArrowPathIcon className="animate-spin h-5 w-5" />
+          ) : (
+            t('addUser')
+          )}
         </button>
       </h2>
       <div className="w-[800px] h-[500px] rounded-lg">
@@ -45,10 +75,15 @@ const UserList = () => {
               {t('edit')}
             </Link>
             <button
-              onClick={() => deleteMutation.mutate(item.id as string)}
+              onClick={() => handleDelete(item.id as string)}
               className="text-red-400 text-sm button"
+              disabled={deleteMutation.isPending}
             >
-              {t('delete')}
+              {deletingUserId === item.id ? (
+                <ArrowPathIcon className="animate-spin h-5 w-5" />
+              ) : (
+                t('delete')
+              )}
             </button>
           </div>
         ))}
