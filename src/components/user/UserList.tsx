@@ -57,7 +57,7 @@ const UserList = () => {
           )}
         </button>
       </h2>
-      <div className="w-[800px] h-[500px] rounded-lg">
+      <div className="w-[800px] h-fit rounded-lg">
         {users?.map((item: User) => (
           <div
             key={item.id}

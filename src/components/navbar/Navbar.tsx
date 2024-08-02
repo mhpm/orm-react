@@ -13,13 +13,13 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="hidden lg:flex p-4 gap-5 w-[150px] h-screen flex-col items-center justify-between bg-cyan-800 text-center">
-        <div className="flex flex-col gap-5">
+      <nav className="hidden lg:flex p-4 gap-5 w-[150px] flex-col items-center justify-between bg-cyan-800 text-center">
+        <div className="flex flex-col gap-5 fixed top-10">
           <Link to="/">{t('users')}</Link>
           <Link to="/news">{t('news')}</Link>
         </div>
         <button
-          className="text-sm button"
+          className="text-sm button fixed bottom-10"
           onClick={() => changeLanguage(english ? 'es' : 'en')}
         >
           {english ? 'ES' : 'EN'}
