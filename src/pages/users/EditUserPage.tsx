@@ -20,7 +20,7 @@ function EditUserPage() {
     register,
     setValue,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<User>();
 
   const onSubmit = (user: User) => {
@@ -42,7 +42,7 @@ function EditUserPage() {
   if (isLoading)
     return (
       <div className="w-full flex justify-center p-10">
-        <ArrowPathIcon className="animate-spin h-7 w-7 self-center" />
+        <ArrowPathIcon className="animate-spin h-7 w-7" />
       </div>
     );
 
@@ -95,9 +95,13 @@ function EditUserPage() {
               <button
                 className="button text-sm text-green-400 mx-2"
                 type="submit"
-                disabled={isSubmitting}
+                disabled={updateMutation.isPending}
               >
-                {t('save')}
+                {updateMutation.isPending ? (
+                  <ArrowPathIcon className="animate-spin h-4 w-4" />
+                ) : (
+                  t('save')
+                )}
               </button>
 
               <button
