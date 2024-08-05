@@ -7,27 +7,17 @@ const apiClient = axios.create({
   baseURL: API_URL,
 });
 
-export const fetchUsers = async () => {
-  const { data } = await apiClient.get<User[]>('/');
-  return data;
-};
+export const fetchUsers = () =>
+  apiClient.get<User[]>('/').then((response) => response.data);
 
-export const fetchUserById = async (id: string): Promise<User> => {
-  const { data } = await apiClient.get<User>(`/${id}`);
-  return data;
-};
+export const fetchUserById = (id: string) =>
+  apiClient.get<User>(`/${id}`).then((response) => response.data);
 
-export const createUser = async (user: User) => {
-  const { data } = await apiClient.post<User>('/', user);
-  return data;
-};
+export const createUser = (user: User) =>
+  apiClient.post<User>('/', user).then((response) => response.data);
 
-export const updateUser = async (user: User) => {
-  const { data } = await apiClient.put<User>(`/${user.id}`, user);
-  return data;
-};
+export const updateUser = (user: User) =>
+  apiClient.put<User>(`/${user.id}`, user).then((response) => response.data);
 
-export const deleteUser = async (id: string) => {
-  const { data } = await apiClient.delete<User>(`/${id}`);
-  return data;
-};
+export const deleteUser = (id: string) =>
+  apiClient.delete<User>(`/${id}`).then((response) => response.data);

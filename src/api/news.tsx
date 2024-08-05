@@ -3,31 +3,21 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL_NEWS as string;
 
-const apiClient = axios.create({
+export const apiClient = axios.create({
   baseURL: API_URL,
 });
 
-export const fetchNews = async () => {
-  const { data } = await apiClient.get<News[]>('/');
-  return data;
-};
+export const fetchNews = () =>
+  apiClient.get<News[]>('/').then((response) => response.data);
 
-export const fetchNewsById = async (id: string): Promise<News> => {
-  const { data } = await apiClient.get<News>(`/${id}`);
-  return data;
-};
+export const fetchNewsById = (id: string) =>
+  apiClient.get<News>(`/${id}`).then((response) => response.data);
 
-export const createNews = async (news: News) => {
-  const { data } = await apiClient.post<News>('/', news);
-  return data;
-};
+export const createNews = (news: News) =>
+  apiClient.post<News>('/', news).then((response) => response.data);
 
-export const updateNews = async (news: News) => {
-  const { data } = await apiClient.put<News>(`/${news.id}`, news);
-  return data;
-};
+export const updateNews = (news: News) =>
+  apiClient.put<News>(`/${news.id}`, news).then((response) => response.data);
 
-export const deleteNews = async (id: string) => {
-  const { data } = await apiClient.delete<News>(`/${id}`);
-  return data;
-};
+export const deleteNews = (id: string) =>
+  apiClient.delete<News>(`/${id}`).then((response) => response.data);
