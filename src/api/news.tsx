@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL_NEWS as string;
 
-export const apiClient = axios.create({
+const apiClient = axios.create({
   baseURL: API_URL,
 });
 
