@@ -45,7 +45,7 @@ const NavBar = () => {
   );
 };
 
-const Link = ({ to, children }: { to: string; children: string }) => (
+const Link = ({ to, children }: { to: string; children: React.ReactNode }) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
