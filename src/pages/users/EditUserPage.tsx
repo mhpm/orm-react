@@ -34,8 +34,10 @@ function EditUserPage() {
   useEffect(() => {
     if (user) {
       setValue('id', user.id);
-      setValue('name', user.name);
+      setValue('first_name', user.first_name);
+      setValue('last_name', user.last_name);
       setValue('email', user.email);
+      setValue('avatar', user.avatar);
     }
   }, [user, setValue]);
 
@@ -57,18 +59,18 @@ function EditUserPage() {
           >
             <div className="flex flex-col items-center">
               <div className="my-4 flex flex-col">
-                <label htmlFor="name" className="font-semibold my-1">
+                <label htmlFor="first_name" className="font-semibold my-1">
                   {t('name')}:
                 </label>
                 <input
                   className="p-3 px-4 rounded-lg w-[300px]"
-                  id="name"
+                  id="first_name"
                   type="text"
-                  {...register('name', {
+                  {...register('first_name', {
                     required: true,
                   })}
                 />
-                {errors.name && (
+                {errors.first_name && (
                   <span className="text-red-400 p-1">{t('fieldRquired')}</span>
                 )}
               </div>
