@@ -1,44 +1,109 @@
 {
   "users": [
     {
-      "id": "dEQf",
-      "name": "Wm Romaguera-Beer",
-      "email": "Hertha.Cassin69@hotmail.com"
+      "id": "T3T",
+      "first_name": "Eden",
+      "last_name": "Considine",
+      "email": "Darion.Strosin@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/9948327"
     },
     {
-      "id": "jj9H",
-      "name": "Ivan Murazik",
-      "email": "Elyssa_Carroll63@gmail.com"
+      "id": "r3p",
+      "first_name": "Santino",
+      "last_name": "Konopelski",
+      "email": "Lowell78@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/87842741"
     },
     {
-      "id": "ZEAt",
-      "name": "Ellis Hilll",
-      "email": "Easton61@yahoo.com"
+      "id": "GdO",
+      "first_name": "Karson",
+      "last_name": "Sanford",
+      "email": "Merritt.Wehner28@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/27146589"
     },
     {
-      "id": "dt35",
-      "name": "Kelly Lynch",
-      "email": "Reta_Maggio-Labadie80@gmail.com"
+      "id": "OUa",
+      "first_name": "Houston",
+      "last_name": "Terry",
+      "email": "Granville71@gmail.com",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/950.jpg"
     },
     {
-      "name": "Marcus Hand updated",
-      "email": "Ada65@hotmail.com",
-      "id": "1wxc"
+      "id": "QoD",
+      "first_name": "River",
+      "last_name": "Hettinger",
+      "email": "Austyn28@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/58711488"
     },
     {
-      "id": "2aTv",
-      "name": "Janice Harvey",
-      "email": "Kayleigh28@gmail.com"
+      "id": "v9A",
+      "first_name": "Cameron",
+      "last_name": "Kassulke",
+      "email": "Maybelle_Hansen@yahoo.com",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/900.jpg"
     },
     {
-      "id": "kMjt",
-      "name": "Mr. Harvey Mills",
-      "email": "Marco_Nienow90@gmail.com"
+      "id": "6XF",
+      "first_name": "Cheyanne",
+      "last_name": "Wyman",
+      "email": "Angelita.Schneider@gmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/84127120"
     },
     {
-      "id": "q6zr",
-      "name": "Gordon Trantow",
-      "email": "Emory_Bernier4@hotmail.com"
+      "id": "bpk",
+      "first_name": "Cathrine",
+      "last_name": "Dickinson",
+      "email": "Clifton.Larkin60@gmail.com",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/363.jpg"
+    },
+    {
+      "id": "k43",
+      "first_name": "Eloy",
+      "last_name": "Rau",
+      "email": "Uriah_Nolan4@hotmail.com",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/313.jpg"
+    },
+    {
+      "id": "BBh",
+      "first_name": "Oleta",
+      "last_name": "Lubowitz",
+      "email": "Elisa49@gmail.com",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/693.jpg"
+    },
+    {
+      "id": "8d1",
+      "first_name": "Shania",
+      "last_name": "Cruickshank",
+      "email": "Anika_Beatty84@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/32767183"
+    },
+    {
+      "id": "jQx",
+      "first_name": "Jazmyne",
+      "last_name": "Anderson",
+      "email": "Wiley_Hettinger@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/9257561"
+    },
+    {
+      "id": "mwO",
+      "first_name": "Ward",
+      "last_name": "Batz",
+      "email": "Pat_Klocko40@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/47732921"
+    },
+    {
+      "id": "VkY",
+      "first_name": "Cheyanne",
+      "last_name": "Wintheiser",
+      "email": "Ila_Gusikowski85@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/43041224"
+    },
+    {
+      "id": "SRy",
+      "first_name": "Fay",
+      "last_name": "Bradtke",
+      "email": "Hollis80@yahoo.com",
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/73.jpg"
     }
   ],
   "news": [
