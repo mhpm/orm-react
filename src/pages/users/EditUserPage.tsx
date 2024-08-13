@@ -11,7 +11,7 @@ function EditUserPage() {
   const { toast } = useToast();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
 
   const { useGetUserById, updateMutation } = useUser();
   const { data: user, isLoading } = useGetUserById(id as string);
@@ -60,7 +60,7 @@ function EditUserPage() {
             <div className="flex flex-col items-center">
               <div className="my-4 flex flex-col">
                 <label htmlFor="first_name" className="font-semibold my-1">
-                  {t('name')}:
+                  {t('first_name')}:
                 </label>
                 <input
                   className="p-3 px-4 rounded-lg w-[300px]"
@@ -71,6 +71,24 @@ function EditUserPage() {
                   })}
                 />
                 {errors.first_name && (
+                  <span className="text-red-400 p-1">{t('fieldRquired')}</span>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="my-4 flex flex-col">
+                <label htmlFor="last_name" className="font-semibold my-1">
+                  {t('last_name')}:
+                </label>
+                <input
+                  className="p-3 px-4 rounded-lg w-[300px]"
+                  id="last_name"
+                  type="text"
+                  {...register('last_name', {
+                    required: true,
+                  })}
+                />
+                {errors.last_name && (
                   <span className="text-red-400 p-1">{t('fieldRquired')}</span>
                 )}
               </div>

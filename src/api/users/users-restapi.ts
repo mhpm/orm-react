@@ -1,16 +1,14 @@
-import { User } from '../types/User';
-import axios from 'axios';
+import { axiosClient } from '@/lib/axiosClient';
+import { User } from '@/types/User';
 
 const API_URL = import.meta.env.VITE_API_URL_USERS as string;
 
-const apiClient = axios.create({
-  baseURL: API_URL,
-});
+const apiClient = axiosClient(API_URL)
 
 export const fetchUsers = () =>
   apiClient.get<User[]>('/').then((response) => response.data);
 
-export const fetchUserById = (id: string) =>
+export const fetchUserById = (id: number) =>
   apiClient.get<User>(`/${id}`).then((response) => response.data);
 
 export const createUser = (user: User) =>
@@ -19,5 +17,5 @@ export const createUser = (user: User) =>
 export const updateUser = (user: User) =>
   apiClient.put<User>(`/${user.id}`, user).then((response) => response.data);
 
-export const deleteUser = (id: string) =>
+export const deleteUser = (id: number) =>
   apiClient.delete<User>(`/${id}`).then((response) => response.data);
