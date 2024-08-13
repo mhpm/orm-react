@@ -6,6 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useToast } from '@/components/ui/use-toast';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 
 const UserList = () => {
   const { t } = useTranslation();
@@ -16,9 +21,11 @@ const UserList = () => {
 
   const handleCreate = () => {
     createMutation.mutate({
-      id: faker.string.alphanumeric(4),
-      name: faker.person.fullName(),
+      id: faker.string.alphanumeric(3),
+      first_name: faker.person.firstName(),
+      last_name: faker.person.lastName(),
       email: faker.internet.email(),
+      avatar: faker.image.avatar(),
     });
   };
 
@@ -61,11 +68,20 @@ const UserList = () => {
         {users?.map((item: User) => (
           <div
             key={item.id}
-            className="flex justify-between text-left border-b border-gray-600 p-2 px-4 mb-3"
+            className="flex justify-between items-center text-left border-b border-gray-600 p-2 px-4 mb-3"
           >
-            <div className="w-[60px]">{item.id}</div>
-            <div className="w-[150px] text-ellipsis text-nowrap overflow-hidden">
-              {item.name}
+            <div className="w-[40px]">{item.id}</div>
+            <div className="w-[50px]">
+            <Avatar>
+              <AvatarImage src={item.avatar} alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            </div>
+            <div className="w-[100px] text-ellipsis text-nowrap overflow-hidden">
+              {item.first_name}
+            </div>
+            <div className="w-[100px] text-ellipsis text-nowrap overflow-hidden">
+              {item.last_name}
             </div>
             <div className="w-[250px]">{item.email}</div>
             <Link
