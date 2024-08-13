@@ -1,12 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import {
-  fetchUsers,
-  createUser,
-  deleteUser,
-  updateUser,
-  fetchUserById,
-} from '@/api/users/users-supabase';
+import * as supabaseApi from '@/api/users/users-supabase';
+import * as axiosApi from '@/api/users/users-axios';
 import { User } from '@/types/User';
+
+const isSupabase = import.meta.env.MODE !== 'development';
+
+const clientApi = isSupabase ? supabaseApi : axiosApi;
 
 export const useUser = () => {
   const queryClient = useQueryClient();
@@ -14,32 +13,32 @@ export const useUser = () => {
   const useGetUsers = () =>
     useQuery<User[]>({
       queryKey: ['users'],
-      queryFn: () => fetchUsers(),
+      queryFn: () => clientApi.fetchUsers(),
     });
 
   const useGetUserById = (id: number | string) => {
     return useQuery<User>({
       queryKey: ['users', id],
-      queryFn: () => fetchUserById(id),
+      queryFn: () => clientApi.fetchUserById(id),
     });
   };
 
   const createMutation = useMutation({
-    mutationFn: createUser,
+    mutationFn: clientApi.createUser,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
   });
 
   const deleteMutation = useMutation({
-    mutationFn: deleteUser,
+    mutationFn: clientApi.deleteUser,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
   });
 
   const updateMutation = useMutation({
-    mutationFn: updateUser,
+    mutationFn: clientApi.updateUser,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
