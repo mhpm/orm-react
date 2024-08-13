@@ -6,30 +6,25 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useToast } from '@/components/ui/use-toast';
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const UserList = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const { useGetUsers, createMutation, deleteMutation } = useUser();
   const { data: users, isLoading } = useGetUsers();
-  const [deletingUserId, setDeletingUserId] = useState<string | null>(null);
+  const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
 
   const handleCreate = () => {
     createMutation.mutate({
-      id: faker.string.alphanumeric(3),
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       email: faker.internet.email(),
-      avatar: faker.image.avatar(),
+      avatar: faker.image.avatarGitHub(),
     });
   };
 
-  const handleDelete = (userId: string) => {
+  const handleDelete = (userId: number) => {
     setDeletingUserId(userId);
     deleteMutation.mutate(userId, {
       onSuccess: () => {
@@ -72,10 +67,10 @@ const UserList = () => {
           >
             <div className="w-[40px]">{item.id}</div>
             <div className="w-[50px]">
-            <Avatar>
-              <AvatarImage src={item.avatar} alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+              <Avatar>
+                <AvatarImage src={item.avatar} alt="@shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
             </div>
             <div className="w-[100px] text-ellipsis text-nowrap overflow-hidden">
               {item.first_name}
@@ -91,7 +86,7 @@ const UserList = () => {
               {t('edit')}
             </Link>
             <button
-              onClick={() => handleDelete(item.id as string)}
+              onClick={() => handleDelete(item.id as number)}
               className="text-red-400 text-sm button"
               disabled={deleteMutation.isPending}
             >
