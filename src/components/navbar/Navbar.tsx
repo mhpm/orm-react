@@ -29,10 +29,10 @@ const NavBar = () => {
             <UserIcon className="h-5 w-5 mr-3" />
             {t('users')}
           </Link>
-          <Link to="/news">
+          {/* <Link to="/news">
             <NewspaperIcon className="h-5 w-5 mr-3" />
             {t('news')}
-          </Link>
+          </Link> */}
         </nav>
       </div>
       <button

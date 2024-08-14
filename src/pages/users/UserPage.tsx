@@ -15,9 +15,9 @@ function UserPage() {
 
   return (
     <div className="block justify-center w-full p-10">
-      <button className="button w-full" onClick={handleClick}>
+      {/* <button className="button w-full" onClick={handleClick}>
         Open Modal
-      </button>
+      </button> */}
       <UserList />
     </div>
   );
