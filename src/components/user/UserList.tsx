@@ -7,8 +7,10 @@ import { useState } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useToast } from '@/components/ui/use-toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useModal } from '@/components/modal/useModal';
 
 const UserList = () => {
+  const { openModal } = useModal();
   const { t } = useTranslation();
   const { toast } = useToast();
   const { useGetUsers, createMutation, deleteMutation } = useUser();
@@ -47,6 +49,7 @@ const UserList = () => {
 
   return (
     <div>
+       <button className='button' onClick={() => openModal('My Modal', 'my content from code')}>Open modal</button>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
         {isLoading
           ? `${t('loading')}...`
