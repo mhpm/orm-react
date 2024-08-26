@@ -49,7 +49,16 @@ const UserList = () => {
 
   return (
     <div>
-       <button className='button' onClick={() => openModal('My Modal', 'my content from code')}>Open modal</button>
+      <button
+        className="button"
+        onClick={() =>
+          openModal('My Modal', 'my content from code', () =>
+            console.log('modal closed')
+          )
+        }
+      >
+        Open modal
+      </button>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
         {isLoading
           ? `${t('loading')}...`

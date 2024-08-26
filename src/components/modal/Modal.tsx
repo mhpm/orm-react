@@ -1,23 +1,9 @@
-import { useModalStore } from './modalStore';
+import { useModal } from './useModal';
 
-interface ModalProps {
-  title?: string;
-  children?: React.ReactNode;
-  onClose?: () => void;
-}
-
-const Modal = ({ title = 'Modal', children, onClose } : ModalProps) => {
-  const { isOpen, content, modalTitle, closeModal } = useModalStore();
+const Modal = () => {
+  const { isOpen, content, title, closeModal } = useModal();
 
   if (!isOpen) return null;
-
-  const handleClose = () => {
-    closeModal();
-    
-    if(typeof onClose === 'function'){
-      onClose();
-    }
-  }
 
   return (
     <div
@@ -28,10 +14,10 @@ const Modal = ({ title = 'Modal', children, onClose } : ModalProps) => {
         className="bg-woodsmoke-950 rounded-lg shadow-lg p-6 w-full max-w-lg"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-2xl font-bold text-center mb-10">{title || modalTitle}</h2>
-        {children || content}
+        <h2 className="text-2xl font-bold text-center mb-10">{title}</h2>
+        {content}
         <div className="modal-footer w-full flex justify-center items-center mt-10">
-          <button className="button text-red-400" onClick={handleClose}>
+          <button className="button text-red-400" onClick={closeModal}>
             Close Modal
           </button>
         </div>

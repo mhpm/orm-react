@@ -1,18 +1,49 @@
 import { create } from 'zustand';
 
-type ModalState = {
-  modalTitle: string;
+type State = {
+  title: string;
   isOpen: boolean;
   content: string;
-  openModal: (title: string, content: string) => void;
-  closeModal: () => void;
-};
+}
 
-export const useModalStore = create<ModalState>((set) => ({
-  modalTitle: '',
+type Actios = {
+  openModal: (title: string, content: string, onClose?: () => void) => void;
+  closeModal: () => void;
+  onCloseCallback?: () => void;
+}
+
+type ModalStore = State & Actios;
+
+export const useModalStore = create<ModalStore>((set) => ({
+  title: '',
   isOpen: false,
   content: '',
-  openModal: (title, content) =>
-    set({ isOpen: true, modalTitle: title, content }),
-  closeModal: () => set({ isOpen: false }),
+  onCloseCallback: undefined,
+  openModal: (title, content, onCloseCallback?: () => void) =>
+    set({ isOpen: true, title, content, onCloseCallback }),
+  closeModal: () =>
+    set((state) => {
+      if (state.onCloseCallback) {
+        state.onCloseCallback();
+      }
+      return { isOpen: false, onCloseCallback: undefined };
+    }),
 }));
+
+
+// code for create slice and use it in global store
+// export const createModalSlice: StateCreator<ModalStore> = (set) => ({
+//   title: '',
+//   isOpen: false,
+//   content: '',
+//   onCloseCallback: undefined,
+//   openModal: (title, content, onCloseCallback?: () => void) =>
+//     set({ isOpen: true, title, content, onCloseCallback }),
+//   closeModal: () =>
+//     set((state) => {
+//       if (state.onCloseCallback) {
+//         state.onCloseCallback();
+//       }
+//       return { isOpen: false, onCloseCallback: undefined };
+//     }),
+// });
