@@ -1,93 +1,69 @@
 {
   "users": [
     {
-      "id": "6663",
-      "first_name": "Rossie",
-      "last_name": "Hackett",
-      "email": "Gust_Jerde95@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/52373831"
+      "id": "a04b",
+      "first_name": "Royce",
+      "last_name": "Block-Weissnat",
+      "email": "Odessa_Blick-Senger39@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/28780764"
     },
     {
-      "id": "8637",
-      "first_name": "Nicholas",
-      "last_name": "Moen",
-      "email": "Celestine.Harris19@gmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/65440859"
+      "id": "8c9d",
+      "first_name": "Junius",
+      "last_name": "Wunsch",
+      "email": "Grant1@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/13078553"
     },
     {
-      "id": "e4bb",
-      "first_name": "Dorian",
-      "last_name": "Mertz",
-      "email": "Rowland.Tromp@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/55140727"
+      "id": "2586",
+      "first_name": "Russ",
+      "last_name": "Thompson",
+      "email": "Manley.Cormier@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/75310247"
     },
     {
-      "id": "1e48",
-      "first_name": "Deion",
-      "last_name": "Funk",
-      "email": "Marietta.Kozey@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/71371661"
-    },
-    {
-      "id": "3efb",
-      "first_name": "Dorothy",
-      "last_name": "Schumm",
-      "email": "Dameon68@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/48979907"
-    },
-    {
-      "id": "73df",
-      "first_name": "Justyn",
-      "last_name": "Weimann",
-      "email": "Marcel28@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/46635188"
-    },
-    {
-      "id": "97dc",
-      "first_name": "Elsie",
-      "last_name": "Harber",
-      "email": "Rickey.Jenkins67@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/7496755"
-    },
-    {
-      "id": "1068",
-      "first_name": "Lincoln",
-      "last_name": "Lueilwitz-Ebert",
-      "email": "Tanya_Barton@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/37248852"
-    },
-    {
-      "id": "ed92",
-      "first_name": "Mervin",
-      "last_name": "Casper",
-      "email": "Lawson36@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/6234843"
-    },
-    {
-      "id": "4cb1",
-      "first_name": "Adele",
-      "last_name": "Koch",
-      "email": "Chloe59@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/81573285"
-    },
-    {
-      "id": "a5d5",
-      "first_name": "Amaya",
-      "last_name": "Abshire",
-      "email": "Enrique29@gmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/8493540"
+      "id": "4c94",
+      "first_name": "Laverne",
+      "last_name": "Moore",
+      "email": "Brice22@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/67918056"
     }
   ],
   "news": [
     {
-      "id": "Jtla",
-      "title": "Jenkins - Breitenberg",
-      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
-    },
-    {
       "id": "2MrH",
       "title": "Mayert, Kassulke and Rodriguez",
       "content": "atque ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex atque ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "mIbZ",
+      "title": "Ullrich, Russel and Keebler",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "n5O4",
+      "title": "Jacobi and Sons",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "KRua",
+      "title": "Hodkiewicz, Mayert and Klocko",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "0eLF",
+      "title": "Kozey Inc",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "Gomz",
+      "title": "Jacobi and Sons",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
+    },
+    {
+      "id": "qVSc",
+      "title": "O'Hara - Boyer",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex."
     }
   ]
 }

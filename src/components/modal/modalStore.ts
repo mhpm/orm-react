@@ -3,11 +3,11 @@ import { create } from 'zustand';
 type State = {
   title: string;
   isOpen: boolean;
-  content: string;
+  content: React.ReactNode;
 }
 
 type Actios = {
-  openModal: (title: string, content: string, onClose?: () => void) => void;
+  openModal: (title: string, content: React.ReactNode, onClose?: () => void) => void;
   closeModal: () => void;
   onCloseCallback?: () => void;
 }

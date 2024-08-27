@@ -52,7 +52,7 @@ const UserList = () => {
       <button
         className="button"
         onClick={() =>
-          openModal('My Modal', 'my content from code', () =>
+          openModal('My New Title', <div>Hello <p>paragraophe</p></div>, () =>
             console.log('modal closed')
           )
         }
