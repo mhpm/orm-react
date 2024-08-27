@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
-import { UserIcon } from '@heroicons/react/24/solid';
+import { NewspaperIcon, UserIcon } from '@heroicons/react/24/solid';
 
 const NavBar = () => {
   const { t, i18n } = useTranslation();
@@ -13,8 +13,8 @@ const NavBar = () => {
   };
 
   return (
-    <div className="hidden lg:flex p-4 gap-5 w-[250px] flex-col items-center justify-start bg-cyan-900 text-center">
-      <div className="fixed top-10">
+    <div className="fixed inset-0 z-50 w-full p-4 gap-5 lg:relative lg:flex lg:w-[300px] flex-col items-center justify-start bg-cyan-900 text-center">
+      <div className="lg:fixed lg:top-10">
         <div className="flex flex-col items-center">
           <img
             src="https://via.placeholder.com/100" // Reemplaza con la URL de tu imagen
@@ -24,15 +24,15 @@ const NavBar = () => {
           <h1 className="text-2xl font-semibold">Michelle Perez</h1>
           <p className="text-sm text-gray-400">I'm Developer</p>
         </div>
-        <nav className="flex flex-col gap-2 mt-8">
+        <nav className="flex flex-col gap-2 mt-8 font-extrabold">
           <Link to="/">
             <UserIcon className="h-5 w-5 mr-3" />
             {t('users')}
           </Link>
-          {/* <Link to="/news">
+          <Link to="/news">
             <NewspaperIcon className="h-5 w-5 mr-3" />
             {t('news')}
-          </Link> */}
+          </Link>
         </nav>
       </div>
       <button
