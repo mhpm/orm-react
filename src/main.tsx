@@ -14,9 +14,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import UserPage from '@/pages/users/UserPage.tsx'
-import EditUserPage from '@/pages/users/EditUserPage.tsx'
-import NewsPage from '@/pages/news/NewsPage.tsx'
+import UserPage from '@/modules/users/pages/UserPage.tsx'
+import EditUserPage from '@/modules/users/pages/EditUserPage.tsx'
+import NewsPage from '@/modules/news/pages/NewsPage.tsx'
 import NotFound from '@/pages/NotFound.tsx';
 import Test from '@/pages/Test.jsx';
 

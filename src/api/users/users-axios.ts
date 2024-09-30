@@ -1,5 +1,5 @@
 import { axiosClient } from '@/lib/axiosClient';
-import { User } from '@/types/User';
+import { User } from '@/modules/users/types/User';
 
 const API_URL = import.meta.env.VITE_API_URL_USERS as string;
 

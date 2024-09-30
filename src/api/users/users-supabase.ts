@@ -1,5 +1,5 @@
 
-import { User } from '@/types/User';
+import { User } from '@/modules/users/types/User';
 import { supabaseClient } from '@/lib/supabaseClient';
 
 const client = supabaseClient

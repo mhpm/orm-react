@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import * as supabaseApi from '@/api/users/users-supabase';
 import * as axiosApi from '@/api/users/users-axios';
-import { User } from '@/types/User';
+import { User } from '@/modules/users/types/User';
 
 const isSupabase = import.meta.env.MODE !== 'development';
 
