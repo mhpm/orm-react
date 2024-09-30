@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "a04b",
-      "first_name": "Royce",
-      "last_name": "Block-Weissnat",
-      "email": "Odessa_Blick-Senger39@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/28780764"
-    },
-    {
       "id": "8c9d",
       "first_name": "Junius",
       "last_name": "Wunsch",
@@ -27,6 +20,41 @@
       "last_name": "Moore",
       "email": "Brice22@hotmail.com",
       "avatar": "https://avatars.githubusercontent.com/u/67918056"
+    },
+    {
+      "id": "8bdb",
+      "first_name": "Carlotta",
+      "last_name": "Fay",
+      "email": "Manuel17@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/45253420"
+    },
+    {
+      "id": "d4b1",
+      "first_name": "Evans",
+      "last_name": "Koelpin",
+      "email": "Linnie_Breitenberg82@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/69070529"
+    },
+    {
+      "id": "c880",
+      "first_name": "Alaina",
+      "last_name": "Spinka",
+      "email": "Meaghan42@yahoo.com",
+      "avatar": "https://avatars.githubusercontent.com/u/3066049"
+    },
+    {
+      "id": "f7b5",
+      "first_name": "Perry",
+      "last_name": "Lynch",
+      "email": "Brock_Halvorson@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/85729203"
+    },
+    {
+      "id": "6640",
+      "first_name": "Arno",
+      "last_name": "Schneider",
+      "email": "Gerard10@hotmail.com",
+      "avatar": "https://avatars.githubusercontent.com/u/69972671"
     }
   ],
   "news": [

@@ -1,7 +1,7 @@
-import { User } from '@/types/User';
+import { User } from '@/modules/users/types/User';
 import { Link } from 'react-router-dom';
 import { faker } from '@faker-js/faker';
-import { useUser } from '@/hooks/useUser';
+import { useUser } from '@/modules/users/hooks/useUser';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';

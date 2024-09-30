@@ -1,4 +1,4 @@
-import { UserList } from '@/components';
+import UserList from '@/modules/users/components/UserList';
 import { useEffect } from 'react';
 // import { useModalContext } from '@/components/modal/ModalContext';
 

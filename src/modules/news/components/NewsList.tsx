@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { useNews } from '@/hooks/useNews';
-import { News } from '@/types/News';
+import { useNews } from '@/modules/news/hooks/useNews';
+import { News } from '@/modules/news/types/News';
 import { useTranslation } from 'react-i18next';
 import styles from './NewsList.module.css';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';

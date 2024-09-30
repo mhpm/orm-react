@@ -1,4 +1,4 @@
-import { News } from '../types/News';
+import { News } from '../modules/news/types/News';
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL_NEWS as string;

@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchNews, fetchNewsById, createNews, deleteNews, updateNews } from '@/api/news';
-import { News } from '@/types/News';
+import { News } from '@/modules/news/types/News';
 
 export const useNews = () => {
   const queryClient = useQueryClient();
