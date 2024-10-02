@@ -22,6 +22,8 @@ const UserList = () => {
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       email: faker.internet.email(),
+      password: 'changeme',
+      role: 'admin',
       avatar: faker.image.avatarGitHub(),
     });
   };
