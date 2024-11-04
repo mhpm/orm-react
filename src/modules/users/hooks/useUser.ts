@@ -1,12 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import * as supabaseApi from '@/api/users/users-supabase';
+// import * as supabaseApi from '@/api/users/users-supabase';
 // import * as axiosApi from '@/api/users/users-axios';
 import * as graphqlClient from '@/api/users/users-graphql';
 import { User } from '@/modules/users/types/User';
 
-const isSupabase = import.meta.env.MODE !== 'development';
+// const isSupabase = import.meta.env.MODE !== 'development';
 
-const clientApi = isSupabase ? supabaseApi : graphqlClient;
+const clientApi = graphqlClient;
 
 export const useUser = () => {
   const queryClient = useQueryClient();
