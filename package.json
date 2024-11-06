@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
+    "@faker-js/faker": "^9.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@heroicons/react": "^2.1.5",
@@ -42,7 +43,6 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.4.1",
     "@hookform/devtools": "^4.3.1",
     "@tanstack/eslint-plugin-query": "^5.49.1",
     "@types/node": "^20.16.10",

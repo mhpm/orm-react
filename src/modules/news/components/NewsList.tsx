@@ -23,7 +23,8 @@ const NewsList = () => {
     return size > 300 ? 'md:col-span-2' : 'md:col-span-1';
   }
 
-  if (isLoading) return <ArrowPathIcon className="animate-spin h-7 w-7 self-center" />
+  if (isLoading)
+    return <ArrowPathIcon className="animate-spin h-7 w-7 self-center" />;
 
   return (
     <div>
