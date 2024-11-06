@@ -33,18 +33,14 @@ export default function Accordion() {
         city. From 1929 to 1997, it was its capital city.
       </Panel>
       <Panel title="Title 2">
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for
-        "apple" and is often translated as "full of apples". In fact, the region
-        surrounding Almaty is thought to be the ancestral home of the apple, and
-        the wild <i lang="la">Malus sieversii</i> is considered a likely
-        candidate for the ancestor of the modern domestic apple.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, quis ex!
+        Nostrum, eveniet qui! Eum, illo sed ipsam id quod architecto animi qui!
+        Voluptatem, veniam nulla animi id excepturi enim?
       </Panel>
       <Panel title="Title 3">
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for
-        "apple" and is often translated as "full of apples". In fact, the region
-        surrounding Almaty is thought to be the ancestral home of the apple, and
-        the wild <i lang="la">Malus sieversii</i> is considered a likely
-        candidate for the ancestor of the modern domestic apple.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, quis ex!
+        Nostrum, eveniet qui! Eum, illo sed ipsam id quod architecto animi qui!
+        Voluptatem, veniam nulla animi id excepturi enim?
       </Panel>
     </div>
   );
