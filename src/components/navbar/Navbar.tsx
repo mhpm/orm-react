@@ -20,6 +20,7 @@ const NavBar = () => {
             src="https://via.placeholder.com/100" // Reemplaza con la URL de tu imagen
             alt="Profile"
             className="rounded-full w-24 h-24 mb-4"
+            loading="lazy"
           />
           <h1 className="text-2xl font-semibold">Michelle Perez</h1>
           <p className="text-sm text-gray-400">I'm Developer</p>
