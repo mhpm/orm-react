@@ -1,45 +1,60 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-// import * as supabaseApi from '@/api/users/users-supabase';
-// import * as axiosApi from '@/api/users/users-axios';
-import * as graphqlClient from '@/api/users/users-graphql';
 import { User } from '@/modules/users/types/User';
+import { useEffect, useState } from 'react';
 
-// const isSupabase = import.meta.env.MODE !== 'development';
+const loadClientApi = async () => {
+  const client = import.meta.env.VITE_API_CLIENT;
 
-const clientApi = graphqlClient;
+  switch (client) {
+    case 'supabase':
+      return await import('@/api/users/users-supabase');
+    case 'graphql':
+      return await import('@/api/users/users-graphql');
+    default:
+      return await import('@/api/users/users-axios');
+  }
+};
 
 export const useUser = () => {
   const queryClient = useQueryClient();
+
+  const [clientApi, setClientApi] = useState<any>(null);
+
+  useEffect(() => {
+    loadClientApi().then((module) => setClientApi(module));
+  }, []);
 
   const useGetUsers = () =>
     useQuery<User[]>({
       queryKey: ['users'],
       queryFn: () => clientApi.fetchUsers(),
+      enabled: !!clientApi,
     });
 
   const useGetUserById = (id: number | string) => {
     return useQuery<User>({
       queryKey: ['users', id],
       queryFn: () => clientApi.fetchUserById(id),
+      enabled: !!clientApi,
     });
   };
 
   const createMutation = useMutation({
-    mutationFn: clientApi.createUser,
+    mutationFn: (user: User) => clientApi?.createUser(user),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
   });
 
   const deleteMutation = useMutation({
-    mutationFn: clientApi.deleteUser,
+    mutationFn: (id: number | string) => clientApi?.deleteUser(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
   });
 
   const updateMutation = useMutation({
-    mutationFn: clientApi.updateUser,
+    mutationFn: (user: User) => clientApi?.updateUser(user),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },

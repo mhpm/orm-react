@@ -16,7 +16,6 @@ const UserList = memo(() => {
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
 
   const handleCreate = () => {
-    console.log('handleCreate: ', handleCreate);
     createMutation.mutate({
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
@@ -28,7 +27,6 @@ const UserList = memo(() => {
   };
 
   const handleDelete = (userId: number) => {
-    console.log('handleDelete: ', handleDelete);
     setDeletingUserId(userId);
     deleteMutation.mutate(userId, {
       onSuccess: () => {

@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "8c9d",
-      "first_name": "Junius",
-      "last_name": "Wunsch",
-      "email": "Grant1@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/13078553"
-    },
-    {
       "id": "2586",
       "first_name": "Russ",
       "last_name": "Thompson",
@@ -55,6 +48,15 @@
       "last_name": "Schneider",
       "email": "Gerard10@hotmail.com",
       "avatar": "https://avatars.githubusercontent.com/u/69972671"
+    },
+    {
+      "id": "58e0",
+      "first_name": "Bertrand",
+      "last_name": "Huel",
+      "email": "Mara_Welch24@hotmail.com",
+      "password": "changeme",
+      "role": "admin",
+      "avatar": "https://avatars.githubusercontent.com/u/88333966"
     }
   ],
   "news": [
