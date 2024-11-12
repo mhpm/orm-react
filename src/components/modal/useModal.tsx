@@ -1,9 +1,7 @@
-import { useModalStore } from './modalStore';
+import { useModalStore } from './useModalStore';
 
 export const useModal = () => {
-  const { isOpen, title, content, openModal, closeModal } = useModalStore(
-    (state) => state
-  );
+  const { openModal } = useModalStore((state) => state);
 
-  return { isOpen, title, content, openModal, closeModal };
+  return { openModal };
 };

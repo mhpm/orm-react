@@ -1,7 +1,9 @@
-import { useModal } from './useModal';
+import { useModalStore } from './useModalStore';
 
 const Modal = () => {
-  const { isOpen, content, title, closeModal } = useModal();
+  const { isOpen, title, content, closeModal } = useModalStore(
+    (state) => state
+  );
 
   if (!isOpen) return null;
 
