@@ -1,11 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
-
+import React, { Suspense } from 'react';
 import App from '../App';
-import UserPage from '@/modules/users/pages/UserPage.tsx';
-import EditUserPage from '@/modules/users/pages/EditUserPage.tsx';
-import NewsPage from '@/modules/news/pages/NewsPage.tsx';
-import NotFound from '@/pages/NotFound.tsx';
-import Challenges from '@/pages/Challenges.js';
+
+// Lazy loading the components
+const UserPage = React.lazy(() => import('@/modules/users/pages/UserPage.tsx'));
+const EditUserPage = React.lazy(
+  () => import('@/modules/users/pages/EditUserPage.tsx')
+);
+const NewsPage = React.lazy(() => import('@/modules/news/pages/NewsPage.tsx'));
+const NotFound = React.lazy(() => import('@/pages/NotFound.tsx'));
+const Challenges = React.lazy(() => import('@/pages/Challenges.js'));
 
 export const router = createBrowserRouter([
   {
@@ -14,23 +18,43 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <UserPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <UserPage />
+          </Suspense>
+        ),
       },
       {
         path: 'users/edit/:id',
-        element: <EditUserPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <EditUserPage />
+          </Suspense>
+        ),
       },
       {
         path: 'news',
-        element: <NewsPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <NewsPage />
+          </Suspense>
+        ),
       },
       {
         path: 'challenges',
-        element: <Challenges />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Challenges />
+          </Suspense>
+        ),
       },
       {
         path: '*',
-        element: <NotFound />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <NotFound />
+          </Suspense>
+        ),
       },
     ],
   },

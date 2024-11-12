@@ -1,16 +1,14 @@
+import { memo, useState } from 'react';
 import { User } from '@/modules/users/types/User';
 import { Link } from 'react-router-dom';
 import { faker } from '@faker-js/faker';
 import { useUser } from '@/modules/users/hooks/useUser';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useToast } from '@/components/ui/use-toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useModal } from '@/components/modal/useModal';
 
-const UserList = () => {
-  const { openModal } = useModal();
+const UserList = memo(() => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const { useGetUsers, createMutation, deleteMutation } = useUser();
@@ -18,6 +16,7 @@ const UserList = () => {
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
 
   const handleCreate = () => {
+    console.log('handleCreate: ', handleCreate);
     createMutation.mutate({
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
@@ -29,6 +28,7 @@ const UserList = () => {
   };
 
   const handleDelete = (userId: number) => {
+    console.log('handleDelete: ', handleDelete);
     setDeletingUserId(userId);
     deleteMutation.mutate(userId, {
       onSuccess: () => {
@@ -51,16 +51,6 @@ const UserList = () => {
 
   return (
     <div>
-      <button
-        className="button"
-        onClick={() =>
-          openModal('My New Title', <div>Hello <p>paragraophe</p></div>, () =>
-            console.log('modal closed')
-          )
-        }
-      >
-        Open modal
-      </button>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
         {isLoading
           ? `${t('loading')}...`
@@ -82,7 +72,7 @@ const UserList = () => {
             <div className="w-[40px]">{item.id}</div>
             <div className="w-[50px]">
               <Avatar>
-                <AvatarImage src={item.avatar} alt="@shadcn" />
+                <AvatarImage src={item.avatar} alt="@shadcn" loading="lazy" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
             </div>
@@ -115,6 +105,6 @@ const UserList = () => {
       </div>
     </div>
   );
-};
+});
 
 export default UserList;
