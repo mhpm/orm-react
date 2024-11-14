@@ -3,7 +3,7 @@ import { useNews } from '@/modules/news/hooks/useNews';
 import { News } from '@/modules/news/types/News';
 import { useTranslation } from 'react-i18next';
 import styles from './NewsList.module.css';
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
+import { CgSpinner } from 'react-icons/cg';
 
 const NewsList = () => {
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ const NewsList = () => {
   }
 
   if (isLoading)
-    return <ArrowPathIcon className="animate-spin h-7 w-7 self-center" />;
+    return <CgSpinner className="animate-spin h-7 w-7 self-center" />;
 
   return (
     <div>
@@ -32,7 +32,7 @@ const NewsList = () => {
         {t('newsList')} : {news?.length}
         <button className="text-sm button" onClick={handleCreate}>
           {createNewMutation.isPending ? (
-            <ArrowPathIcon className="animate-spin h-7 w-7 self-center" />
+            <CgSpinner className="animate-spin h-7 w-7 self-center" />
           ) : (
             t('addNew')
           )}

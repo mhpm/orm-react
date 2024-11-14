@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import { NewspaperIcon, UserIcon } from '@heroicons/react/24/solid';
+import { memo, useState } from 'react';
+import { FaUser, FaNewspaper } from 'react-icons/fa';
 
-const NavBar = () => {
+const NavBar = memo(() => {
   const { t, i18n } = useTranslation();
   const [english, setEnglish] = useState(i18n.language === 'en' ? true : false);
 
@@ -27,11 +27,11 @@ const NavBar = () => {
         </div>
         <nav className="flex flex-col gap-2 mt-8 font-extrabold">
           <Link to="/">
-            <UserIcon className="h-5 w-5 mr-3" />
+            <FaUser className="h-5 w-5 mr-3" />
             {t('users')}
           </Link>
           <Link to="/news">
-            <NewspaperIcon className="h-5 w-5 mr-3" />
+            <FaNewspaper className="h-5 w-5 mr-3" />
             {t('news')}
           </Link>
         </nav>
@@ -44,19 +44,21 @@ const NavBar = () => {
       </button>
     </div>
   );
-};
+});
 
-const Link = ({ to, children }: { to: string; children: React.ReactNode }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) =>
-      `flex justify-start text-cyan-400 hover:text-cyan-300 hover:bg-cyan-800 px-4 py-2 rounded-md ${
-        isActive ? 'bg-cyan-800' : ''
-      }`
-    }
-  >
-    {children}
-  </NavLink>
+const Link = memo(
+  ({ to, children }: { to: string; children: React.ReactNode }) => (
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `flex justify-start text-cyan-400 hover:text-cyan-300 hover:bg-cyan-800 px-4 py-2 rounded-md ${
+          isActive ? 'bg-cyan-800' : ''
+        }`
+      }
+    >
+      {children}
+    </NavLink>
+  )
 );
 
 export default NavBar;

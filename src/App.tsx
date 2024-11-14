@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Modal, Navbar } from '@/components';
+import { Navbar } from '@/components';
 import { Toaster } from '@/components/ui/toaster';
 
 function App() {
@@ -10,7 +10,6 @@ function App() {
         <Outlet />
       </div>
       <Toaster />
-      <Modal />
     </div>
   );
 }
