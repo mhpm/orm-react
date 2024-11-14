@@ -4,7 +4,7 @@ import { SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseClient = createClient(
   'supabase',
-  'https://ovevaibtxbvpaoycjvfj.supabase.co'
+  'https://hihrletflbfnoumdyysy.supabase.co'
 ) as SupabaseClient;
 
 export const fetchUsers = async () => {

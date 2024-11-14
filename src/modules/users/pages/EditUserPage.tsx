@@ -5,7 +5,7 @@ import { useUser } from '@/modules/users/hooks/useUser';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
+import { CgSpinner } from 'react-icons/cg';
 
 function EditUserPage() {
   const { toast } = useToast();
@@ -44,7 +44,7 @@ function EditUserPage() {
   if (isLoading)
     return (
       <div className="w-full flex justify-center p-10">
-        <ArrowPathIcon className="animate-spin h-7 w-7" />
+        <CgSpinner className="animate-spin h-7 w-7" />
       </div>
     );
 
@@ -118,7 +118,7 @@ function EditUserPage() {
                 disabled={updateMutation.isPending}
               >
                 {updateMutation.isPending ? (
-                  <ArrowPathIcon className="animate-spin h-4 w-4" />
+                  <CgSpinner className="animate-spin h-4 w-4" />
                 ) : (
                   t('save')
                 )}

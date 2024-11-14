@@ -4,20 +4,22 @@ import { AxiosInstance } from 'axios';
 
 const axiosClient = createClient(
   'axios',
-  'http://localhost:3000/users'
+  'https://orm-flask-python-api.onrender.com'
 ) as AxiosInstance;
 
 export const fetchUsers = () =>
-  axiosClient.get<User[]>('/').then((response) => response.data);
+  axiosClient.get<User[]>('/users').then((response) => response.data);
 
 export const fetchUserById = (id: number | string) =>
-  axiosClient.get<User>(`/${id}`).then((response) => response.data);
+  axiosClient.get<User>(`/users/${id}`).then((response) => response.data);
 
 export const createUser = (user: User) =>
-  axiosClient.post<User>('/', user).then((response) => response.data);
+  axiosClient.post<User>('/users', user).then((response) => response.data);
 
 export const updateUser = (user: User) =>
-  axiosClient.put<User>(`/${user.id}`, user).then((response) => response.data);
+  axiosClient
+    .put<User>(`/users/${user.id}`, user)
+    .then((response) => response.data);
 
 export const deleteUser = (id: number | string) =>
-  axiosClient.delete<User>(`/${id}`).then((response) => response.data);
+  axiosClient.delete<User>(`/users/${id}`).then((response) => response.data);
