@@ -17,23 +17,34 @@ const UserList = memo(() => {
   const { data: users, isLoading, isError, error } = useGetUsers();
 
   if (isError) {
-    return (
-      <div className="text-red-400">
-        Failed to load users:{' '}
-        {error instanceof Error ? error.message : 'Unknown error'}
-      </div>
-    );
+    throw new Error(error?.message);
   }
 
   const handleCreate = () => {
-    createMutation.mutate({
-      first_name: faker.person.firstName(),
-      last_name: faker.person.lastName(),
-      email: faker.internet.email(),
-      password: 'changeme',
-      role: 'user',
-      avatar: faker.image.avatarGitHub(),
-    });
+    createMutation.mutate(
+      {
+        first_name: faker.person.firstName(),
+        last_name: faker.person.lastName(),
+        email: faker.internet.email(),
+        password: 'changeme',
+        role: 'user',
+        avatar: faker.image.avatarGitHub(),
+      },
+      {
+        onSuccess: () => {
+          toast({
+            className: 'bg-woodsmoke-950 text-green-400 p-4',
+            title: `${t('user')} created successfully`,
+          });
+        },
+        onError: () => {
+          toast({
+            className: 'bg-woodsmoke-950 text-red-400 p-4',
+            title: `Error on create user`,
+          });
+        },
+      }
+    );
   };
 
   const handleDelete = (userId: number) => {
@@ -42,13 +53,13 @@ const UserList = memo(() => {
       onSuccess: () => {
         toast({
           className: 'bg-woodsmoke-950 text-green-400 p-4',
-          title: `${t('user')} eliminado correctamente`,
+          title: `${t('user')} deleted`,
         });
       },
       onError: () => {
         toast({
           className: 'bg-woodsmoke-950 text-red-400 p-4',
-          title: `Error, usuario no se pudo eliminar`,
+          title: `Error on delete user`,
         });
       },
       onSettled: () => {
