@@ -8,7 +8,6 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { CgSpinner } from 'react-icons/cg';
 import { useToast } from '@/components/ui/use-toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Skeleton } from '@/components/ui/skeleton';
 
 const UserList = memo(() => {
   const { t } = useTranslation();
@@ -75,10 +74,11 @@ const UserList = memo(() => {
       <div className="w-full h-fit rounded-lg">
         {users?.map((item: User) => (
           <div key={item.id} className="relative">
-            {deletingUserId === item.id && (
-              <Skeleton className="w-full rounded-full m-3 bg-woodsmoke-950 absolute inset-0 z-50" />
-            )}
-            <Row user={item} onDelete={handleDelete} />
+            <Row
+              user={item}
+              onDelete={handleDelete}
+              isLoading={deletingUserId === item.id}
+            />
           </div>
         ))}
       </div>
@@ -88,9 +88,11 @@ const UserList = memo(() => {
 
 const Row = ({
   user,
+  isLoading,
   onDelete,
 }: {
   user: User;
+  isLoading: boolean;
   onDelete: (id: number) => void;
 }) => {
   return (
@@ -127,8 +129,13 @@ const Row = ({
       <button
         onClick={() => onDelete(user.id as number)}
         className="text-red-400"
+        disabled={isLoading}
       >
-        <FaTrash className="h-5 w-5" />
+        {isLoading ? (
+          <CgSpinner className="animate-spin h-5 w-5" />
+        ) : (
+          <FaTrash className="h-5 w-5" />
+        )}
       </button>
     </div>
   );
