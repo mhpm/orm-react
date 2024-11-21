@@ -1,4 +1,4 @@
-import NewsList from '@/modules/news/components/NewsList';
+import NewsList from '../components/NewsList';
 
 const NewsPage = () => {
   return (

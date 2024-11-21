@@ -1,5 +1,5 @@
 import { gql, GraphQLClient } from 'graphql-request';
-import { User } from '@/modules/users/types/User';
+import { User } from '../types/User';
 import { createClient } from '@/lib/clienFactory';
 
 const graphqlClient = createClient(
