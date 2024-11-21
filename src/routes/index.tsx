@@ -5,11 +5,13 @@ import LoadingPage from '@/pages/LoadingPage';
 import ErrorPage from '@/pages/ErrorPage';
 
 // Lazy loading the components
-const UserPage = React.lazy(() => import('@/modules/users/pages/UserPage.tsx'));
-const EditUserPage = React.lazy(
-  () => import('@/modules/users/pages/EditUserPage.tsx')
+const UserPage = React.lazy(
+  () => import('@/features/users/pages/UserPage.tsx')
 );
-const NewsPage = React.lazy(() => import('@/modules/news/pages/NewsPage.tsx'));
+const EditUserPage = React.lazy(
+  () => import('@/features/users/pages/EditUserPage.tsx')
+);
+const NewsPage = React.lazy(() => import('@/features/news/pages/NewsPage.tsx'));
 const NotFound = React.lazy(() => import('@/pages/NotFound.tsx'));
 const Challenges = React.lazy(() => import('@/pages/Challenges.js'));
 

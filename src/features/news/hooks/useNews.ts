@@ -1,17 +1,24 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchNews, fetchNewsById, createNews, deleteNews, updateNews } from '@/api/news';
-import { News } from '@/modules/news/types/News';
+import {
+  fetchNews,
+  fetchNewsById,
+  createNews,
+  deleteNews,
+  updateNews,
+} from '@/features/news/api/news-axios';
+import { News } from '../types/News';
 
 export const useNews = () => {
   const queryClient = useQueryClient();
-  const queryKey = 'news'
+  const queryKey = 'news';
 
-  const useGetNews = () => useQuery<News[]>({
-    queryKey: [queryKey],
-    queryFn: () => fetchNews(),
-  });
+  const useGetNews = () =>
+    useQuery<News[]>({
+      queryKey: [queryKey],
+      queryFn: () => fetchNews(),
+    });
 
-  const useGetNewById = (id:string) => {
+  const useGetNewById = (id: string) => {
     return useQuery<News>({
       queryKey: [queryKey, id],
       queryFn: () => fetchNewsById(String(id)),
@@ -44,6 +51,6 @@ export const useNews = () => {
     useGetNewById,
     createNewMutation,
     updateNewMutation,
-    deleteNewMutation
-  }
-}
+    deleteNewMutation,
+  };
+};

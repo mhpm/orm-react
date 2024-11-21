@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { User } from '@/modules/users/types/User';
+import { User, UserResponse } from '../types/User';
 import { useEffect, useState } from 'react';
 
 const loadClientApi = async () => {
@@ -7,11 +7,11 @@ const loadClientApi = async () => {
 
   switch (client) {
     case 'supabase':
-      return await import('@/api/users/users-supabase');
+      return await import('@/features/users/api/users-supabase');
     case 'graphql':
-      return await import('@/api/users/users-graphql');
+      return await import('@/features/users/api/users-graphql');
     default:
-      return await import('@/api/users/users-axios');
+      return await import('@/features/users/api/users-axios');
   }
 };
 
@@ -24,10 +24,10 @@ export const useUser = () => {
     loadClientApi().then((module) => setClientApi(module));
   }, []);
 
-  const useGetUsers = () =>
-    useQuery<User[]>({
-      queryKey: ['users'],
-      queryFn: () => clientApi.fetchUsers(),
+  const useGetUsers = (page: number = 1, limit: number = 10) =>
+    useQuery<UserResponse>({
+      queryKey: ['users', page, limit],
+      queryFn: () => clientApi.fetchUsers(page, limit),
       enabled: !!clientApi,
     });
 

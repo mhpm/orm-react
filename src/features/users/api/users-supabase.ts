@@ -1,4 +1,4 @@
-import { User } from '@/modules/users/types/User';
+import { User } from '../types/User';
 import { createClient } from '@/lib/clienFactory';
 import { SupabaseClient } from '@supabase/supabase-js';
 

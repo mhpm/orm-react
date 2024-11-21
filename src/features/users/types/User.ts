@@ -7,3 +7,10 @@ export interface User {
   avatar?: string;
   password?: string;
 }
+
+export interface UserResponse {
+  limit: number;
+  page: number;
+  total: number;
+  users: User[];
+}

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { User } from '@/modules/users/types/User';
-import { useUser } from '@/modules/users/hooks/useUser';
+import { User } from '../types/User';
+import { useUser } from '../hooks/useUser';
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';

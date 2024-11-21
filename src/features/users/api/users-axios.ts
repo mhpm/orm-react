@@ -1,14 +1,18 @@
 import { createClient } from '@/lib/clienFactory';
-import { User } from '@/modules/users/types/User';
+import { User, UserResponse } from '../types/User';
 import { AxiosInstance } from 'axios';
 
 const axiosClient = createClient(
   'axios',
-  'https://orm-flask-python-api.onrender.com'
+  import.meta.env.DEV
+    ? 'http://127.0.0.1:5000'
+    : 'https://orm-python-supabase-api.onrender.com'
 ) as AxiosInstance;
 
-export const fetchUsers = () =>
-  axiosClient.get<User[]>('/users').then((response) => response.data);
+export const fetchUsers = (page: number = 1, limit: number = 10) =>
+  axiosClient
+    .get<UserResponse[]>('/users', { params: { page, limit } }) // Pass pagination params
+    .then((response) => response.data);
 
 export const fetchUserById = (id: number | string) =>
   axiosClient.get<User>(`/users/${id}`).then((response) => response.data);

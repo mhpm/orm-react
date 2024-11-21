@@ -17,7 +17,7 @@ const NavBar = memo(() => {
       <div className="lg:fixed lg:top-10">
         <div className="flex flex-col items-center">
           <img
-            src="https://via.placeholder.com/100" // Reemplaza con la URL de tu imagen
+            src="https://avatar.iran.liara.run/public/boy"
             alt="Profile"
             className="rounded-full w-24 h-24 mb-4"
             loading="lazy"
