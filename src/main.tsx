@@ -8,6 +8,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/index.tsx';
 
+// Dynamically load the script in development mode
+if (process.env.NODE_ENV === 'development') {
+  const script = document.createElement('script');
+  script.src = 'https://unpkg.com/react-scan/dist/auto.global.js';
+  script.async = true;
+  document.head.appendChild(script);
+}
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

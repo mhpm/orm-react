@@ -84,9 +84,6 @@ const UserList = memo(() => {
     const totalPages = Math.ceil(data.total / limit); // Calculate total pages
     const currentPage = data.page; // Current page number
 
-    console.log('Total Pages:', totalPages);
-    console.log('Current Page:', currentPage);
-
     return currentPage < totalPages; // Check if there is another page
   }
 
