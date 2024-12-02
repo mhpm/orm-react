@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from 'react';
 import { User } from '../types/User';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { faker } from '@faker-js/faker';
 import { useUser } from '../hooks/useUser';
 import { useTranslation } from 'react-i18next';
@@ -206,7 +206,7 @@ const Row = memo(
           </div>
         </div>
         <div className="flex gap-2 w-fit">
-          <Link className="button w-full" to={`users/edit/${user.id}`}>
+          <Link className="button w-full" to={`edit/${user.id}`}>
             <FaEdit className="h-5 w-5" />
           </Link>
           <button

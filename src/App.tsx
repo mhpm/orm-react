@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@/components/theme-provider';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import { SideMenu } from '@/components';
 import { Toaster } from '@/components/ui/toaster';
 

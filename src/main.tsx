@@ -4,8 +4,7 @@ import './styles/global.css';
 import './i18n.ts';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
-import { RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router';
 import { router } from './routes/index.tsx';
 
 // Dynamically load the script in development mode

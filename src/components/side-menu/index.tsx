@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router';
 import { menuItems } from './menuItems';
 import { Logo } from './Logo';
 import {
@@ -46,7 +46,7 @@ const SideMenu = memo(() => {
 });
 
 const NavLinks = memo(({ isCollapsed, menuItems }: any) => {
-  const router = useNavigate();
+  let navigate = useNavigate();
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) =>
@@ -69,7 +69,7 @@ const NavLinks = memo(({ isCollapsed, menuItems }: any) => {
               isCollapsed={isCollapsed}
               expandedItem={expandedItem}
               toggleAccordion={toggleAccordion}
-              router={router}
+              navigate={navigate}
             />
           ))}
         </ul>
@@ -85,7 +85,7 @@ const NavItem = memo(
     isCollapsed,
     expandedItem,
     toggleAccordion,
-    router,
+    navigate,
   }: any) => {
     const Icon: any = item.icon;
 
@@ -98,7 +98,7 @@ const NavItem = memo(
         <div
           className="flex items-center justify-between cursor-pointer py-2 p-3 rounded hover:bg-gray-800"
           onClick={() =>
-            item.subItems ? toggleAccordion(index) : router.push(item.route)
+            item.subItems ? toggleAccordion(index) : navigate(item.route)
           }
           tabIndex={0}
           role="button"
@@ -140,7 +140,7 @@ const NavItem = memo(
                 <div
                   key={index}
                   className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-800"
-                  onClick={() => router.push(subItem.route)}
+                  onClick={() => navigate(subItem.route)}
                   tabIndex={0}
                   role="button"
                 >
