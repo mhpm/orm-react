@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { User } from '../types/User';
 import { useUser } from '../hooks/useUser';
@@ -125,7 +125,7 @@ function EditUserPage() {
               </button>
 
               <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/users')}
                 className="button text-sm text-red-400 mx-2"
               >
                 {t('back')}

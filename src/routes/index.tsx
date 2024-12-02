@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router';
 import React, { Suspense } from 'react';
 import App from '../App';
 import LoadingPage from '@/pages/LoadingPage';
@@ -23,30 +23,47 @@ export const router = createBrowserRouter([
         <App />
       </Suspense>
     ),
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
-        element: <UserPage />,
-        errorElement: <ErrorPage />,
+        path: 'users',
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <UserPage />
+          </Suspense>
+        ),
       },
       {
         path: 'users/edit/:id',
-        element: <EditUserPage />,
-        errorElement: <ErrorPage />,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <EditUserPage />
+          </Suspense>
+        ),
       },
       {
         path: 'news',
-        element: <NewsPage />,
-        errorElement: <ErrorPage />,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <NewsPage />
+          </Suspense>
+        ),
       },
       {
         path: 'challenges',
-        element: <Challenges />,
-        errorElement: <ErrorPage />,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <Challenges />
+          </Suspense>
+        ),
       },
       {
         path: '*',
-        element: <NotFound />,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <NotFound />
+          </Suspense>
+        ),
       },
     ],
   },
