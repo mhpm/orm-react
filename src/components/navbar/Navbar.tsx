@@ -4,6 +4,7 @@ import { memo, useState } from 'react';
 import { FaUser, FaNewspaper } from 'react-icons/fa';
 import {} from 'react-icons/md';
 import { MdOutlineMenu, MdMenuOpen } from 'react-icons/md';
+import ToggleTheme from '../ToggleTheme';
 
 const NavBar = memo(() => {
   const { t, i18n } = useTranslation();
@@ -64,6 +65,7 @@ const NavBar = memo(() => {
           >
             {t('news')}
           </Link>
+          <ToggleTheme />
         </nav>
       </div>
       <button

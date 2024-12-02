@@ -5,7 +5,7 @@ import { AxiosInstance } from 'axios';
 const axiosClient = createClient(
   'axios',
   import.meta.env.DEV
-    ? 'http://127.0.0.1:5000'
+    ? 'http://localhost:8000'
     : 'https://orm-python-supabase-api.onrender.com'
 ) as AxiosInstance;
 

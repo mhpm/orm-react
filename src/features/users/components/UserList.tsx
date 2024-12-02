@@ -80,19 +80,19 @@ const UserList = memo(() => {
 
   function hasNext() {
     if (!data) return false; // If no data is available, there can't be a next page
-
     const totalPages = Math.ceil(data.total / limit); // Calculate total pages
-    const currentPage = data.page; // Current page number
+    return page < totalPages; // Check if there is another page
+  }
 
-    return currentPage < totalPages; // Check if there is another page
+  function totalPages() {
+    if (!data) return 0; // If no data is available, there are no pages
+    return Math.ceil(data.total / limit);
   }
 
   return (
     <div className="flex flex-col gap-4">
       <h2 className="flex justify-between items-center font-extrabold text-center">
-        {isLoading
-          ? `${t('loading')}...`
-          : `${t('userList')}: ${data?.users?.length}`}
+        {isLoading ? `${t('loading')}...` : `${t('userList')}: ${data?.total}`}
         <button className="text-sm button" onClick={handleCreate}>
           {createMutation.isPending ? (
             <CgSpinner className="animate-spin h-5 w-5" />
@@ -101,7 +101,7 @@ const UserList = memo(() => {
           )}
         </button>
       </h2>
-      <div className="w-full h-fit rounded-lg">
+      <div className="w-full h-fit rounded-lg min-h-[74vh]">
         {data?.users?.map((item: User) => (
           <Row
             key={item.id}
@@ -111,23 +111,48 @@ const UserList = memo(() => {
           />
         ))}
       </div>
-      <Pagination>
-        <PaginationContent>
-          {page !== 1 && (
-            <PaginationItem className="cursor-pointer">
-              <PaginationPrevious onClick={() => setPage(page - 1)} />
+      {!!data?.users.length && (
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem
+              className={page === 1 ? 'opacity-50' : 'cursor-pointer'}
+            >
+              <PaginationPrevious
+                onClick={page === 1 ? undefined : () => setPage(page - 1)} // Disable interaction
+              >
+                Previous
+              </PaginationPrevious>
             </PaginationItem>
-          )}
-          <PaginationItem className="cursor-pointer">
-            <PaginationLink>{page}</PaginationLink>
-          </PaginationItem>
-          {hasNext() && (
-            <PaginationItem className="cursor-pointer">
-              <PaginationNext onClick={() => setPage(page + 1)} />
+            {Array.from({ length: totalPages() }, (_, index) => index + 1).map(
+              (pageNumber) => (
+                <PaginationItem
+                  key={pageNumber}
+                  className={`cursor-pointer ${
+                    page === pageNumber
+                      ? 'bg-woodsmoke-900 text-white rounded-md'
+                      : 'text-white'
+                  }`}
+                >
+                  <PaginationLink onClick={() => setPage(pageNumber)}>
+                    {pageNumber}
+                  </PaginationLink>
+                </PaginationItem>
+              )
+            )}
+            <PaginationItem>
+              <PaginationItem
+                className={!hasNext() ? 'opacity-50' : 'cursor-pointer'}
+              >
+                <PaginationNext
+                  onClick={!hasNext() ? undefined : () => setPage(page + 1)}
+                >
+                  Next
+                </PaginationNext>
+              </PaginationItem>
             </PaginationItem>
-          )}
-        </PaginationContent>
-      </Pagination>
+          </PaginationContent>
+        </Pagination>
+      )}
     </div>
   );
 });
@@ -147,7 +172,7 @@ const Row = memo(
         key={user.id}
         className="flex gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left border-b border-gray-600 p-8 px-4 h-fit md:h-[50px]"
       >
-        <div className="hidden md:block">{user.id}</div>
+        <div className="hidden md:block md:w-[20px]">{user.id}</div>
         <div className="md:w-[50px]">
           <Avatar>
             <AvatarImage src={user.avatar} alt="avatar" loading="lazy" />
