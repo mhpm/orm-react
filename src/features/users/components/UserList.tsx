@@ -93,7 +93,10 @@ const UserList = memo(() => {
     <div className="flex flex-col gap-4">
       <h2 className="flex justify-between items-center font-extrabold text-center">
         {isLoading ? `${t('loading')}...` : `${t('userList')}: ${data?.total}`}
-        <button className="text-sm button" onClick={handleCreate}>
+        <button
+          className="text-sm button w-40 flex justify-center"
+          onClick={handleCreate}
+        >
           {createMutation.isPending ? (
             <CgSpinner className="animate-spin h-5 w-5" />
           ) : (

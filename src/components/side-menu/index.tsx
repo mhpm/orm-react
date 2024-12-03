@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
-import { menuItems } from './menuItems';
+import { getMenuItems } from './getMenuItems';
 import { Logo } from './Logo';
 import {
   MdOutlineMenu,
@@ -9,8 +9,10 @@ import {
   MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
 import ToggleTheme from '../ToggleTheme';
+import ToggleLanguage from '../ToggleLanguage';
 
 const SideMenu = memo(() => {
+  const menuItems = getMenuItems();
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const toggleNavbar = () => setIsCollapsed(!isCollapsed);
 
@@ -39,7 +41,10 @@ const SideMenu = memo(() => {
       {!isCollapsed && <Logo />}
       <NavLinks isCollapsed={isCollapsed} menuItems={menuItems} />
       <div className="absolute bottom-10">
-        {!isCollapsed && <ToggleTheme />}
+        <div className="flex flex-wrap justify-center gap-3">
+          <ToggleTheme />
+          <ToggleLanguage />
+        </div>
       </div>
     </div>
   );
