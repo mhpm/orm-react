@@ -88,7 +88,7 @@ h1 {
 }
 
 .button {
-  @apply rounded-lg bg-woodsmoke-950 px-4 py-2 focus-visible:ring-0 focus-visible:ring-offset-0 hover:bg-[#121212];
+  @apply rounded-lg hover:cursor-pointer bg-woodsmoke-950 px-4 py-2 focus-visible:ring-0 focus-visible:ring-offset-0 hover:bg-[#121212];
 }
 button:hover {
   border-color: #646cff;

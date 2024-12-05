@@ -6,12 +6,12 @@ const axiosClient = createClient(
   'axios',
   import.meta.env.DEV
     ? 'http://localhost:8000'
-    : 'https://orm-python-supabase-api.onrender.com'
+    : 'https://orm-python-supabase-api.onrender.com' //deployed in render.com
 ) as AxiosInstance;
 
 export const fetchUsers = (page: number = 1, limit: number = 10) =>
   axiosClient
-    .get<UserResponse[]>('/users', { params: { page, limit } }) // Pass pagination params
+    .get<UserResponse[]>('/users', { params: { page, limit } })
     .then((response) => response.data);
 
 export const fetchUserById = (id: number | string) =>

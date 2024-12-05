@@ -4,7 +4,6 @@ import App from '../App';
 import LoadingPage from '@/pages/LoadingPage';
 import ErrorPage from '@/pages/ErrorPage';
 
-// Lazy loading the components
 const UserPage = React.lazy(
   () => import('@/features/users/pages/UserPage.tsx')
 );
