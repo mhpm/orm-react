@@ -14,12 +14,16 @@ function Panel({
       <div className="flex justify-between items-center">
         <h3>{title}</h3>
         <button className="button" onClick={() => setIsActive(!isActive)}>
-          {isActive ? 'Show' : 'Hide'}
+          {isActive ? 'Hide' : 'Show'}
         </button>
       </div>
-      {isActive && (
+      <div
+        className={`transition-all duration-300 overflow-hidden ${
+          isActive ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
         <p className="border-t border-stone-700 mt-3 pt-3">{children}</p>
-      )}
+      </div>
     </section>
   );
 }
