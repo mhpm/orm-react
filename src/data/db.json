@@ -1,64 +1,91 @@
 {
-  "users": [
-    {
-      "id": "2586",
-      "first_name": "Russ",
-      "last_name": "Thompson",
-      "email": "Manley.Cormier@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/75310247"
-    },
-    {
-      "id": "4c94",
-      "first_name": "Laverne",
-      "last_name": "Moore",
-      "email": "Brice22@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/67918056"
-    },
-    {
-      "id": "8bdb",
-      "first_name": "Carlotta",
-      "last_name": "Fay",
-      "email": "Manuel17@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/45253420"
-    },
-    {
-      "id": "d4b1",
-      "first_name": "Evans",
-      "last_name": "Koelpin",
-      "email": "Linnie_Breitenberg82@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/69070529"
-    },
-    {
-      "id": "c880",
-      "first_name": "Alaina",
-      "last_name": "Spinka",
-      "email": "Meaghan42@yahoo.com",
-      "avatar": "https://avatars.githubusercontent.com/u/3066049"
-    },
-    {
-      "id": "f7b5",
-      "first_name": "Perry",
-      "last_name": "Lynch",
-      "email": "Brock_Halvorson@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/85729203"
-    },
-    {
-      "id": "6640",
-      "first_name": "Arno",
-      "last_name": "Schneider",
-      "email": "Gerard10@hotmail.com",
-      "avatar": "https://avatars.githubusercontent.com/u/69972671"
-    },
-    {
-      "id": "58e0",
-      "first_name": "Bertrand",
-      "last_name": "Huel",
-      "email": "Mara_Welch24@hotmail.com",
-      "password": "changeme",
-      "role": "admin",
-      "avatar": "https://avatars.githubusercontent.com/u/88333966"
-    }
-  ],
+  "users": {
+    "users": [
+      {
+        "id": 103,
+        "first_name": "Julie",
+        "last_name": "Turner",
+        "email": "Zane29@hotmail.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/45608430"
+      },
+      {
+        "id": 102,
+        "first_name": "Shirley",
+        "last_name": "Doyle",
+        "email": "Alek37@hotmail.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/48137816"
+      },
+      {
+        "id": 101,
+        "first_name": "Jules",
+        "last_name": "Jacobi",
+        "email": "Dell_Aufderhar@gmail.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/41643694"
+      },
+      {
+        "id": 100,
+        "first_name": "Niko",
+        "last_name": "Little",
+        "email": "Darrel_Wisoky44@yahoo.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/17370100"
+      },
+      {
+        "id": 99,
+        "first_name": "Chelsie",
+        "last_name": "Bogisich",
+        "email": "Modesto.Marquardt@gmail.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/40596935"
+      },
+      {
+        "id": 98,
+        "first_name": "Myles",
+        "last_name": "Bartell",
+        "email": "Jovan.Lang-Leuschke@hotmail.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/35939305"
+      },
+      {
+        "id": 97,
+        "first_name": "Jonatan",
+        "last_name": "Christiansen",
+        "email": "Monica_Rath8@hotmail.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/67250802"
+      },
+      {
+        "id": 96,
+        "first_name": "Watson",
+        "last_name": "Sauer",
+        "email": "Leda_Franecki7@hotmail.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/76711705"
+      },
+      {
+        "id": 95,
+        "first_name": "Elisa",
+        "last_name": "Kunze",
+        "email": "Ambrose.Thiel@yahoo.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/273650"
+      },
+      {
+        "id": 94,
+        "first_name": "Camylle",
+        "last_name": "Schmitt",
+        "email": "Justine_Reinger@yahoo.com",
+        "role": "user",
+        "avatar": "https://avatars.githubusercontent.com/u/273650"
+      }
+    ],
+    "page": 1,
+    "limit": 10,
+    "total": 43
+  },
   "news": [
     {
       "id": "mIbZ",
