@@ -15,7 +15,7 @@ const useLocalStorage = (key: string, initialValue: string) => {
   return { value, setValue };
 };
 
-function LocaStorageChallenge() {
+function LocalStorage() {
   const { value, setValue } = useLocalStorage('inputValue', '');
 
   const handleChange = (e: any) => {
@@ -37,4 +37,4 @@ function LocaStorageChallenge() {
   );
 }
 
-export default LocaStorageChallenge;
+export default LocalStorage;
