@@ -7,6 +7,7 @@ import TicTacToe from '@/features/challenges/components/Tictactoe';
 import LocalStorage from '@/features/challenges/components/LocaStorage';
 import Accordion from '@/features/challenges/components/Accordion';
 import { ROUTES } from '@/constants/routes';
+import HabitChart from '@/features/challenges/components/HabitChart';
 
 const UserPage = React.lazy(
   () => import('@/features/users/pages/UserPage.tsx')
@@ -37,6 +38,7 @@ export const router = createBrowserRouter([
             <UserPage />
           </Suspense>
         ),
+        errorElement: <ErrorPage />,
       },
       {
         path: ROUTES.EDIT_USER,
@@ -45,6 +47,7 @@ export const router = createBrowserRouter([
             <EditUserPage />
           </Suspense>
         ),
+        errorElement: <ErrorPage />,
       },
       {
         path: ROUTES.NEWS,
@@ -53,6 +56,7 @@ export const router = createBrowserRouter([
             <NewsPage />
           </Suspense>
         ),
+        errorElement: <ErrorPage />,
       },
       {
         path: ROUTES.CHALLENGES,
@@ -83,6 +87,14 @@ export const router = createBrowserRouter([
             element: (
               <Suspense fallback={<LoadingPage />}>
                 <Accordion />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'habitchart',
+            element: (
+              <Suspense fallback={<LoadingPage />}>
+                <HabitChart />
               </Suspense>
             ),
           },
