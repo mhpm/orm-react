@@ -24,7 +24,7 @@ const SideMenu = memo(() => {
             ? 'w-20'
             : 'w-full fixed z-50 inset-0 sm:w-[300px] sm:min-w-[200px]'
         }
-        transition-all duration-200 p-4 sm:relative sm:flex flex-col items-center bg-gray-900 text-center text-white
+        transition-all duration-200 p-4 sm:relative flex flex-col items-center bg-gray-900 text-center text-white
       `}
     >
       <div className={`w-full ${isCollapsed ? 'text-center' : 'text-right'}`}>
@@ -40,7 +40,7 @@ const SideMenu = memo(() => {
       </div>
       {!isCollapsed && <Logo />}
       <NavLinks isCollapsed={isCollapsed} menuItems={menuItems} />
-      <div className="absolute bottom-10">
+      <div className="flex-grow flex items-end">
         <div className="flex flex-wrap justify-center gap-3">
           <ToggleTheme />
           <ToggleLanguage />

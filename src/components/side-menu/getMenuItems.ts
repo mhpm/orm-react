@@ -32,6 +32,10 @@ export const getMenuItems = () => {
           title: 'Accordion',
           route: 'challenges/accordion',
         },
+        {
+          title: 'Habit Chart',
+          route: 'challenges/habitchart',
+        },
       ],
     },
   ];
