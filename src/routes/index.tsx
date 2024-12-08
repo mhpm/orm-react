@@ -33,11 +33,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.USERS,
-        element: (
-          <Suspense fallback={<LoadingPage />}>
-            <UserPage />
-          </Suspense>
-        ),
+        element: <UserPage />,
         errorElement: <ErrorPage />,
       },
       {

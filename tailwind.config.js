@@ -33,6 +33,7 @@ export default {
           900: '#3d3d3d',
           950: '#1a1a1a',
         },
+        dark: 'var(--colors-dark)',
       },
       keyframes: {
         'accordion-down': {
