@@ -1,5 +1,5 @@
-import { memo, useCallback, useState } from 'react';
-import { User } from '../types/User';
+import { memo, useCallback, useEffect, useState } from 'react';
+import { User, UserResponse } from '../types/User';
 import { Link } from 'react-router';
 import { faker } from '@faker-js/faker';
 import { useUser } from '../hooks/useUser';
@@ -16,6 +16,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
+import { LoadingWrapper } from '@/components';
 
 const UserList = memo(() => {
   const { t } = useTranslation();
@@ -25,10 +26,18 @@ const UserList = memo(() => {
   const [page, setPage] = useState(1);
   const [limit] = useState(9);
   const { data, isLoading, isError, error } = useGetUsers(page, limit);
+  console.log('data: ', data);
+  const [displayData, setDisplayData] = useState<UserResponse>();
 
   if (isError) {
     throw new Error(error?.message);
   }
+
+  useEffect(() => {
+    if (data && !isLoading) {
+      setDisplayData(data); // Update display data after fetching
+    }
+  }, [data, isLoading]);
 
   const handleCreate = () => {
     createMutation.mutate(
@@ -79,49 +88,55 @@ const UserList = memo(() => {
   }, []);
 
   function hasNext() {
-    if (!data) return false; // If no data is available, there can't be a next page
-    const totalPages = Math.ceil(data.total / limit); // Calculate total pages
+    if (!displayData) return false; // If no data is available, there can't be a next page
+    const totalPages = Math.ceil(displayData.total / limit); // Calculate total pages
     return page < totalPages; // Check if there is another page
   }
 
   function totalPages() {
-    if (!data) return 0; // If no data is available, there are no pages
-    return Math.ceil(data.total / limit);
+    if (!displayData) return 0; // If no data is available, there are no pages
+    return Math.ceil(displayData.total / limit);
   }
 
   return (
     <div className="flex flex-col gap-4">
       <h2 className="flex justify-between items-center font-extrabold text-center">
-        {isLoading ? `${t('loading')}...` : `${t('userList')}: ${data?.total}`}
-        <button
-          className="text-sm button w-40 flex justify-center"
-          onClick={handleCreate}
+        {isLoading
+          ? `${t('loading')}...`
+          : `${t('userList')}: ${displayData?.total}`}
+        <LoadingWrapper
+          isLoading={createMutation.isPending}
+          className="rounded-lg"
         >
-          {createMutation.isPending ? (
-            <CgSpinner className="animate-spin h-5 w-5" />
-          ) : (
-            t('addUser')
-          )}
-        </button>
+          <button
+            className="text-sm button w-40 flex justify-center"
+            onClick={handleCreate}
+          >
+            {t('addUser')}
+          </button>
+        </LoadingWrapper>
       </h2>
-      <div className="w-full h-fit rounded-lg min-h-[74vh]">
-        {data?.users?.map((item: User) => (
-          <Row
-            key={item.id}
-            user={item}
-            onDelete={handleDelete}
-            isLoading={deletingUserId === item.id}
-          />
-        ))}
-      </div>
-      {!!data?.users.length && (
+      <LoadingWrapper isLoading={isLoading} size="2rem" className="rounded-3xl">
+        <div className="relative border rounded-3xl border-woodsmoke-500 min-h-[74vh] p-4 bg-woodsmoke-950 overflow-hidden">
+          {displayData?.users?.map((item: User) => (
+            <Row
+              key={item.id}
+              user={item}
+              onDelete={handleDelete}
+              isLoading={deletingUserId === item.id}
+            />
+          ))}
+        </div>
+      </LoadingWrapper>
+
+      {!!displayData?.users.length && (
         <Pagination>
           <PaginationContent>
             <PaginationItem
               className={page === 1 ? 'opacity-50' : 'cursor-pointer'}
             >
               <PaginationPrevious
-                onClick={page === 1 ? undefined : () => setPage(page - 1)} // Disable interaction
+                onClick={page === 1 ? undefined : () => setPage(page - 1)}
               >
                 Previous
               </PaginationPrevious>
@@ -173,7 +188,7 @@ const Row = memo(
     return (
       <div
         key={user.id}
-        className="flex gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left border-b border-gray-600 p-8 px-4 h-fit md:h-[50px]"
+        className="flex hover:bg-dark hover:rounded-lg gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left text-woodsmoke-300 p-8 px-4 h-fit md:h-[50px]"
       >
         <div className="hidden md:block md:w-[20px]">{user.id}</div>
         <div className="md:w-[50px]">
