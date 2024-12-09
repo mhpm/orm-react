@@ -11,7 +11,7 @@ export const createClient = (clientType: ClientType, baseURL: string) => {
     case 'graphql':
       return createGraphQLClient(baseURL);
     case 'supabase':
-      return createSupabaseClient(baseURL);
+      return createSupabaseClient();
     default:
       throw new Error('Invalid client type');
   }

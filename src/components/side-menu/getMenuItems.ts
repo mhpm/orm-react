@@ -1,8 +1,16 @@
-import { FaUsers, FaNewspaper } from 'react-icons/fa6';
+import { FaUsers, FaNewspaper, FaCode, FaHashtag } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
 import { ROUTES } from '@/constants/routes';
+import { IconType } from 'react-icons/lib';
 
-export const getMenuItems = () => {
+export interface MenuItem {
+  title: string;
+  icon?: IconType;
+  route?: string;
+  subItems?: MenuItem[];
+}
+
+export const getMenuItems = (): MenuItem[] => {
   const { t } = useTranslation();
 
   return [
@@ -18,11 +26,12 @@ export const getMenuItems = () => {
     },
     {
       title: ROUTES.CHALLENGES,
-      icon: FaNewspaper,
+      icon: FaCode,
       subItems: [
         {
           title: 'Tic Tac Toe',
           route: 'challenges/tictactoe',
+          icon: FaHashtag,
         },
         {
           title: 'Local Storage',

@@ -17,6 +17,7 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 import { LoadingWrapper } from '@/components';
+import { Button } from '@/components/ui/button';
 
 const UserList = memo(() => {
   const { t } = useTranslation();
@@ -26,7 +27,6 @@ const UserList = memo(() => {
   const [page, setPage] = useState(1);
   const [limit] = useState(9);
   const { data, isLoading, isError, error } = useGetUsers(page, limit);
-  console.log('data: ', data);
   const [displayData, setDisplayData] = useState<UserResponse>();
 
   if (isError) {
@@ -108,16 +108,12 @@ const UserList = memo(() => {
           isLoading={createMutation.isPending}
           className="rounded-lg"
         >
-          <button
-            className="text-sm button w-40 flex justify-center"
-            onClick={handleCreate}
-          >
-            {t('addUser')}
-          </button>
+          <Button onClick={handleCreate}>{t('addUser')}</Button>
         </LoadingWrapper>
       </h2>
-      <LoadingWrapper isLoading={isLoading} size="2rem" className="rounded-3xl">
-        <div className="relative border rounded-3xl border-woodsmoke-500 min-h-[74vh] p-4 bg-woodsmoke-950 overflow-hidden">
+
+      <LoadingWrapper isLoading={isLoading} size="2rem" className="rounded-lg">
+        <div className="relative min-h-[55vh] overflow-hidden">
           {displayData?.users?.map((item: User) => (
             <Row
               key={item.id}
