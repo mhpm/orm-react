@@ -1,10 +1,10 @@
-import AuthComponent from '../components/AuthComponent';
+import AuthForm from '../components/AuthForm';
 
 function AuthPage() {
   return (
-    <div className="max-w-md mx-auto mt-10 p-5">
-      <h1>Sign Up</h1>
-      <AuthComponent />
+    <div className="max-w-sm mx-auto mt-10 p-5 flex flex-col items-center">
+      <h2 className="text-2xl font-bold">Login</h2>
+      <AuthForm />
     </div>
   );
 }
