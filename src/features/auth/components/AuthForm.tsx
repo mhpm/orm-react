@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { z } from 'zod';
 import { useNavigate } from 'react-router';
 import { Separator } from '@/components/ui/separator';
+import { FaGithub } from 'react-icons/fa6';
 
 type AuthFormValues = z.infer<typeof authSchema>;
 
@@ -99,7 +100,8 @@ const AuthComponent = () => {
           disabled={loading}
           className="w-full mt-4"
         >
-          {loading ? 'Redirecting...' : 'Login with GitHub'}
+          {loading && 'Redirecting...'}
+          <FaGithub /> Login with GitHub
         </Button>
       </Tabs>
 
