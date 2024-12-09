@@ -6,8 +6,10 @@ import ErrorPage from '@/pages/ErrorPage';
 import TicTacToe from '@/features/challenges/components/Tictactoe';
 import LocalStorage from '@/features/challenges/components/LocaStorage';
 import Accordion from '@/features/challenges/components/Accordion';
-import { ROUTES } from '@/constants/routes';
 import HabitChart from '@/features/challenges/components/HabitChart';
+import AuthPage from '@/features/auth/pages/AuthPage';
+
+import { ROUTES } from '@/constants/routes';
 
 const UserPage = React.lazy(
   () => import('@/features/users/pages/UserPage.tsx')
@@ -105,5 +107,9 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: 'auth',
+    element: <AuthPage />,
   },
 ]);

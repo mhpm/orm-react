@@ -101,9 +101,9 @@ export default function ToggleLanguage() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="outline"
+          variant="ghost"
           size="icon"
-          className="text-woodsmoke-950 dark:text-white"
+          className="text-woodsmoke-950 dark:text-white rounded-full"
         >
           {flags[lang]}
         </Button>
