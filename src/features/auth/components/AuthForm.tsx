@@ -6,10 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { z } from 'zod';
+import { useNavigate } from 'react-router';
+import { Separator } from '@/components/ui/separator';
 
 type AuthFormValues = z.infer<typeof authSchema>;
 
 const AuthComponent = () => {
+  const navigate = useNavigate();
   const {
     loading,
     error,
@@ -37,14 +40,12 @@ const AuthComponent = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
+    <div className="mt-10 w-full">
       <Tabs defaultValue="login">
-        <TabsList className="grid grid-cols-3">
+        <TabsList className="grid grid-cols-2">
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="signup">Sign Up</TabsTrigger>
-          <TabsTrigger value="github">GitHub Login</TabsTrigger>
         </TabsList>
-
         {/* Login with Email/Password */}
         <TabsContent value="login">
           <form onSubmit={handleSubmit(onSubmitLogin)} className="space-y-4">
@@ -61,13 +62,13 @@ const AuthComponent = () => {
             {errors.password && (
               <p className="text-red-500 text-sm">{errors.password.message}</p>
             )}
-
-            <Button type="submit" disabled={loading}>
-              {loading ? 'Logging in...' : 'Login'}
-            </Button>
+            <div>
+              <Button type="submit" disabled={loading} className="w-full">
+                {loading ? 'Logging in...' : 'Login'}
+              </Button>
+            </div>
           </form>
         </TabsContent>
-
         {/* Sign Up with Email/Password */}
         <TabsContent value="signup">
           <form onSubmit={handleSubmit(onSubmitSignUp)} className="space-y-4">
@@ -85,36 +86,34 @@ const AuthComponent = () => {
               <p className="text-red-500 text-sm">{errors.password.message}</p>
             )}
 
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading} className="w-full">
               {loading ? 'Signing up...' : 'Sign Up'}
             </Button>
           </form>
         </TabsContent>
+        <br />
+        <Separator />
 
-        {/* GitHub Login */}
-        <TabsContent value="github">
-          <Button
-            onClick={handleGitHubLogin}
-            disabled={loading}
-            className="w-full"
-          >
-            {loading ? 'Redirecting...' : 'Login with GitHub'}
-          </Button>
-        </TabsContent>
+        <Button
+          onClick={handleGitHubLogin}
+          disabled={loading}
+          className="w-full mt-4"
+        >
+          {loading ? 'Redirecting...' : 'Login with GitHub'}
+        </Button>
       </Tabs>
 
       {/* Sign-Out Button */}
       <div className="mt-4">
         <Button
-          onClick={handleSignOut}
+          onClick={() => navigate('/')}
           disabled={loading}
-          variant="outline"
+          variant="ghost"
           className="w-full"
         >
-          {loading ? 'Signing out...' : 'Sign Out'}
+          Cancel
         </Button>
       </div>
-
       {/* Error and Success Messages */}
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       {success && <p className="text-green-500 text-sm mt-2">{success}</p>}
