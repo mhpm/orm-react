@@ -10,6 +10,7 @@ import HabitChart from '@/features/challenges/components/HabitChart';
 import AuthPage from '@/features/auth/pages/AuthPage';
 
 import { ROUTES } from '@/constants/routes';
+import Hooks from '@/features/challenges/components/Hooks';
 
 const UserPage = React.lazy(
   () => import('@/features/users/pages/UserPage.tsx')
@@ -93,6 +94,14 @@ export const router = createBrowserRouter([
             element: (
               <Suspense fallback={<LoadingPage />}>
                 <HabitChart />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'hooks',
+            element: (
+              <Suspense fallback={<LoadingPage />}>
+                <Hooks />
               </Suspense>
             ),
           },
