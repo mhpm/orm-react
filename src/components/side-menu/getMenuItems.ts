@@ -45,6 +45,10 @@ export const getMenuItems = (): MenuItem[] => {
           title: 'Habit Chart',
           route: 'challenges/habitchart',
         },
+        {
+          title: 'Hooks',
+          route: 'challenges/hooks',
+        },
       ],
     },
   ];
