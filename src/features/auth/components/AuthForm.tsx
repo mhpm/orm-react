@@ -21,7 +21,6 @@ const AuthComponent = () => {
     handleSignUp,
     handleLogin,
     handleGitHubLogin,
-    handleSignOut,
   } = useAuth();
 
   const {
