@@ -12,6 +12,8 @@ import AuthPage from '@/features/auth/pages/AuthPage';
 import { ROUTES } from '@/constants/routes';
 import Hooks from '@/features/challenges/components/Hooks';
 
+import { ProtectedRoute } from '@/components'; // Path to your ProtectedRoute
+
 const UserPage = React.lazy(
   () => import('@/features/users/pages/UserPage.tsx')
 );
@@ -36,7 +38,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.USERS,
-        element: <UserPage />,
+        element: (
+          <ProtectedRoute>
+            <UserPage />
+          </ProtectedRoute>
+        ),
         errorElement: <ErrorPage />,
       },
       {
@@ -51,9 +57,11 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.NEWS,
         element: (
-          <Suspense fallback={<LoadingPage />}>
-            <NewsPage />
-          </Suspense>
+          <ProtectedRoute>
+            <Suspense fallback={<LoadingPage />}>
+              <NewsPage />
+            </Suspense>
+          </ProtectedRoute>
         ),
         errorElement: <ErrorPage />,
       },

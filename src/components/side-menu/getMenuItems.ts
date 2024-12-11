@@ -2,6 +2,7 @@ import { FaUsers, FaNewspaper, FaCode, FaHashtag } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
 import { ROUTES } from '@/constants/routes';
 import { IconType } from 'react-icons/lib';
+import { useAuth } from '@clerk/clerk-react'; // Replace with your auth library if different
 
 export interface MenuItem {
   title: string;
@@ -12,17 +13,18 @@ export interface MenuItem {
 
 export const getMenuItems = (): MenuItem[] => {
   const { t } = useTranslation();
+  const { isSignedIn } = useAuth(); // Replace with your authentication logic
 
-  return [
+  const menuItems: MenuItem[] = [
     {
       title: t(ROUTES.USERS),
       icon: FaUsers,
-      route: ROUTES.USERS,
+      route: isSignedIn ? ROUTES.USERS : undefined, // Only show if signed in
     },
     {
       title: t(ROUTES.NEWS),
       icon: FaNewspaper,
-      route: ROUTES.NEWS,
+      route: isSignedIn ? ROUTES.NEWS : undefined, // Only show if signed in
     },
     {
       title: ROUTES.CHALLENGES,
@@ -52,4 +54,7 @@ export const getMenuItems = (): MenuItem[] => {
       ],
     },
   ];
+
+  // Filter out undefined routes to avoid adding inaccessible menu items
+  return menuItems.filter((item) => item.route || item.subItems);
 };

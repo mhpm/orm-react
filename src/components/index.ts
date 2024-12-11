@@ -6,3 +6,4 @@ export { default as ToggleLanguage } from './ToggleLanguage';
 export { default as SideMenu } from './side-menu';
 export { default as Spinner } from './Spinner';
 export { default as LoadingWrapper } from './LoadingWrapper';
+export { default as ProtectedRoute } from './ProtectedRoute';
