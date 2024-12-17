@@ -1,23 +1,48 @@
 import { faker } from '@faker-js/faker';
-import { useNews } from '../hooks/useNews';
-import { News } from '../types/News';
+import { usePosts } from '../hooks/usePosts';
+import { Post } from '../types/Post';
 import { useTranslation } from 'react-i18next';
-import styles from './NewsList.module.css';
+import styles from './PostsList.module.css';
 import { CgSpinner } from 'react-icons/cg';
+import { useCallback, useState } from 'react';
+import { toast } from '@/components/ui/use-toast';
 
-const NewsList = () => {
+const PostsList = () => {
   const { t } = useTranslation();
-  const { useGetNews, createNewMutation, deleteNewMutation } = useNews();
-  const { data: news, isLoading } = useGetNews();
+  const [deletingPostId, setDeletingPostId] = useState<number>(-1);
+  const { useGetPosts, createPostMutation, deletePostMutation } = usePosts();
+  const { data: posts, isLoading } = useGetPosts();
 
   const handleCreate = () => {
-    createNewMutation.mutate({
-      id: faker.string.alphanumeric(4),
+    createPostMutation.mutate({
       title: `${faker.company.name()}`,
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas assumenda architecto et, tempora molestiae molestias eos velit modi maiores laborum quae. Facere vel ducimus quo rem ratione! At, atque ex.',
+      created_at: new Date(Date.now()).toISOString(),
     });
   };
+
+  const handleDelete = useCallback((postId: number) => {
+    console.log('postId: ', postId);
+    setDeletingPostId(postId);
+    deletePostMutation.mutate(postId, {
+      onSuccess: () => {
+        toast({
+          className: 'bg-woodsmoke-950 text-green-400 p-4',
+          title: `${t('post')} deleted`,
+        });
+      },
+      onError: () => {
+        toast({
+          className: 'bg-woodsmoke-950 text-red-400 p-4',
+          title: `Error on delete post`,
+        });
+      },
+      onSettled: () => {
+        setDeletingPostId(-1);
+      },
+    });
+  }, []);
 
   function getSize(size: number) {
     return size > 300 ? 'md:col-span-2' : 'md:col-span-1';
@@ -29,9 +54,9 @@ const NewsList = () => {
   return (
     <div>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
-        {t('newsList')} : {news?.length}
+        {t('newsList')} : {posts?.length}
         <button className="text-sm button" onClick={handleCreate}>
-          {createNewMutation.isPending ? (
+          {createPostMutation.isPending ? (
             <CgSpinner className="animate-spin h-7 w-7 self-center" />
           ) : (
             t('addNew')
@@ -41,7 +66,7 @@ const NewsList = () => {
       <div
         className={`${styles.list} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 h-fit`}
       >
-        {news?.map((item: News) => (
+        {posts?.map((item: Post) => (
           <figure
             key={item.id}
             className={`p-6 bg-woodsmoke-900 rounded dark:bg-gray-800 h-full flex flex-col justify-between col-span-full row-span-2  ${getSize(
@@ -56,8 +81,8 @@ const NewsList = () => {
             </blockquote>
             <div className="text-right">
               <button
-                onClick={() => deleteNewMutation.mutate(item.id as string)}
                 className="text-red-400 text-xs button"
+                onClick={() => handleDelete(item.id!)}
               >
                 {t('delete')}
               </button>
@@ -69,4 +94,4 @@ const NewsList = () => {
   );
 };
 
-export default NewsList;
+export default PostsList;

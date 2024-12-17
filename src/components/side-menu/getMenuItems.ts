@@ -1,8 +1,8 @@
-import { FaUsers, FaNewspaper, FaCode, FaHashtag } from 'react-icons/fa6';
+import { Users, Newspaper, Code, Hash } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ROUTES } from '@/constants/routes';
 import { IconType } from 'react-icons/lib';
-import { useAuth } from '@clerk/clerk-react'; // Replace with your auth library if different
+import { useAuth } from '@clerk/clerk-react';
 
 export interface MenuItem {
   title: string;
@@ -18,22 +18,22 @@ export const getMenuItems = (): MenuItem[] => {
   const menuItems: MenuItem[] = [
     {
       title: t(ROUTES.USERS),
-      icon: FaUsers,
+      icon: Users,
       route: isSignedIn ? ROUTES.USERS : undefined, // Only show if signed in
     },
     {
-      title: t(ROUTES.NEWS),
-      icon: FaNewspaper,
-      route: isSignedIn ? ROUTES.NEWS : undefined, // Only show if signed in
+      title: t(ROUTES.POSTS),
+      icon: Newspaper,
+      route: isSignedIn ? ROUTES.POSTS : undefined, // Only show if signed in
     },
     {
       title: ROUTES.CHALLENGES,
-      icon: FaCode,
+      icon: Code,
       subItems: [
         {
           title: 'Tic Tac Toe',
           route: 'challenges/tictactoe',
-          icon: FaHashtag,
+          icon: Hash,
         },
         {
           title: 'Local Storage',
