@@ -6,6 +6,7 @@ import styles from './PostsList.module.css';
 import { CgSpinner } from 'react-icons/cg';
 import { useCallback, useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
+import { Spinner } from '@/components';
 
 const PostsList = () => {
   const { t } = useTranslation();
@@ -23,7 +24,6 @@ const PostsList = () => {
   };
 
   const handleDelete = useCallback((postId: number) => {
-    console.log('postId: ', postId);
     setDeletingPostId(postId);
     deletePostMutation.mutate(postId, {
       onSuccess: () => {
@@ -39,7 +39,9 @@ const PostsList = () => {
         });
       },
       onSettled: () => {
-        setDeletingPostId(-1);
+        setTimeout(() => {
+          setDeletingPostId(-1);
+        }, 1000);
       },
     });
   }, []);
@@ -83,8 +85,9 @@ const PostsList = () => {
               <button
                 className="text-red-400 text-xs button"
                 onClick={() => handleDelete(item.id!)}
+                disabled={deletePostMutation.isPending}
               >
-                {t('delete')}
+                {deletingPostId === item.id ? <Spinner /> : t('delete')}
               </button>
             </div>
           </figure>

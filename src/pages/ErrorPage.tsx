@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { useRouteError } from 'react-router';
 
 const ErrorPage = () => {
@@ -27,9 +28,12 @@ const ErrorPage = () => {
       <details className="text-gray-500 mt-2">
         {error instanceof Error ? error.message : 'Unknown error occurred.'}
       </details>
-      <button onClick={() => window.location.reload()} className="mt-6 button">
+      <Button
+        onClick={() => window.location.reload()}
+        className="mt-6 rounded-lg"
+      >
         Reload
-      </button>
+      </Button>
     </div>
   );
 };
