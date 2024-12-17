@@ -12,11 +12,11 @@ const NavBar = memo(() => {
   const { isSignedIn, user } = useUser();
 
   return (
-    <header className="p-2 bg-gray-900 border-b border-gray-700">
-      <div className="flex justify-end gap-2 items-center">
+    <header className="p-4 bg-gray-900 border-b border-gray-700">
+      <div className="flex justify-end gap-2 items-center pr-4">
         <ToggleTheme />
         <ToggleLanguage />
-        {isSignedIn && user.fullName}
+        <span className="text-white">{isSignedIn && user.fullName}</span>
         <SignedOut>
           <SignInButton />
         </SignedOut>
