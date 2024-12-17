@@ -20,7 +20,9 @@ const UserPage = React.lazy(
 const EditUserPage = React.lazy(
   () => import('@/features/users/pages/EditUserPage.tsx')
 );
-const NewsPage = React.lazy(() => import('@/features/news/pages/NewsPage.tsx'));
+const PostsPage = React.lazy(
+  () => import('@/features/posts/pages/PostsPage.tsx')
+);
 const NotFound = React.lazy(() => import('@/pages/NotFound.tsx'));
 const Challenges = React.lazy(
   () => import('@/features/challenges/pages/Challenges.js')
@@ -55,11 +57,11 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: ROUTES.NEWS,
+        path: ROUTES.POSTS,
         element: (
           <ProtectedRoute>
             <Suspense fallback={<LoadingPage />}>
-              <NewsPage />
+              <PostsPage />
             </Suspense>
           </ProtectedRoute>
         ),

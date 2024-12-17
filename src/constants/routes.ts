@@ -1,7 +1,7 @@
 export const ROUTES = {
   USERS: 'users',
   EDIT_USER: 'users/edit/:id',
-  NEWS: 'news',
+  POSTS: 'posts',
   CHALLENGES: 'challenges',
   NOT_FOUND: '*',
 };

@@ -1,6 +1,6 @@
 import { createAxiosClient } from './axiosClient';
 import { createGraphQLClient } from './graphqlClient';
-import { createSupabaseClient } from './supabaseClient';
+import { getSupabaseClient } from './supabaseClient';
 
 export type ClientType = 'axios' | 'graphql' | 'supabase';
 
@@ -11,7 +11,7 @@ export const createClient = (clientType: ClientType, baseURL: string) => {
     case 'graphql':
       return createGraphQLClient(baseURL);
     case 'supabase':
-      return createSupabaseClient();
+      return getSupabaseClient();
     default:
       throw new Error('Invalid client type');
   }
