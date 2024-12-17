@@ -32,24 +32,20 @@ export const getMenuItems = (): MenuItem[] => {
       subItems: [
         {
           title: 'Tic Tac Toe',
-          route: 'challenges/tictactoe',
+          route: `${ROUTES.CHALLENGES}/${ROUTES.TICTACTOE}`,
           icon: Hash,
         },
         {
           title: 'Local Storage',
-          route: 'challenges/localstorage',
+          route: `${ROUTES.CHALLENGES}/${ROUTES.LOCALSTORAGE}`,
         },
         {
           title: 'Accordion',
-          route: 'challenges/accordion',
+          route: `${ROUTES.CHALLENGES}/${ROUTES.ACCORDION}`,
         },
         {
           title: 'Habit Chart',
-          route: 'challenges/habitchart',
-        },
-        {
-          title: 'Hooks',
-          route: 'challenges/hooks',
+          route: `${ROUTES.CHALLENGES}/${ROUTES.HABITCHART}`,
         },
       ],
     },

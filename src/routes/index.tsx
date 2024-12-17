@@ -10,7 +10,6 @@ import HabitChart from '@/features/challenges/components/HabitChart';
 import AuthPage from '@/features/auth/pages/AuthPage';
 
 import { ROUTES } from '@/constants/routes';
-import Hooks from '@/features/challenges/components/Hooks';
 
 import { ProtectedRoute } from '@/components'; // Path to your ProtectedRoute
 
@@ -76,7 +75,7 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: 'tictactoe',
+            path: ROUTES.TICTACTOE,
             element: (
               <Suspense fallback={<LoadingPage />}>
                 <TicTacToe />
@@ -84,7 +83,7 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: 'localstorage',
+            path: ROUTES.LOCALSTORAGE,
             element: (
               <Suspense fallback={<LoadingPage />}>
                 <LocalStorage />
@@ -92,7 +91,7 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: 'accordion',
+            path: ROUTES.ACCORDION,
             element: (
               <Suspense fallback={<LoadingPage />}>
                 <Accordion />
@@ -100,18 +99,10 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: 'habitchart',
+            path: ROUTES.HABITCHART,
             element: (
               <Suspense fallback={<LoadingPage />}>
                 <HabitChart />
-              </Suspense>
-            ),
-          },
-          {
-            path: 'hooks',
-            element: (
-              <Suspense fallback={<LoadingPage />}>
-                <Hooks />
               </Suspense>
             ),
           },
