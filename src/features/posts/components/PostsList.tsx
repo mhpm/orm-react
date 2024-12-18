@@ -7,6 +7,7 @@ import { CgSpinner } from 'react-icons/cg';
 import { useCallback, useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { Spinner } from '@/components';
+import { Button } from '@/components/ui/button';
 
 const PostsList = () => {
   const { t } = useTranslation();
@@ -57,13 +58,13 @@ const PostsList = () => {
     <div>
       <h2 className="flex justify-between items-center font-extrabold text-center p-5">
         {t('newsList')} : {posts?.length}
-        <button className="text-sm button" onClick={handleCreate}>
+        <Button className="text-sm button" onClick={handleCreate}>
           {createPostMutation.isPending ? (
             <CgSpinner className="animate-spin h-7 w-7 self-center" />
           ) : (
             t('addNew')
           )}
-        </button>
+        </Button>
       </h2>
       <div
         className={`${styles.list} grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 h-fit`}
@@ -71,7 +72,7 @@ const PostsList = () => {
         {posts?.map((item: Post) => (
           <figure
             key={item.id}
-            className={`p-6 bg-woodsmoke-900 rounded dark:bg-gray-800 flex flex-col justify-between col-span-full row-span-2  ${getSize(
+            className={`p-6 rounded-lg border border-slate-500 bg-gray-900 flex flex-col justify-between col-span-full row-span-2  ${getSize(
               item.content.length
             )}`}
           >
@@ -82,13 +83,13 @@ const PostsList = () => {
               <p className="my-4">{item.content}</p>
             </blockquote>
             <div className="text-right">
-              <button
-                className="text-red-400 text-xs button"
+              <Button
+                className="text-red-400 text-xs"
                 onClick={() => handleDelete(item.id!)}
                 disabled={deletePostMutation.isPending}
               >
                 {deletingPostId === item.id ? <Spinner /> : t('delete')}
-              </button>
+              </Button>
             </div>
           </figure>
         ))}
