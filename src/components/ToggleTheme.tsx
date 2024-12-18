@@ -7,7 +7,7 @@ export default function ToggleTheme() {
 
   return (
     <Toggle
-      className="rounded-full"
+      className="rounded-full text-white"
       aria-label="Toggle Theme"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
