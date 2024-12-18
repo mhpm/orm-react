@@ -1,12 +1,6 @@
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import { Toggle } from './ui/toggle';
 
 const flags: any = {
   es: (
@@ -98,24 +92,12 @@ export default function ToggleLanguage() {
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="text-woodsmoke-950 dark:text-white rounded-full"
-        >
-          {flags[lang]}
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem onClick={() => changeLanguage('es')}>
-          Espanish
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage('en')}>
-          English
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Toggle
+      className="rounded-full"
+      aria-label="Toggle Language"
+      onClick={() => changeLanguage(lang === 'es' ? 'en' : 'es')}
+    >
+      {lang === 'es' ? flags['en'] : flags['es']}
+    </Toggle>
   );
 }

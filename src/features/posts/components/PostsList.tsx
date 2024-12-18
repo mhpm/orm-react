@@ -71,7 +71,7 @@ const PostsList = () => {
         {posts?.map((item: Post) => (
           <figure
             key={item.id}
-            className={`p-6 bg-woodsmoke-900 rounded dark:bg-gray-800 h-full flex flex-col justify-between col-span-full row-span-2  ${getSize(
+            className={`p-6 bg-woodsmoke-900 rounded dark:bg-gray-800 flex flex-col justify-between col-span-full row-span-2  ${getSize(
               item.content.length
             )}`}
           >

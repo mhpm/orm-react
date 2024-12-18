@@ -39,6 +39,7 @@ const SideMenu = memo(() => {
       </div>
       {!isCollapsed && <Logo />}
       <NavLinks isCollapsed={isCollapsed} menuItems={menuItems} />
+      <div className="text-xs text-slate-600 fixed bottom-10">v1.0.0</div>
     </div>
   );
 });
