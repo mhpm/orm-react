@@ -1,4 +1,8 @@
-export const ROUTES = {
+interface Routes {
+  [key: string]: string;
+}
+
+export const ROUTES: Routes = {
   USERS: 'users',
   EDIT_USER: 'users/edit/:id',
   POSTS: 'posts',
@@ -8,4 +12,4 @@ export const ROUTES = {
   ACCORDION: 'accordion',
   HABITCHART: 'habitchart',
   NOT_FOUND: '*',
-};
+} as const;
