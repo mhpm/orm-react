@@ -1,3 +1,4 @@
+import packageJson from '../../../package.json';
 import { memo, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { getMenuItems } from './getMenuItems';
@@ -39,7 +40,9 @@ const SideMenu = memo(() => {
       </div>
       {!isCollapsed && <Logo />}
       <NavLinks isCollapsed={isCollapsed} menuItems={menuItems} />
-      <div className="text-xs text-slate-600 fixed bottom-10">v1.0.0</div>
+      <div className="text-xs text-slate-600 fixed bottom-10">
+        v{packageJson.version}
+      </div>
     </div>
   );
 });
