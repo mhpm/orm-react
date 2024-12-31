@@ -5,7 +5,10 @@ import { SupabaseClient } from '@supabase/supabase-js';
 const supabaseClient: SupabaseClient = getSupabaseClient();
 
 export const getPots = async () => {
-  const { data, error } = await supabaseClient.from('posts').select('*');
+  const { data, error } = await supabaseClient
+    .from('posts')
+    .select('*')
+    .order('created_at', { ascending: false });
   if (error) throw new Error(error.message);
   return data;
 };

@@ -2,7 +2,7 @@ import { Users, Newspaper, Code, Hash } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ROUTES } from '@/constants/routes';
 import { IconType } from 'react-icons/lib';
-import { useAuth } from '@clerk/clerk-react';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
 
 export interface MenuItem {
   title: string;
@@ -13,18 +13,18 @@ export interface MenuItem {
 
 export const getMenuItems = (): MenuItem[] => {
   const { t } = useTranslation();
-  const { isSignedIn } = useAuth(); // Replace with your authentication logic
+  const { isAuthenticated } = useCurrentUser();
 
   const menuItems: MenuItem[] = [
     {
       title: t(ROUTES.USERS),
       icon: Users,
-      route: isSignedIn ? ROUTES.USERS : undefined, // Only show if signed in
+      route: isAuthenticated ? ROUTES.USERS : undefined, // Only show if signed in
     },
     {
       title: t(ROUTES.POSTS),
       icon: Newspaper,
-      route: isSignedIn ? ROUTES.POSTS : undefined, // Only show if signed in
+      route: isAuthenticated ? ROUTES.POSTS : undefined, // Only show if signed in
     },
     {
       title: ROUTES.CHALLENGES,

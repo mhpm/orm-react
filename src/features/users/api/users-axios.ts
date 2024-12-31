@@ -4,9 +4,7 @@ import { AxiosInstance } from 'axios';
 
 const axiosClient = createClient(
   'axios',
-  import.meta.env.DEV
-    ? 'http://localhost:8000'
-    : 'https://orm-python-supabase-api.onrender.com'
+  'https://orm-python-supabase-api.onrender.com'
 ) as AxiosInstance;
 
 export const fetchUsers = (page: number = 1, limit: number = 10) =>

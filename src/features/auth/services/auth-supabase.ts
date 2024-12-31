@@ -33,7 +33,7 @@ export const signInWithGithub = async () => {
   const { data, error } = await supabaseClient.auth.signInWithOAuth({
     provider: 'github',
     options: {
-      redirectTo: '/',
+      redirectTo: '/posts',
     },
   });
 
