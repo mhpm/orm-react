@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import {
   Card,
   CardHeader,
@@ -6,7 +5,6 @@ import {
   CardDescription,
   CardContent,
 } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 
 export default function WelcomePage() {
   return (
