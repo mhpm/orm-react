@@ -8,19 +8,7 @@ let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
 export const getSupabaseClient = () => {
   if (!supabaseInstance) {
-    supabaseInstance = createClient(supabaseUrl, supabaseKey, {
-      global: {
-        fetch: async (url, options = {}) => {
-          // const token = await session?.getToken({ template: 'supabase' });
-          const headers = new Headers(options.headers);
-          headers.set('apikey', supabaseKey);
-          // if (token) {
-          //   headers.set('Authorization', `Bearer ${token}`);
-          // }
-          return fetch(url, { ...options, headers });
-        },
-      },
-    });
+    supabaseInstance = createClient(supabaseUrl, supabaseKey);
   }
 
   return supabaseInstance;
