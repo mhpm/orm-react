@@ -12,6 +12,7 @@ import AuthPage from '@/features/auth/pages/AuthPage';
 import { ROUTES } from '@/constants/routes';
 
 import { ProtectedRoute } from '@/components'; // Path to your ProtectedRoute
+import WelcomePage from '@/pages/WelcomePage';
 
 const UserPage = React.lazy(
   () => import('@/features/users/pages/UserPage.tsx')
@@ -37,6 +38,11 @@ export const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: '/',
+        element: <WelcomePage />,
+        errorElement: <ErrorPage />,
+      },
       {
         path: ROUTES.USERS,
         element: (

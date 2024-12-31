@@ -25,7 +25,7 @@ const UserList = memo(() => {
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
   const { useGetUsers, createMutation, deleteMutation } = useUser();
   const [page, setPage] = useState(1);
-  const [limit] = useState(9);
+  const [limit] = useState(8);
   const { data, isLoading, isError, error } = useGetUsers(page, limit);
   const [displayData, setDisplayData] = useState<UserResponse>();
 
@@ -105,7 +105,7 @@ const UserList = memo(() => {
           ? `${t('loading')}...`
           : `${t('userList')}: ${displayData?.total}`}
         <LoadingWrapper
-          isLoading={createMutation.isPending}
+          isLoading={createMutation.isPending || isLoading}
           className="rounded-lg"
         >
           <Button onClick={handleCreate}>{t('addUser')}</Button>
