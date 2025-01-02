@@ -10,36 +10,34 @@ import {
   MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
 import React from 'react';
+import { useMenuTrigger } from './useMenuTrigger';
 
 const SideMenu = memo(() => {
   const menuItems = getMenuItems();
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
-  const toggleNavbar = () => setIsCollapsed(!isCollapsed);
+  const { isOpen, toggleMenu } = useMenuTrigger();
 
   return (
     <div
       className={`
         ${
-          isCollapsed
-            ? 'w-20'
+          isOpen
+            ? 'hidden sm:flex'
             : 'w-full fixed z-50 inset-0 sm:w-[300px] sm:min-w-[200px]'
         }
         transition-all duration-200 border-r border-gray-700 p-4 sm:relative flex flex-col items-center bg-gray-900 text-center text-white
       `}
     >
-      <div className={`w-full ${isCollapsed ? 'text-center' : 'text-right'}`}>
+      <div className={`w-full ${isOpen ? 'text-center' : 'text-right'}`}>
         <button
           className="text-white"
-          onClick={toggleNavbar}
-          aria-label={
-            isCollapsed ? 'Open navigation menu' : 'Close navigation menu'
-          }
+          onClick={toggleMenu}
+          aria-label={isOpen ? 'Open navigation menu' : 'Close navigation menu'}
         >
-          {isCollapsed ? <MdOutlineMenu size={32} /> : <MdMenuOpen size={32} />}
+          {isOpen ? <MdOutlineMenu size={32} /> : <MdMenuOpen size={32} />}
         </button>
       </div>
-      {!isCollapsed && <Logo />}
-      <NavLinks isCollapsed={isCollapsed} menuItems={menuItems} />
+      {!isOpen && <Logo />}
+      <NavLinks isCollapsed={isOpen} menuItems={menuItems} />
       <div className="text-xs text-slate-600 fixed bottom-10">
         v{packageJson.version}
       </div>
