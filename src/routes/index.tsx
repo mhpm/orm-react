@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router';
-import React, { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import App from '../App';
 import LoadingPage from '@/pages/LoadingPage';
 import ErrorPage from '@/pages/ErrorPage';
@@ -14,19 +14,11 @@ import { ROUTES } from '@/constants/routes';
 import { ProtectedRoute } from '@/components'; // Path to your ProtectedRoute
 import WelcomePage from '@/pages/WelcomePage';
 
-const UserPage = React.lazy(
-  () => import('@/features/users/pages/UserPage.tsx')
-);
-const EditUserPage = React.lazy(
-  () => import('@/features/users/pages/EditUserPage.tsx')
-);
-const PostsPage = React.lazy(
-  () => import('@/features/posts/pages/PostsPage.tsx')
-);
-const NotFound = React.lazy(() => import('@/pages/NotFound.tsx'));
-const Challenges = React.lazy(
-  () => import('@/features/challenges/pages/Challenges.js')
-);
+const UserPage = lazy(() => import('@/features/users/pages/UserPage'));
+const EditUserPage = lazy(() => import('@/features/users/pages/EditUserPage'));
+const PostsPage = lazy(() => import('@/features/posts/pages/PostsPage'));
+const NotFound = lazy(() => import('@/pages/NotFound'));
+const Challenges = lazy(() => import('@/features/challenges/pages/Challenges'));
 
 export const router = createBrowserRouter([
   {
@@ -46,9 +38,11 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.USERS,
         element: (
-          <ProtectedRoute>
-            <UserPage />
-          </ProtectedRoute>
+          <Suspense fallback={<LoadingPage />}>
+            <ProtectedRoute>
+              <UserPage />
+            </ProtectedRoute>
+          </Suspense>
         ),
         errorElement: <ErrorPage />,
       },
@@ -56,7 +50,9 @@ export const router = createBrowserRouter([
         path: ROUTES.EDIT_USER,
         element: (
           <Suspense fallback={<LoadingPage />}>
-            <EditUserPage />
+            <ProtectedRoute>
+              <EditUserPage />
+            </ProtectedRoute>
           </Suspense>
         ),
         errorElement: <ErrorPage />,
@@ -64,11 +60,11 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.POSTS,
         element: (
-          <ProtectedRoute>
-            <Suspense fallback={<LoadingPage />}>
+          <Suspense fallback={<LoadingPage />}>
+            <ProtectedRoute>
               <PostsPage />
-            </Suspense>
-          </ProtectedRoute>
+            </ProtectedRoute>
+          </Suspense>
         ),
         errorElement: <ErrorPage />,
       },
