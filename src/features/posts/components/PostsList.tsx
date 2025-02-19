@@ -8,10 +8,11 @@ import { toast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { ThumbsUp, Trash } from 'lucide-react';
+import { Spinner } from '@/components';
 
 const PostsList = () => {
   const { t } = useTranslation();
-  const [deletingPostId, setDeletingPostId] = useState<number>(-1);
+  const [deletingPostId, setDeletingPostId] = useState<number>(0);
   const { useGetPosts, createPostMutation, deletePostMutation } = usePosts();
   const { data: posts, isLoading } = useGetPosts();
   const { user } = useCurrentUser();
@@ -44,7 +45,7 @@ const PostsList = () => {
       },
       onSettled: () => {
         setTimeout(() => {
-          setDeletingPostId(-1);
+          setDeletingPostId(0);
         }, 1000);
       },
     });
@@ -86,12 +87,13 @@ const PostsList = () => {
                 </span>
                 {item.user_email === user?.email && (
                   <Button
+                    disabled={deletingPostId === item.id}
                     variant="ghost"
                     size="icon"
                     className="text-red-400 ml-2"
                     onClick={() => handleDelete(item.id!)}
                   >
-                    <Trash />
+                    {deletingPostId ? <Spinner /> : <Trash />}
                   </Button>
                 )}
               </div>
