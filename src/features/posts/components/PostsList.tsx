@@ -2,14 +2,12 @@ import { faker } from '@faker-js/faker';
 import { usePosts } from '../hooks/usePosts';
 import { Post } from '../types/Post';
 import { useTranslation } from 'react-i18next';
-import styles from './PostsList.module.css';
 import { CgSpinner } from 'react-icons/cg';
 import { useCallback, useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
-import { Spinner } from '@/components';
 import { Button } from '@/components/ui/button';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { CircleX } from 'lucide-react';
+import { ThumbsUp, Trash } from 'lucide-react';
 
 const PostsList = () => {
   const { t } = useTranslation();
@@ -17,6 +15,7 @@ const PostsList = () => {
   const { useGetPosts, createPostMutation, deletePostMutation } = usePosts();
   const { data: posts, isLoading } = useGetPosts();
   const { user } = useCurrentUser();
+  const [likes, setLikes] = useState<{ [key: number]: number }>({});
 
   const handleCreate = () => {
     createPostMutation.mutate({
@@ -51,59 +50,80 @@ const PostsList = () => {
     });
   }, []);
 
-  function getSize(size: number) {
-    return size > 300 ? 'md:col-span-2' : 'md:col-span-1';
-  }
+  const handleLike = (postId: number) => {
+    setLikes((prevLikes) => ({
+      ...prevLikes,
+      [postId]: (prevLikes[postId] || 0) + 1,
+    }));
+  };
 
   if (isLoading)
     return <CgSpinner className="animate-spin h-7 w-7 self-center" />;
 
   return (
-    <div>
-      <h2 className="flex justify-between items-center font-extrabold text-center p-5">
-        {t('newsList')} : {posts?.length}
-        <Button className="text-sm button" onClick={handleCreate}>
-          {createPostMutation.isPending ? (
-            <CgSpinner className="animate-spin h-7 w-7 self-center" />
-          ) : (
-            t('addNew')
-          )}
-        </Button>
-      </h2>
-      <div
-        className={`${styles.list} grid gap-8 grid-flow-dense sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 h-fit`}
-      >
+    <div className="p-8 pt-0">
+      <div className="mb-5 flex justify-end ">
+        <Button onClick={handleCreate}>Create Post</Button>
+      </div>
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {posts?.map((item: Post) => (
-          <figure
+          <div
             key={item.id}
-            className={`relative p-6 rounded-lg border border-slate-500 bg-gray-900 flex flex-col justify-between col-span-full row-span-2  ${getSize(
-              item.content.length
-            )}`}
+            className="bg-dark rounded-lg shadow-md overflow-hidden border"
           >
-            <blockquote className="text-sm text-gray-200 dark:text-white/90">
-              <h3 className="text-2xl font-semibold leading-tight text-cyan-500 dark:text-white text-balance pr-10">
-                {item.title}
-              </h3>
-              <p className="my-4">{item.content}</p>
-              <footer className="text-xs text-gray-400">
-                {t('by')} {item.user_email} -{' '}
-                {new Date(item.created_at).toLocaleDateString()}
-              </footer>
-            </blockquote>
-            {item.user_email === user?.email && (
-              <div className="absolute top-4 right-4 rounded-full">
+            <div className="relative">
+              <div className="flex items-center absolute z-10 top-3 right-3">
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-red-400"
-                  onClick={() => handleDelete(item.id!)}
-                  disabled={deletePostMutation.isPending}
+                  className="text-blue-400"
+                  onClick={() => handleLike(item.id!)}
                 >
-                  {deletingPostId === item.id ? <Spinner /> : <CircleX />}
+                  <ThumbsUp />
                 </Button>
+                <span className="text-sm text-gray-400 ml-2">
+                  {likes[item.id!] || 0} {t('likes')}
+                </span>
+                {item.user_email === user?.email && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-red-400 ml-2"
+                    onClick={() => handleDelete(item.id!)}
+                  >
+                    <Trash />
+                  </Button>
+                )}
               </div>
-            )}
-          </figure>
+              <img
+                src={`https://picsum.photos/seed/${item.id}/800/600`}
+                alt={`${item.user_email}'s avatar`}
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent rounded-lg" />
+            </div>
+            <div className="p-6">
+              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+              <p className="text-sm mb-4">{item.content}</p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <img
+                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${item.user_email}`}
+                    alt={`${item.user_email}'s avatar`}
+                    className="w-8 h-8 rounded-full mr-2"
+                  />
+                  <div className="truncate">
+                    <p className="text-sm font-medium truncate">
+                      {item.user_email}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {new Date(item.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>

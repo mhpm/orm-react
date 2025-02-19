@@ -34,6 +34,7 @@ export default {
           950: '#1a1a1a',
         },
         dark: 'var(--colors-dark)',
+        primary: 'var(--colors-primary)',
       },
       keyframes: {
         'accordion-down': {
