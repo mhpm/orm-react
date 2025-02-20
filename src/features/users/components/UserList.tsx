@@ -104,12 +104,12 @@ const UserList = memo(() => {
         {isLoading
           ? `${t('loading')}...`
           : `${t('userList')}: ${displayData?.total}`}
-        <LoadingWrapper
+        <Button
           isLoading={createMutation.isPending || isLoading}
-          className="rounded-lg"
+          onClick={handleCreate}
         >
-          <Button onClick={handleCreate}>{t('addUser')}</Button>
-        </LoadingWrapper>
+          {t('addUser')}
+        </Button>
       </h2>
 
       <LoadingWrapper isLoading={isLoading} size="2rem" className="rounded-lg">
