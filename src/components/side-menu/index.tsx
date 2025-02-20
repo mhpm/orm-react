@@ -27,7 +27,7 @@ const SideMenu = memo(() => {
         transition-all duration-200 border-r border-gray-700 p-4 sm:relative flex flex-col items-center bg-gray-900 text-center text-white
       `}
     >
-      <div className={`w-full ${isOpen ? 'text-center' : 'text-right'}`}>
+      <div className={`w-full pt-1 ${isOpen ? 'text-center' : 'text-right'}`}>
         <button
           className="text-white"
           onClick={toggleMenu}
