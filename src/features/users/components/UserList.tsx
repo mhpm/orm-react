@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { User, UserResponse } from '../types/User';
 import { Link } from 'react-router';
 import { faker } from '@faker-js/faker';
