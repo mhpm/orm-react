@@ -9,8 +9,9 @@ export interface User {
 }
 
 export interface UserResponse {
-  limit: number;
+  count: number | null;
   page: number;
-  total: number;
+  pageSize: number;
+  totalPages: number;
   users: User[];
 }

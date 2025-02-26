@@ -7,10 +7,24 @@ const supabaseClient = createClient(
   'https://hihrletflbfnoumdyysy.supabase.co'
 ) as SupabaseClient;
 
-export const fetchUsers = async () => {
-  const { data, error } = await supabaseClient.from('users').select('*');
+export const fetchUsers = async (page: number = 1, pageSize: number = 10) => {
+  const start = (page - 1) * pageSize;
+  const end = start + pageSize - 1;
+
+  const { data, error, count } = await supabaseClient
+    .from('users')
+    .select('*', { count: 'exact' })
+    .range(start, end);
+
   if (error) throw new Error(error.message);
-  return data;
+
+  return {
+    data,
+    count,
+    page,
+    pageSize,
+    totalPages: count ? Math.ceil(count / pageSize) : 0,
+  };
 };
 
 export const fetchUserById = async (id: number | string) => {

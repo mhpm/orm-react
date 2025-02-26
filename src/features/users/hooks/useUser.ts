@@ -7,7 +7,7 @@ const loadClientApi = async () => {
 
   switch (client) {
     case 'supabase':
-      return await import('@/features/users/api/users-supabase');
+      return await import('@/features/users/services/userService');
     case 'graphql':
       return await import('@/features/users/api/users-graphql');
     default:
@@ -24,30 +24,23 @@ export const useUser = () => {
     loadClientApi().then((module) => setClientApi(module));
   }, []);
 
-  const useGetUsers = (page: number = 1, limit: number = 10) =>
+  const useGetUsers = (page: number = 1, pageSize: number = 10) =>
     useQuery<UserResponse>({
-      queryKey: ['users', page, limit],
-      queryFn: () => clientApi.fetchUsers(page, limit),
+      queryKey: ['users', page, pageSize],
+      queryFn: () => clientApi.getUsers(page, pageSize),
       enabled: !!clientApi,
     });
 
   const useGetUserById = (id: number | string) => {
     return useQuery<User>({
       queryKey: ['users', id],
-      queryFn: () => clientApi.fetchUserById(id),
+      queryFn: () => clientApi.getUserById(id),
       enabled: !!clientApi,
     });
   };
 
   const createMutation = useMutation({
     mutationFn: (user: User) => clientApi?.createUser(user),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] });
-    },
-  });
-
-  const deleteMutation = useMutation({
-    mutationFn: (id: number | string) => clientApi?.deleteUser(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
@@ -60,11 +53,18 @@ export const useUser = () => {
     },
   });
 
+  const deleteMutation = useMutation({
+    mutationFn: (id: number | string) => clientApi?.deleteUser(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+    },
+  });
+
   return {
     useGetUsers,
     useGetUserById,
     createMutation,
-    deleteMutation,
     updateMutation,
+    deleteMutation,
   };
 };
