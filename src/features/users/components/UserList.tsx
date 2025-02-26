@@ -25,19 +25,11 @@ const UserList = memo(() => {
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
   const { useGetUsers, createMutation, deleteMutation } = useUser();
   const [page, setPage] = useState(1);
-  const [limit] = useState(8);
-  const { data, isLoading, isError, error } = useGetUsers(page, limit);
-  const [displayData, setDisplayData] = useState<UserResponse>();
+  const { data, isLoading, isError, error } = useGetUsers(page, 8);
 
   if (isError) {
     throw new Error(error?.message);
   }
-
-  useEffect(() => {
-    if (data && !isLoading) {
-      setDisplayData(data); // Update display data after fetching
-    }
-  }, [data, isLoading]);
 
   const handleCreate = () => {
     createMutation.mutate(
@@ -52,7 +44,7 @@ const UserList = memo(() => {
       {
         onSuccess: () => {
           toast({
-            className: 'bg-woodsmoke-950 text-green-400 p-4',
+            className: 'bg-primary p-4',
             title: `${t('user')} created successfully`,
           });
         },
@@ -87,23 +79,10 @@ const UserList = memo(() => {
     });
   }, []);
 
-  function hasNext() {
-    if (!displayData) return false; // If no data is available, there can't be a next page
-    const totalPages = Math.ceil(displayData.total / limit); // Calculate total pages
-    return page < totalPages; // Check if there is another page
-  }
-
-  function totalPages() {
-    if (!displayData) return 0; // If no data is available, there are no pages
-    return Math.ceil(displayData.total / limit);
-  }
-
   return (
     <div className="flex flex-col gap-4">
       <h2 className="flex justify-between items-center font-extrabold text-center">
-        {isLoading
-          ? `${t('loading')}...`
-          : `${t('userList')}: ${displayData?.total}`}
+        {isLoading ? `${t('loading')}...` : `${t('userList')}: ${data?.count}`}
         <Button
           isLoading={createMutation.isPending || isLoading}
           onClick={handleCreate}
@@ -112,64 +91,80 @@ const UserList = memo(() => {
         </Button>
       </h2>
 
-      <LoadingWrapper isLoading={isLoading} size="2rem" className="rounded-lg">
-        <div className="relative min-h-[55vh] overflow-hidden">
-          {displayData?.users?.map((item: User) => (
-            <Row
-              key={item.id}
-              user={item}
-              onDelete={handleDelete}
-              isLoading={deletingUserId === item.id}
-            />
-          ))}
-        </div>
-      </LoadingWrapper>
+      <div className="relative min-h-[55vh] overflow-hidden">
+        {data?.users?.map((item: User) => (
+          <Row
+            key={item.id}
+            user={item}
+            onDelete={handleDelete}
+            isLoading={deletingUserId === item.id}
+          />
+        ))}
+      </div>
 
-      {!!displayData?.users.length && (
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem
-              className={page === 1 ? 'opacity-50' : 'cursor-pointer'}
-            >
-              <PaginationPrevious
-                onClick={page === 1 ? undefined : () => setPage(page - 1)}
-              >
-                Previous
-              </PaginationPrevious>
-            </PaginationItem>
-            {Array.from({ length: totalPages() }, (_, index) => index + 1).map(
-              (pageNumber) => (
-                <PaginationItem
-                  key={pageNumber}
-                  className={`cursor-pointer ${
-                    page === pageNumber
-                      ? 'bg-woodsmoke-900 text-white rounded-md'
-                      : 'text-white'
-                  }`}
-                >
-                  <PaginationLink onClick={() => setPage(pageNumber)}>
-                    {pageNumber}
-                  </PaginationLink>
-                </PaginationItem>
-              )
-            )}
-            <PaginationItem>
-              <PaginationItem
-                className={!hasNext() ? 'opacity-50' : 'cursor-pointer'}
-              >
-                <PaginationNext
-                  onClick={!hasNext() ? undefined : () => setPage(page + 1)}
-                >
-                  Next
-                </PaginationNext>
-              </PaginationItem>
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+      {!!data?.count && (
+        <CustomPagination data={data} setPage={setPage} page={page} />
       )}
     </div>
   );
 });
+
+const CustomPagination = ({
+  data,
+  page,
+  setPage,
+}: {
+  data: UserResponse;
+  page: number;
+  setPage: (newPage: number) => void;
+}) => {
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem
+          className={data.page === 1 ? 'opacity-50' : 'cursor-pointer'}
+        >
+          <PaginationPrevious
+            onClick={data.page === 1 ? undefined : () => setPage(page - 1)}
+          >
+            Previous
+          </PaginationPrevious>
+        </PaginationItem>
+        {Array.from({ length: data.totalPages }, (_, index) => index + 1).map(
+          (pageNumber) => (
+            <PaginationItem
+              key={pageNumber}
+              className={`cursor-pointer ${
+                page === pageNumber
+                  ? 'bg-woodsmoke-900 text-white rounded-md'
+                  : 'text-white'
+              }`}
+            >
+              <PaginationLink onClick={() => setPage(pageNumber)}>
+                {pageNumber}
+              </PaginationLink>
+            </PaginationItem>
+          )
+        )}
+        <PaginationItem
+          className={
+            data.page === data.totalPages ? 'opacity-30' : 'cursor-pointer'
+          }
+        >
+          <PaginationNext
+            onClick={
+              data.page === data.totalPages
+                ? undefined
+                : () => setPage(data.page + 1)
+            }
+          >
+            Next
+          </PaginationNext>
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+};
 
 const Row = memo(
   ({
