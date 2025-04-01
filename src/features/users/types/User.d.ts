@@ -15,3 +15,11 @@ export interface UserResponse {
   totalPages: number;
   users: User[];
 }
+
+export interface UserService {
+  getUsers(page?: number, pageSize?: number): Promise<UserResponse>;
+  getUserById(id: number | string): Promise<User>;
+  createUser(user: User): Promise<User>;
+  updateUser(user: User): Promise<User>;
+  deleteUser(id: number): Promise<User>;
+}

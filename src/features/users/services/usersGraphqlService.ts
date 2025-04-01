@@ -1,5 +1,5 @@
 import { gql, GraphQLClient } from 'graphql-request';
-import { User } from '../types/User';
+import { User, UserResponse } from '../types/User';
 import { createClient } from '@/lib/clienFactory';
 
 const graphqlClient = createClient(
@@ -8,10 +8,13 @@ const graphqlClient = createClient(
 ) as GraphQLClient;
 
 // Fetch all users
-export const fetchUsers = async () => {
+export const getUsers = async (
+  page: number = 1,
+  pageSize: number = 10
+): Promise<UserResponse> => {
   const query = gql`
-    query {
-      users {
+    query ($page: Int!, $pageSize: Int!) {
+      users(page: $page, pageSize: $pageSize) {
         id
         email
         first_name
@@ -21,12 +24,19 @@ export const fetchUsers = async () => {
       }
     }
   `;
-  const data = await graphqlClient.request<{ users: User[] }>(query);
-  return data.users;
+  const variables = { page, pageSize };
+  const data = await graphqlClient.request<{ users: User[] }>(query, variables);
+  return {
+    users: data.users,
+    count: data.users.length,
+    page: page,
+    pageSize: pageSize,
+    totalPages: Math.ceil(data.users.length / pageSize),
+  };
 };
 
 // Fetch a user by ID
-export const fetchUserById = async (id: number | string) => {
+export const getUserById = async (id: number | string) => {
   const query = gql`
     query ($user_id: ID!) {
       user(user_id: $user_id) {

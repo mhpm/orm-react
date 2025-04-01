@@ -1,24 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { User, UserResponse } from '../types/User';
+import { User, UserResponse, UserService } from '../types/User';
 import { useEffect, useState } from 'react';
 
-const loadClientApi = async () => {
-  const client = import.meta.env.VITE_API_CLIENT;
-
-  switch (client) {
-    case 'supabase':
-      return await import('@/features/users/services/userService');
-    case 'graphql':
-      return await import('@/features/users/api/users-graphql');
-    default:
-      return await import('@/features/users/api/users-axios');
-  }
-};
+import { loadClientApi } from '@/features/users/utils/clientLoader';
 
 export const useUser = () => {
   const queryClient = useQueryClient();
 
-  const [clientApi, setClientApi] = useState<any>(null);
+  const [clientApi, setClientApi] = useState<UserService>({} as UserService);
 
   useEffect(() => {
     loadClientApi().then((module) => setClientApi(module));
@@ -44,6 +33,9 @@ export const useUser = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
+    onError: (error) => {
+      console.error('Error deleting user:', error.message);
+    },
   });
 
   const updateMutation = useMutation({
@@ -51,12 +43,18 @@ export const useUser = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
+    onError: (error) => {
+      console.error('Error deleting user:', error.message);
+    },
   });
 
   const deleteMutation = useMutation({
-    mutationFn: (id: number | string) => clientApi?.deleteUser(id),
+    mutationFn: (id: number) => clientApi?.deleteUser(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
+    },
+    onError: (error) => {
+      console.error('Error deleting user:', error.message);
     },
   });
 

@@ -7,12 +7,15 @@ const axiosClient = createClient(
   'https://orm-python-supabase-api.onrender.com'
 ) as AxiosInstance;
 
-export const fetchUsers = (page: number = 1, limit: number = 10) =>
+export const getUsers = (
+  page: number = 1,
+  pageSize: number = 10
+): Promise<UserResponse> =>
   axiosClient
-    .get<UserResponse[]>('/users', { params: { page, limit } })
+    .get<UserResponse>('/users', { params: { page, pageSize } })
     .then((response) => response.data);
 
-export const fetchUserById = (id: number | string) =>
+export const getUserById = (id: number | string) =>
   axiosClient.get<User>(`/users/${id}`).then((response) => response.data);
 
 export const createUser = (user: User) =>
