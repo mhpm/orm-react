@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { CgSpinner } from 'react-icons/cg';
+import UserFormFields from '../components/UserFormFields';
 
 function EditUserPage() {
   const { toast } = useToast();
@@ -57,60 +58,7 @@ function EditUserPage() {
             onSubmit={handleSubmit(onSubmit)}
             className="rounded-xl p-7 w-[400px]"
           >
-            <div className="flex flex-col items-center">
-              <div className="my-4 flex flex-col">
-                <label htmlFor="first_name" className="font-semibold my-1">
-                  {t('first_name')}:
-                </label>
-                <input
-                  className="p-3 px-4 rounded-lg w-[300px]"
-                  id="first_name"
-                  type="text"
-                  {...register('first_name', {
-                    required: true,
-                  })}
-                />
-                {errors.first_name && (
-                  <span className="text-red-400 p-1">{t('fieldRquired')}</span>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="my-4 flex flex-col">
-                <label htmlFor="last_name" className="font-semibold my-1">
-                  {t('last_name')}:
-                </label>
-                <input
-                  className="p-3 px-4 rounded-lg w-[300px]"
-                  id="last_name"
-                  type="text"
-                  {...register('last_name', {
-                    required: true,
-                  })}
-                />
-                {errors.last_name && (
-                  <span className="text-red-400 p-1">{t('fieldRquired')}</span>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="my-4 flex flex-col">
-                <label htmlFor="name" className="font-semibold my-1">
-                  {t('email')}:
-                </label>
-                <input
-                  className="p-3 px-4 rounded-lg w-[300px]"
-                  id="email"
-                  type="email"
-                  {...register('email', {
-                    required: true,
-                  })}
-                />
-                {errors.email && (
-                  <span className="text-red-400 p-1">{t('fieldRquired')}</span>
-                )}
-              </div>
-            </div>
+            <UserFormFields register={register} errors={errors} t={t} />
             <div className="flex justify-center p-6">
               <button
                 className="button text-sm text-green-400 mx-2"
