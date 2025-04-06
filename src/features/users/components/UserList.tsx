@@ -17,7 +17,7 @@ const UserList = memo(() => {
   const { data, isLoading, isError, error } = useGetUsers(page, 8);
 
   if (isError) {
-    throw new Error(error?.message);
+    throw new Error(error?.message || 'Unknown error');
   }
 
   const showSuccessToast = useCallback(
@@ -46,7 +46,7 @@ const UserList = memo(() => {
         first_name: faker.person.firstName(),
         last_name: faker.person.lastName(),
         email: faker.internet.email(),
-        password: 'changeme',
+        password: faker.internet.password({ length: 12 }),
         role: 'user',
         avatar: faker.image.avatarGitHub(),
       },
@@ -71,25 +71,55 @@ const UserList = memo(() => {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="flex justify-between items-center font-extrabold text-center">
-        {isLoading ? `${t('loading')}...` : `${t('userList')}: ${data?.count}`}
+      <h2
+        className="flex justify-between items-center font-extrabold text-center"
+        role="status"
+        aria-live="polite"
+      >
+        {isLoading
+          ? `${t('loading')}...`
+          : `${t('userList')}: ${data?.count ?? 0}`}
         <Button
           isLoading={createMutation.isPending || isLoading}
           onClick={handleCreate}
+          aria-label={t('addUser')}
+          disabled={createMutation.isPending || isLoading}
         >
           {t('addUser')}
         </Button>
       </h2>
 
-      <div className="relative min-h-[55vh] overflow-hidden">
-        {data?.users?.map((item: User) => (
-          <UserRow
-            key={item.id}
-            user={item}
-            onDelete={handleDelete}
-            isLoading={deletingUserId === item.id}
-          />
-        ))}
+      <div
+        className="relative min-h-[55vh] overflow-hidden"
+        role="region"
+        aria-label={t('userList')}
+      >
+        {isLoading ? (
+          <div
+            className="text-center text-muted mt-8"
+            role="status"
+            aria-live="polite"
+          >
+            {t('loading')}...
+          </div>
+        ) : (data?.users ?? []).length > 0 ? (
+          (data?.users ?? []).map((item: User) => (
+            <UserRow
+              key={item.id}
+              user={item}
+              onDelete={handleDelete}
+              isLoading={deletingUserId === item.id}
+            />
+          ))
+        ) : (
+          <p
+            className="text-center text-muted mt-8"
+            role="status"
+            aria-live="polite"
+          >
+            {t('noUsersFound')}
+          </p>
+        )}
       </div>
 
       {!!data?.count && (
@@ -98,6 +128,7 @@ const UserList = memo(() => {
     </div>
   );
 });
+
 UserList.displayName = 'UserList';
 
 export default UserList;
