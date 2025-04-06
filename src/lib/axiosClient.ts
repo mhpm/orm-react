@@ -1,14 +1,20 @@
-// axiosClient.ts
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
-export const createAxiosClient = (baseURL: string) => {
-  const axiosClient = axios.create({
-    baseURL,
+let axiosClientInstance: AxiosInstance | null = null;
+
+export const createAxiosClient = (baseURL?: string): AxiosInstance => {
+  if (axiosClientInstance) {
+    return axiosClientInstance;
+  }
+
+  axiosClientInstance = axios.create({
+    baseURL: baseURL || 'https://orm-python-supabase-api.onrender.com',
     headers: {
       'Content-Type': 'application/json',
     },
   });
-  axiosClient.interceptors.request.use(
+
+  axiosClientInstance.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem('token');
       if (token) {
@@ -18,5 +24,6 @@ export const createAxiosClient = (baseURL: string) => {
     },
     (error) => Promise.reject(error)
   );
-  return axiosClient;
+
+  return axiosClientInstance;
 };
