@@ -2,10 +2,7 @@ import { createClient } from '@/lib/clienFactory';
 import { User, UserResponse } from '../types/User';
 import { AxiosInstance } from 'axios';
 
-const axiosClient = createClient(
-  'axios',
-  'https://orm-python-supabase-api.onrender.com'
-) as AxiosInstance;
+const axiosClient = createClient('axios') as AxiosInstance;
 
 export const getUsers = (
   page: number = 1,

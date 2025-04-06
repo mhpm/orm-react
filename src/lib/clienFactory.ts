@@ -1,15 +1,15 @@
 import { createAxiosClient } from './axiosClient';
-import { createGraphQLClient } from './graphqlClient';
+import { getGraphQLClient } from './graphqlClient';
 import { getSupabaseClient } from './supabaseClient';
 
 export type ClientType = 'axios' | 'graphql' | 'supabase';
 
-export const createClient = (clientType: ClientType, baseURL: string) => {
+export const createClient = (clientType: ClientType) => {
   switch (clientType) {
     case 'axios':
-      return createAxiosClient(baseURL);
+      return createAxiosClient();
     case 'graphql':
-      return createGraphQLClient(baseURL);
+      return getGraphQLClient();
     case 'supabase':
       return getSupabaseClient();
     default:

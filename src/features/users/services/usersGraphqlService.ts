@@ -2,10 +2,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 import { User, UserResponse } from '../types/User';
 import { createClient } from '@/lib/clienFactory';
 
-const graphqlClient = createClient(
-  'graphql',
-  'https://orm-python-api.onrender.com/graphql'
-) as GraphQLClient;
+const graphqlClient = createClient('graphql') as GraphQLClient;
 
 // Fetch all users
 export const getUsers = async (
