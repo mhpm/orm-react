@@ -51,7 +51,7 @@ const UserList = memo(() => {
         avatar: faker.image.avatarGitHub(),
       },
       {
-        onSuccess: () => showSuccessToast(`${t('user')} created successfully`),
+        onSuccess: () => showSuccessToast(`${t('users.user')} created successfully`),
         onError: () => showErrorToast('Error on create user'),
       }
     );
@@ -77,22 +77,22 @@ const UserList = memo(() => {
         aria-live="polite"
       >
         {isLoading
-          ? `${t('loading')}...`
-          : `${t('userList')}: ${data?.count ?? 0}`}
+          ? `${t('common.loading')}...`
+          : `${t('users.userList')}: ${data?.count ?? 0}`}
         <Button
           isLoading={createMutation.isPending || isLoading}
           onClick={handleCreate}
-          aria-label={t('addUser')}
+          aria-label={t('users.addUser')}
           disabled={createMutation.isPending || isLoading}
         >
-          {t('addUser')}
+          {t('users.addUser')}
         </Button>
       </h2>
 
       <div
         className="relative min-h-[55vh] overflow-hidden"
         role="region"
-        aria-label={t('userList')}
+        aria-label={t('users.userList')}
       >
         {isLoading ? (
           <div

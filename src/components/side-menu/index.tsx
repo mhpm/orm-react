@@ -1,7 +1,7 @@
 import packageJson from '../../../package.json';
 import { memo, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
-import { getMenuItems } from './getMenuItems';
+import { MenuItems } from './MenuItems';
 import { Logo } from './Logo';
 import {
   MdOutlineMenu,
@@ -11,9 +11,13 @@ import {
 } from 'react-icons/md';
 import React from 'react';
 import { useMenuTrigger } from './useMenuTrigger';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { MenuItem, NavItemProps, NavLinksProps, SubMenuItem } from './interfaces/interfaces';
+import { IconType } from 'react-icons';
 
 const SideMenu = memo(() => {
-  const menuItems = getMenuItems();
+  const { isAuthenticated } = useCurrentUser();
+  const menuItems = MenuItems(isAuthenticated);
   const { isOpen, toggleMenu } = useMenuTrigger();
 
   return (
@@ -45,8 +49,8 @@ const SideMenu = memo(() => {
   );
 });
 
-const NavLinks = memo(({ isCollapsed, menuItems }: any) => {
-  let navigate = useNavigate();
+const NavLinks = memo(({ isCollapsed, menuItems }: NavLinksProps) => {
+  const navigate = useNavigate();
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) =>
@@ -61,7 +65,7 @@ const NavLinks = memo(({ isCollapsed, menuItems }: any) => {
         aria-label="Main Navigation"
       >
         <ul className="space-y-4 w-full">
-          {menuItems.map((item: any, index: number) => (
+          {menuItems.map((item: MenuItem, index: number) => (
             <NavItem
               key={index}
               item={item}
@@ -86,8 +90,8 @@ const NavItem = memo(
     expandedItem,
     toggleAccordion,
     navigate,
-  }: any) => {
-    const Icon: any = item.icon;
+  }: NavItemProps) => {
+    const Icon: IconType = item.icon as IconType;
 
     return (
       <li
@@ -138,7 +142,7 @@ const NavItem = memo(
         >
           {!isCollapsed && expandedItem === index && item.subItems && (
             <ul className="flex flex-col mt-2 space-y-2 text-gray-500 text-sm text-start">
-              {item.subItems.map((subItem: any, index: number) => (
+              {item.subItems.map((subItem: SubMenuItem, index: number) => (
                 <div
                   key={index}
                   className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-800"

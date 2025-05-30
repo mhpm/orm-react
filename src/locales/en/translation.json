@@ -1,26 +1,45 @@
 {
-  "welcome": "Welcome",
-  "description": "This is a multi-language application.",
-  "userList": "User List",
-  "addUser": "Add User",
-  "addNew": "Add New",
-  "userInfo": "User Info",
-  "users": "Users",
-  "posts": "Posts",
-  "edit": "Edit",
-  "delete": "Delete",
-  "loading": "Loading",
-  "first_name": "First Name",
-  "last_name": "Last Name",
-  "email": "E-Mail",
-  "save": "Save",
-  "cancel": "Cancel",
-  "fieldRquired": "This field is required",
-  "newsList": "News List",
-  "backToHome": "Back to Home",
-  "sorry": "Sorry, we couldn't find this page.",
-  "back": "Back",
-  "home": "Home",
-  "user": "User",
-  "updated": "Updated"
+  "home": {
+    "welcome": "Welcome",
+    "description": "This is a multi-language application."
+  },
+  "users": {
+    "user": "User",
+    "userList": "User List",
+    "addUser": "Add User",
+    "addNew": "Add New",
+    "userInfo": "User Info",
+    "users": "Users",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "E-Mail",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "fieldRequired": "This field is required",
+    "updated": "Updated"
+  },
+  "posts": {
+    "posts": "Posts",
+    "newsList": "News List"
+  },
+  "common": {
+    "loading": "Loading",
+    "backToHome": "Back to Home",
+    "sorry": "Sorry, we couldn't find this page.",
+    "back": "Back",
+    "home": "Home"
+  },
+  "sideMenu":{
+    "users": "Users",
+    "posts": "Posts",
+    "challenges":{
+      "challenges": "Challenges",
+      "tictactoe": "Tic Tac Toe",
+      "localStorage": "Local Storage",
+      "accordion": "Accordion",	
+      "habitChart": "Habit Chart"
+    }
+  }
 }
