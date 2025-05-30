@@ -1,25 +1,45 @@
 {
-  "welcome": "Bienvenido",
-  "description": "Esta es una aplicación multilingüe.",
-  "userList": "Lista de Usuarios",
-  "addUser": "Agregar Usuario",
-  "addNew": "Agregar Noticia",
-  "userInfo": "Informacion de Usuario",
-  "users": "Usuarios",
-  "edit": "Editar",
-  "delete": "Eliminar",
-  "loading": "Cargando",
-  "first_name": "Nombre",
-  "last_name": "Apellidos",
-  "email": "Correr Electronico",
-  "save": "Guardar",
-  "cancel": "Cancelar",
-  "fieldRquired": "Este campo es obligatorio",
-  "newsList": "Lista de Noticias",
-  "backToHome": "Volver al Inicio",
-  "sorry": "Lo sentimos, la paguina no se econtró",
-  "back": "Volver",
-  "home": "Inicio",
-  "user": "Usuario",
-  "updated": "Actualizado"
+  "home": {
+    "welcome": "Bienvenido",
+    "description": "Esta es una aplicación multilingüe."
+  },
+  "users": {
+    "user": "Usuario",
+    "userList": "Lista de Usuarios",
+    "addUser": "Agregar Usuario",
+    "addNew": "Agregar Noticia",
+    "userInfo": "Informacion de Usuario",
+    "users": "Usuarios",
+    "first_name": "Nombre",
+    "last_name": "Apellidos",
+    "email": "Correo Electrónico",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "fieldRequired": "Este campo es obligatorio",
+    "updated": "Actualizado"
+  },
+  "posts": {
+    "posts": "Noticias",
+    "newsList": "Lista de Noticias"
+  },
+  "common": {
+    "loading": "Cargando",
+    "backToHome": "Volver al Inicio",
+    "sorry": "Lo sentimos, la página no se encontró",
+    "back": "Volver",
+    "home": "Inicio"
+  },
+  "sideMenu":{
+    "users": "Usuarios",
+    "posts": "Noticias",
+    "challenges":{
+      "challenges": "Desafíos",
+      "tictactoe": "Tic Tac Toe",
+      "localStorage": "Almacenamiento Local",
+      "accordion": "Acordeón",	
+      "habitChart": "Gráfico de Hábitos"
+    }
+  }
 }

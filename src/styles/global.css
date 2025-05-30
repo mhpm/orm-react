@@ -1,16 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import "tailwindcss";
 
 * {
   box-sizing: border-box;
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
+  font-family: 'Inter', 'Inter Fallback', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,6 +35,22 @@
     --text-color: var(--colors-white);
     --background: var(--colors-dark);
   }
+}
+
+@theme {
+  --color-woodsmoke-50: oklch(98.5% 0 0);
+  --color-woodsmoke-100: oklch(95.5% 0 0);
+  --color-woodsmoke-200: oklch(89.5% 0 0);
+  --color-woodsmoke-300: oklch(78.5% 0 0);
+  --color-woodsmoke-400: oklch(66% 0 0);
+  --color-woodsmoke-500: oklch(57% 0 0);
+  --color-woodsmoke-600: oklch(51% 0 0);
+  --color-woodsmoke-700: oklch(45% 0 0);
+  --color-woodsmoke-800: oklch(41% 0 0);
+  --color-woodsmoke-900: oklch(37% 0 0);
+  --color-woodsmoke-950: oklch(21% 0 0);
+  --color-dark: var(--colors-dark);
+  --color-primary: var(--colors-primary);
 }
 
 body {

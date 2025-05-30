@@ -7,6 +7,10 @@ export const useCurrentUser = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (user) {
+      setLoading(false);
+      return;
+    }
     const fetchUser = async () => {
       const { data, error } = await getSupabaseClient().auth.getUser();
       if (error) {
@@ -32,7 +36,7 @@ export const useCurrentUser = () => {
     return () => {
       authListener?.subscription.unsubscribe();
     };
-  }, []);
+  }, [user]);
 
   return { user, loading, isAuthenticated: !!user };
 };

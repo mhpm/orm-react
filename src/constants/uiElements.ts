@@ -43,4 +43,14 @@ export const POST_UI_ELEMENTS: UIElements = {
   },
 } as const;
 
+export const SIDE_MENU_UI_ELEMENTS: UIElements = {
+  TITLES: {
+    USERS: 'users.users',
+    POSTS: 'posts.posts',
+    CHALLENGES: 'challenges',
+  },
+  BUTTONS: {},
+  LABELS: {},
+}
+
 // Add more UI elements for other pages as needed

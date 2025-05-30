@@ -1,8 +1,8 @@
 // lib/supabaseClient.ts
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL ?? '';	
+const supabaseKey = import.meta.env.VITE_SUPABASE ?? '';
 
 let supabaseInstance: ReturnType<typeof createClient> | null = null;
 
