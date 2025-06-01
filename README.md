@@ -43,22 +43,26 @@ A modern ORM (Object-Relational Mapping) challenge application built. This proje
 ### Installation
 
 1. **Clone the repository**
-   ```sh
-git clone <repo-url>
-cd orm-react
-```
+    
+    ```sh
+    git clone <repo-url>
+    cd orm-react
+    ```
 2. **Install dependencies**
-   ```sh
-npm install
-```
+    
+    ```sh
+    npm install
+    ```
 3. **Start the development server**
-   ```sh
-npm run dev
-```
+    
+    ```sh
+    npm run dev
+    ```
 4. **(Optional) Start the mock API server**
-   ```sh
-npx json-server --watch src/data/db.json --port 3001
-```
+    
+    ```sh
+    npx json-server --watch src/data/db.json --port 3001
+    ```
 
 ### Environment Variables
 If needed, create a `.env` file based on `.env.example` for API keys and configuration.
@@ -77,8 +81,8 @@ _Coming soon_
 [MIT](LICENSE)
 
 ## 🙋‍♂️ Contact
-For questions or feedback, please open an issue or contact [your-email@example.com].
+For questions or feedback, please open an issue or contact.
 
 ---
 
-> _Made with ❤️ for the Driscolls Challenge._
+> _Made with hard work!
