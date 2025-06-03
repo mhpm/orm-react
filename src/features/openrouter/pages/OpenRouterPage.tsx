@@ -38,8 +38,9 @@ const OpenRouterPage = () => {
   }, [chatHistory]);
 
   return (
-   <Card className="p-4 max-w-2xl mx-auto mt-4 min-h-[80vh] flex flex-col" style={{ height: '80vh' }}>
-      <div className="flex flex-col flex-1 min-h-0">
+   <div className='p-4 flex flex-col flex-1'>
+    <Card className="p-4 flex flex-col flex-1">
+      <div className="flex flex-col flex-1">
         <div
           className="flex-1 overflow-y-auto space-y-2 pb-4 pr-2 custom-scrollbar"
           style={{
@@ -91,6 +92,7 @@ const OpenRouterPage = () => {
         `}
       </style>
     </Card>
+   </div>
   );
 };
 
