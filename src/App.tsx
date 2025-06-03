@@ -8,7 +8,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="flex lg:flex-row min-h-screen p-0 m-0">
         <SideMenu />
-        <div className="w-full">
+        <div className="w-full flex flex-col">
           <Navbar />
           <Outlet />
         </div>
