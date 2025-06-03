@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Toggle } from './ui/toggle';
 
-const flags: any = {
+const flags: Record<string, React.ReactNode> = {
   es: (
     <svg
       xmlns="http://www.w3.org/2000/svg"

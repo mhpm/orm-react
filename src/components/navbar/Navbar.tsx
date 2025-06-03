@@ -9,7 +9,7 @@ import { useMenuTrigger } from '../side-menu/useMenuTrigger';
 import { MdMenuOpen, MdOutlineMenu } from 'react-icons/md';
 
 const NavBar = memo(() => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { isAuthenticated, user } = useCurrentUser();
   const { isOpen, toggleMenu } = useMenuTrigger();
 
