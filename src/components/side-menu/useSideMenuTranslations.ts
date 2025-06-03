@@ -6,6 +6,7 @@ export const useSideMenuTranslations = () => {
   return {
     users: t('sideMenu.users'),
     posts: t('sideMenu.posts'),
+    openRouter: t('sideMenu.openRouter'),
     challenges: t('sideMenu.challenges.challenges'),
     tictactoe: t(TRANSLATION_KEYS.SIDE_MENU.CHALLENGES.TICTACTOE),
     localStorage: t(TRANSLATION_KEYS.SIDE_MENU.CHALLENGES.LOCAL_STORAGE),

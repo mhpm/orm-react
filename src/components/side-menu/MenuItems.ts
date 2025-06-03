@@ -18,6 +18,11 @@ export const MenuItems = (isAuthenticated: boolean): MenuItem[] => {
       route: isAuthenticated ? ROUTES.USERS : '',
     },
     {
+      title: translations.openRouter,
+      icon: Code,
+      route: isAuthenticated ? ROUTES.OPENROUTER : '',
+    },
+    {
       title: translations.posts,
       icon: Newspaper,
       route: isAuthenticated ? ROUTES.POSTS : '',
