@@ -17,7 +17,7 @@ const UserRow = memo(({ user, isLoading, onDelete }: UserRowProps) => {
   }, [onDelete, user.id]);
 
   return (
-    <div className="flex hover:bg-dark hover:rounded-lg gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left text-woodsmoke-300 p-8 px-4 h-fit md:h-[50px]">
+    <div className="flex hover:bg-dark hover:rounded-lg gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left text-woodsmoke-300 h-fit md:h-[50px]">
       <div className="hidden md:block md:w-[20px]">{user.id}</div>
       <div className="md:w-[50px]">
         <Avatar>

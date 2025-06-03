@@ -14,7 +14,7 @@ const UserList = memo(() => {
   const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
   const { useGetUsers, createMutation, deleteMutation } = useUser();
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, error } = useGetUsers(page, 8);
+  const { data, isLoading, isError, error } = useGetUsers(page, 9);
 
   if (isError) {
     throw new Error(error?.message || 'Unknown error');
@@ -70,9 +70,9 @@ const UserList = memo(() => {
   );
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col flex-1">
       <h2
-        className="flex justify-between items-center font-extrabold text-center"
+        className="flex justify-between items-center font-extrabold text-center mb-4"
         role="status"
         aria-live="polite"
       >
@@ -84,13 +84,14 @@ const UserList = memo(() => {
           onClick={handleCreate}
           aria-label={t('users.addUser')}
           disabled={createMutation.isPending || isLoading}
+          size="sm"
         >
           {t('users.addUser')}
         </Button>
       </h2>
 
       <div
-        className="relative min-h-[55vh] overflow-hidden"
+        className="relative min-h-[55vh] overflow-hidden flex-1"
         role="region"
         aria-label={t('users.userList')}
       >
