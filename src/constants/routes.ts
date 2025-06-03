@@ -6,6 +6,7 @@ export const ROUTES: Routes = {
   USERS: 'users',
   EDIT_USER: 'users/edit/:id',
   POSTS: 'posts',
+  OPENROUTER: 'openrouter',
   CHALLENGES: 'challenges',
   TICTACTOE: 'tictactoe',
   LOCALSTORAGE: 'localstorage',

@@ -5,7 +5,7 @@ import './i18n.ts';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router';
-import { router } from './routes/index.tsx';
+import { router } from './routes';
 
 // Dynamically load the script in development mode
 // if (process.env.NODE_ENV === 'development') {

@@ -8,6 +8,7 @@ import LocalStorage from '@/features/challenges/components/LocaStorage';
 import Accordion from '@/features/challenges/components/Accordion';
 import HabitChart from '@/features/challenges/components/HabitChart';
 import AuthPage from '@/features/auth/pages/AuthPage';
+import OpenRouterPage from '@/features/openrouter/pages/OpenRouterPage';
 
 import { ROUTES } from '@/constants/routes';
 
@@ -56,6 +57,16 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
         errorElement: <ErrorPage />,
+      },
+      {
+        path: ROUTES.OPENROUTER,
+        element: (
+          <Suspense fallback={<LoadingPage />}>
+            <ProtectedRoute>
+              <OpenRouterPage />
+            </ProtectedRoute>
+          </Suspense>
+        ),
       },
       {
         path: ROUTES.POSTS,
@@ -121,7 +132,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: 'auth',
+    path: '/auth',
     element: <AuthPage />,
   },
 ]);
