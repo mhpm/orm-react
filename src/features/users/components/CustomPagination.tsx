@@ -31,15 +31,20 @@ const CustomPagination = memo(
           </PaginationItem>
           {Array.from({ length: data.totalPages }, (_, index) => index + 1).map(
             (pageNumber) => (
-              <PaginationItem
-                key={pageNumber}
-                className={`cursor-pointer ${
-                  page === pageNumber
-                    ? 'bg-woodsmoke-900 text-white rounded-md'
-                    : 'text-white'
-                }`}
-              >
-                <PaginationLink onClick={() => setPage(pageNumber)}>
+              <PaginationItem key={pageNumber}>
+                <PaginationLink
+                  onClick={() => setPage(pageNumber)}
+                  className={`
+                    px-3 py-1 mx-1 
+                    ${
+                      page === pageNumber
+                        ? 'text-white rounded-md dark:bg-white dark:text-woodsmoke-900'
+                        : 'text-woodsmoke-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md'
+                    }
+                    cursor-pointer
+                  `}
+                  aria-current={page === pageNumber ? 'page' : undefined}
+                >
                   {pageNumber}
                 </PaginationLink>
               </PaginationItem>

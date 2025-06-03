@@ -2,7 +2,7 @@ import UserList from '../components/UserList';
 
 function UserPage() {
   return (
-    <div className="block justify-center w-full p-10">
+    <div className="flex flex-col flex-1 p-6">
       <UserList />
     </div>
   );
