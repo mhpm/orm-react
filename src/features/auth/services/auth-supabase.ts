@@ -3,7 +3,6 @@ import { SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseClient = createClient(
   'supabase',
-  import.meta.env.VITE_SUPABASE_URL
 ) as SupabaseClient;
 
 export const signUp = async (email: string, password: string) => {
