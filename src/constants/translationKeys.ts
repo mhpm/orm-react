@@ -6,7 +6,7 @@ export const TRANSLATION_KEYS = {
       OPEN_ROUTER: 'sideMenu.openRouter',
     },
     CHALLENGES: {
-      CHALLENGES: 'sideMenu.titles.challenges',
+      CHALLENGES: 'sideMenu.challenges.challenges',
       TICTACTOE: 'sideMenu.challenges.tictactoe',
       LOCAL_STORAGE: 'sideMenu.challenges.localStorage',
       ACCORDION: 'sideMenu.challenges.accordion',
