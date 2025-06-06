@@ -28,7 +28,7 @@ const PostsList = () => {
         onSuccess: () => {
           toast({
             className: 'bg-woodsmoke-950 text-green-400 p-4',
-            title: `${t('post')} created`,
+            title: `${t('posts.post')} created`,
           });
         },
         onError: () => {
@@ -48,7 +48,7 @@ const PostsList = () => {
         onSuccess: () => {
           toast({
             className: 'bg-woodsmoke-950 text-green-400 p-4',
-            title: `${t('post')} deleted`,
+            title: `${t('posts.post')} deleted`,
           });
         },
         onError: () => {

@@ -36,7 +36,7 @@ export const PostCard = ({
             <ThumbsUp />
           </Button>
           <div className="text-sm text-gray-400">
-            {likes || 0} {t('likes')}
+            {likes || 0} {t('posts.likes')}
           </div>
           {canDelete && (
             <Button
