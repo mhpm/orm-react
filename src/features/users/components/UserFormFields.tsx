@@ -29,7 +29,7 @@ export default function UserFormFields({
             })}
           />
           {errors.first_name && (
-            <span className="text-red-400 p-1">{t('fieldRquired')}</span>
+            <span className="text-red-400 p-1">{t('fieldRequired')}</span>
           )}
         </div>
       </div>
@@ -47,7 +47,7 @@ export default function UserFormFields({
             })}
           />
           {errors.last_name && (
-            <span className="text-red-400 p-1">{t('fieldRquired')}</span>
+            <span className="text-red-400 p-1">{t('fieldRequired')}</span>
           )}
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function UserFormFields({
             })}
           />
           {errors.email && (
-            <span className="text-red-400 p-1">{t('fieldRquired')}</span>
+            <span className="text-red-400 p-1">{t('fieldRequired')}</span>
           )}
         </div>
       </div>
