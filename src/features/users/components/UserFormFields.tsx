@@ -18,7 +18,7 @@ export default function UserFormFields({
       <div className="flex flex-col items-center">
         <div className="my-4 flex flex-col">
           <label htmlFor="first_name" className="font-semibold my-1">
-            {t('first_name')}:
+            {t('users.first_name')}:
           </label>
           <input
             className="p-3 px-4 rounded-lg w-[300px]"
@@ -29,14 +29,14 @@ export default function UserFormFields({
             })}
           />
           {errors.first_name && (
-            <span className="text-red-400 p-1">{t('fieldRequired')}</span>
+            <span className="text-red-400 p-1">{t('users.fieldRequired')}</span>
           )}
         </div>
       </div>
       <div className="flex flex-col items-center">
         <div className="my-4 flex flex-col">
           <label htmlFor="last_name" className="font-semibold my-1">
-            {t('last_name')}:
+            {t('users.last_name')}:
           </label>
           <input
             className="p-3 px-4 rounded-lg w-[300px]"
@@ -47,14 +47,14 @@ export default function UserFormFields({
             })}
           />
           {errors.last_name && (
-            <span className="text-red-400 p-1">{t('fieldRequired')}</span>
+            <span className="text-red-400 p-1">{t('users.fieldRequired')}</span>
           )}
         </div>
       </div>
       <div className="flex flex-col items-center">
         <div className="my-4 flex flex-col">
           <label htmlFor="email" className="font-semibold my-1">
-            {t('email')}:
+            {t('users.email')}:
           </label>
           <input
             className="p-3 px-4 rounded-lg w-[300px]"
@@ -65,7 +65,7 @@ export default function UserFormFields({
             })}
           />
           {errors.email && (
-            <span className="text-red-400 p-1">{t('fieldRequired')}</span>
+            <span className="text-red-400 p-1">{t('users.fieldRequired')}</span>
           )}
         </div>
       </div>

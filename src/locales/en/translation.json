@@ -18,11 +18,14 @@
     "save": "Save",
     "cancel": "Cancel",
     "fieldRequired": "This field is required",
-    "updated": "Updated"
+    "updated": "Updated",
+    "noUsersFound": "No users found"
   },
   "posts": {
     "posts": "Posts",
-    "newsList": "News List"
+    "newsList": "News List",
+    "post": "Post",
+    "likes": "Likes"
   },
   "common": {
     "loading": "Loading",
@@ -31,15 +34,15 @@
     "back": "Back",
     "home": "Home"
   },
-  "sideMenu":{
+  "sideMenu": {
     "users": "Users",
     "posts": "Posts",
     "openRouter": "Open Router AI",
-    "challenges":{
+    "challenges": {
       "challenges": "Challenges",
       "tictactoe": "Tic Tac Toe",
       "localStorage": "Local Storage",
-      "accordion": "Accordion",	
+      "accordion": "Accordion",
       "habitChart": "Habit Chart"
     }
   }
