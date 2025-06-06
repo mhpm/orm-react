@@ -61,7 +61,7 @@ const UserList = memo(() => {
     (userId: number) => {
       setDeletingUserId(userId);
       deleteMutation.mutate(userId, {
-        onSuccess: () => showSuccessToast(`${t('user')} deleted`),
+        onSuccess: () => showSuccessToast(`${t('users.user')} deleted`),
         onError: () => showErrorToast('Error on delete user'),
         onSettled: () => setDeletingUserId(null),
       });
@@ -101,7 +101,7 @@ const UserList = memo(() => {
             role="status"
             aria-live="polite"
           >
-            {t('loading')}...
+            {t('common.loading')}...
           </div>
         ) : (data?.users ?? []).length > 0 ? (
           (data?.users ?? []).map((item: User) => (
@@ -118,7 +118,7 @@ const UserList = memo(() => {
             role="status"
             aria-live="polite"
           >
-            {t('noUsersFound')}
+            {t('users.noUsersFound')}
           </p>
         )}
       </div>

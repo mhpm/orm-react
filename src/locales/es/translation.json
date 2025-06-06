@@ -18,11 +18,14 @@
     "save": "Guardar",
     "cancel": "Cancelar",
     "fieldRequired": "Este campo es obligatorio",
-    "updated": "Actualizado"
+    "updated": "Actualizado",
+    "noUsersFound": "No se encontraron usuarios"
   },
   "posts": {
     "posts": "Noticias",
-    "newsList": "Lista de Noticias"
+    "newsList": "Lista de Noticias",
+    "post": "Noticia",
+    "likes": "Me gusta"
   },
   "common": {
     "loading": "Cargando",
@@ -31,14 +34,14 @@
     "back": "Volver",
     "home": "Inicio"
   },
-  "sideMenu":{
+  "sideMenu": {
     "users": "Usuarios",
     "posts": "Noticias",
-    "challenges":{
+    "challenges": {
       "challenges": "Desafíos",
       "tictactoe": "Tic Tac Toe",
       "localStorage": "Almacenamiento Local",
-      "accordion": "Acordeón",	
+      "accordion": "Acordeón",
       "habitChart": "Gráfico de Hábitos"
     }
   }
