@@ -67,6 +67,13 @@ A modern ORM (Object-Relational Mapping) challenge application built. This proje
 ### Environment Variables
 If needed, create a `.env` file based on `.env.example` for API keys and configuration.
 
+### Extracting translation keys
+Run the extraction script to update locale files after adding new `t('...')` calls:
+
+```sh
+npm run i18n:extract
+```
+
 ## 🧪 Running Tests
 _Coming soon_
 
