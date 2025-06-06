@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
-  getPots,
+  getPosts,
   getPostById,
   createPost,
   updatePost,
@@ -15,7 +15,7 @@ export const usePosts = () => {
   const useGetPosts = () =>
     useQuery<Post[]>({
       queryKey: [queryKey],
-      queryFn: () => getPots(),
+      queryFn: () => getPosts(),
     });
 
   const useGetPostById = (id: number) => {
