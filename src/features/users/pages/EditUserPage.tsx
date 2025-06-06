@@ -28,7 +28,7 @@ function EditUserPage() {
     updateMutation.mutate(user);
     toast({
       className: 'bg-woodsmoke-950 text-green-500 p-4',
-      title: `${t('user')} ${t('updated')}`,
+      title: `${t('users.user')} ${t('users.updated')}`,
     });
   };
 
@@ -52,7 +52,7 @@ function EditUserPage() {
   return (
     <div className="flex justify-center h-screen w-full p-[20px]">
       <div className="p-4 rounded-lg">
-        <h2 className="text-center font-bold text-lg">{t('userInfo')}</h2>
+        <h2 className="text-center font-bold text-lg">{t('users.userInfo')}</h2>
         {user && (
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -68,7 +68,7 @@ function EditUserPage() {
                 {updateMutation.isPending ? (
                   <CgSpinner className="animate-spin h-4 w-4" />
                 ) : (
-                  t('save')
+                  t('users.save')
                 )}
               </button>
 
@@ -76,7 +76,7 @@ function EditUserPage() {
                 onClick={() => navigate('/users')}
                 className="button text-sm text-red-400 mx-2"
               >
-                {t('back')}
+                {t('common.back')}
               </button>
             </div>
           </form>
