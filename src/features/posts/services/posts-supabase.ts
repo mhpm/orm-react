@@ -4,7 +4,7 @@ import { SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseClient: SupabaseClient = getSupabaseClient();
 
-export const getPots = async () => {
+export const getPosts = async () => {
   const { data, error } = await supabaseClient
     .from('posts')
     .select('*')
