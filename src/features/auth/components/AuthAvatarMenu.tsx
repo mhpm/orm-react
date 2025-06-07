@@ -10,7 +10,7 @@ import {
 import { useNavigate } from 'react-router';
 
 export default function AuthAvatarMenu() {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <DropdownMenu>

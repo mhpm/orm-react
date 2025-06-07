@@ -39,7 +39,7 @@ function EditUserModal({ user }: EditUserModalProps) {
     updateMutation.mutate(data, {
       onSuccess: () => {
         toast({
-          className: 'bg-woodsmoke-950 text-green-500 p-4',
+          className: 'p-4 bg-white text-green-600 dark:bg-woodsmoke-950 dark:text-green-500',
           title: `${t('users.user')} ${t('users.updated')}`,
         });
         closeModal();

@@ -28,7 +28,7 @@ const TicTacToe = () => {
     }
   };
 
-  const checkWinner = (board: any) => {
+  const checkWinner = (board: (string | null)[]) => {
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
