@@ -1,7 +1,7 @@
 {
   "name": "orm",
   "private": true,
-  "version": "1.20.0",
+  "version": "1.21.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,6 @@
     "start": "concurrently \"npm run server\" \"npm run dev\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "i18n:extract": "i18next -c i18next-parser.config.js",
     "prepare": "husky"
   },
   "dependencies": {
@@ -45,8 +44,8 @@
     "lucide-react": "^0.412.0",
     "next-themes": "^0.4.4",
     "openai": "^5.0.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-hook-form": "^7.54.0",
     "react-i18next": "^15.0.0",
     "react-icons": "^5.3.0",
@@ -58,14 +57,10 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.2",
-    "@storybook/addon-essentials": "^8.4.6",
-    "@storybook/addon-interactions": "^8.4.6",
-    "@storybook/addon-onboarding": "^8.4.6",
-    "@storybook/blocks": "^8.4.6",
-    "@storybook/react": "^8.4.6",
-    "@storybook/react-vite": "^8.4.6",
-    "@storybook/test": "^8.4.6",
+    "@chromatic-com/storybook": "^4.0.0-next.16",
+    "@storybook/addon-docs": "^9.1.0-alpha.2",
+    "@storybook/addon-onboarding": "^9.1.0-alpha.2",
+    "@storybook/react-vite": "^9.1.0-alpha.2",
     "@tanstack/eslint-plugin-query": "^5.49.1",
     "@types/node": "^20.16.10",
     "@types/react": "19.0.0",
@@ -80,12 +75,11 @@
     "eslint": "^8.57.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "eslint-plugin-storybook": "^0.11.1",
+    "eslint-plugin-storybook": "^9.1.0-alpha.2",
     "husky": "^9.1.7",
-    "i18next-parser": "^7.2.0",
     "lint-staged": "^15.4.3",
     "postcss": "^8.4.49",
-    "storybook": "^8.4.6",
+    "storybook": "^9.1.0-alpha.2",
     "storybook-addon-tag-badges": "^1.3.1",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.2.2",
@@ -95,5 +89,8 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "overrides": {
+    "storybook": "$storybook"
   }
 }
