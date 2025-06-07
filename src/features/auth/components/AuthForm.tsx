@@ -22,6 +22,7 @@ const AuthComponent = () => {
     handleLogin,
     handleGitHubLogin,
   } = useAuth();
+  console.log('loading: ', loading);
 
   const {
     register,
@@ -46,7 +47,7 @@ const AuthComponent = () => {
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="signup">Sign Up</TabsTrigger>
         </TabsList>
-        {/* Login with Email/Password */}
+
         <TabsContent value="login">
           <form onSubmit={handleSubmit(onSubmitLogin)} className="space-y-4">
             <Input placeholder="Email" {...register('email')} />
@@ -69,7 +70,7 @@ const AuthComponent = () => {
             </div>
           </form>
         </TabsContent>
-        {/* Sign Up with Email/Password */}
+
         <TabsContent value="signup">
           <form onSubmit={handleSubmit(onSubmitSignUp)} className="space-y-4">
             <Input placeholder="Email" {...register('email')} />
@@ -96,15 +97,14 @@ const AuthComponent = () => {
 
         <Button
           onClick={handleGitHubLogin}
-          disabled={loading}
+          isLoading={loading}
           className="w-full mt-4"
         >
-          {loading && 'Redirecting...'}
-          <FaGithub /> Login with GitHub
+          <FaGithub />
+          {success ? 'Redirecting...' : 'Login with GitHub'}
         </Button>
       </Tabs>
 
-      {/* Sign-Out Button */}
       <div className="mt-4">
         <Button
           onClick={() => navigate('/')}
@@ -115,9 +115,8 @@ const AuthComponent = () => {
           Cancel
         </Button>
       </div>
-      {/* Error and Success Messages */}
+
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-      {success && <p className="text-green-500 text-sm mt-2">{success}</p>}
     </div>
   );
 };
