@@ -18,7 +18,7 @@ const useLocalStorage = (key: string, initialValue: string) => {
 function LocalStorage() {
   const { value, setValue } = useLocalStorage('inputValue', '');
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
