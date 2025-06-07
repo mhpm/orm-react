@@ -1,9 +1,11 @@
 import { memo, useCallback } from 'react';
 import { User } from '../types/User';
-import { Link } from 'react-router';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { CgSpinner } from 'react-icons/cg';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useModal } from '@/components/modal/useModal';
+import EditUserModal from './EditUserModal';
+import { useTranslation } from 'react-i18next';
 
 type UserRowProps = {
   user: User;
@@ -12,9 +14,16 @@ type UserRowProps = {
 };
 
 const UserRow = memo(({ user, isLoading, onDelete }: UserRowProps) => {
+  const { openModal } = useModal();
+  const { t } = useTranslation();
+
   const handleDelete = useCallback(() => {
     onDelete(user.id as number);
   }, [onDelete, user.id]);
+
+  const handleEdit = useCallback(() => {
+    openModal(t('users.userInfo'), <EditUserModal user={user} />);
+  }, [openModal, user, t]);
 
   return (
     <div className="flex hover:bg-dark hover:rounded-lg gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left text-woodsmoke-300 h-fit md:h-[50px]">
@@ -52,9 +61,9 @@ const UserRow = memo(({ user, isLoading, onDelete }: UserRowProps) => {
         </div>
       </div>
       <div className="flex gap-2 w-fit">
-        <Link className="button w-full" to={`edit/${user.id}`}>
+        <button className="button w-full" onClick={handleEdit}>
           <FaEdit className="h-5 w-5" />
-        </Link>
+        </button>
         <button
           onClick={handleDelete}
           className="text-red-400 button w-full"

@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@/components/theme-provider';
 import { Outlet } from 'react-router';
 import { Toaster } from '@/components/ui/toaster';
-import { Navbar, SideMenu } from '@/components';
+import { Navbar, SideMenu, Modal } from '@/components';
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
           <Outlet />
         </div>
         <Toaster />
+        <Modal />
       </div>
     </ThemeProvider>
   );
