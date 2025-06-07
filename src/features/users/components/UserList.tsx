@@ -23,7 +23,7 @@ const UserList = memo(() => {
   const showSuccessToast = useCallback(
     (message: string) => {
       toast({
-        className: 'bg-woodsmoke-950 text-green-400 p-4',
+        className: 'p-4 bg-white text-green-600 dark:bg-woodsmoke-950 dark:text-green-400',
         title: message,
       });
     },
@@ -33,7 +33,7 @@ const UserList = memo(() => {
   const showErrorToast = useCallback(
     (message: string) => {
       toast({
-        className: 'bg-woodsmoke-950 text-red-400 p-4',
+        className: 'p-4 bg-white text-red-600 dark:bg-woodsmoke-950 dark:text-red-400',
         title: message,
       });
     },

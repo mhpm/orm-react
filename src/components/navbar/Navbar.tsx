@@ -14,7 +14,7 @@ const NavBar = memo(() => {
   const { isOpen, toggleMenu } = useMenuTrigger();
 
   return (
-    <header className="p-4 bg-gray-900 border-b border-gray-700 text-white">
+    <header className="p-4 border-b bg-gray-100 text-gray-900 border-gray-200 dark:bg-gray-900 dark:text-white dark:border-gray-700">
       <div className="flex justify-between gap-2 items-center pr-4">
         <div>
           <button

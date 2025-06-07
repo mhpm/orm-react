@@ -33,7 +33,7 @@ const HabitChart = () => {
                 <tr key={i}>
                   {Array(7)
                     .fill(null)
-                    .map((_col, j): any => {
+                    .map((_col, j) => {
                       // Highlight the cell if the habitData value matches the row condition
                       return visibleData[j] > 0 &&
                         visibleData[j] >= reverseIndex + 1 ? (

@@ -28,7 +28,7 @@ const SideMenu = memo(() => {
             ? 'hidden sm:flex'
             : 'w-full fixed z-50 inset-0 sm:w-[300px] sm:min-w-[200px]'
         }
-        transition-all duration-200 border-r border-gray-700 p-4 sm:relative flex flex-col items-center bg-gray-900 text-center text-white
+        transition-all duration-200 border-r p-4 sm:relative flex flex-col items-center text-center bg-gray-100 text-gray-900 border-gray-200 dark:bg-gray-900 dark:text-white dark:border-gray-700
       `}
     >
       <div className={`w-full pt-1 ${isOpen ? 'text-center' : 'text-right'}`}>
@@ -100,7 +100,7 @@ const NavItem = memo(
         }`}
       >
         <div
-          className="flex items-center justify-between cursor-pointer py-2 p-3 rounded hover:bg-gray-800"
+          className="flex items-center justify-between cursor-pointer py-2 p-3 rounded hover:bg-gray-200 dark:hover:bg-gray-800"
           onClick={() =>
             item.subItems ? toggleAccordion(index) : navigate(item.route)
           }
@@ -145,7 +145,7 @@ const NavItem = memo(
               {item.subItems.map((subItem: SubMenuItem, index: number) => (
                 <div
                   key={index}
-                  className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-800"
+                  className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-200 dark:hover:bg-gray-800"
                   onClick={() => navigate(subItem.route)}
                   tabIndex={0}
                   role="button"

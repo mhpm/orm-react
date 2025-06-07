@@ -27,13 +27,13 @@ const PostsList = () => {
       {
         onSuccess: () => {
           toast({
-            className: 'bg-woodsmoke-950 text-green-400 p-4',
+            className: 'p-4 bg-white text-green-600 dark:bg-woodsmoke-950 dark:text-green-400',
             title: `${t('posts.post')} created`,
           });
         },
         onError: () => {
           toast({
-            className: 'bg-woodsmoke-950 text-red-400 p-4',
+            className: 'p-4 bg-white text-red-600 dark:bg-woodsmoke-950 dark:text-red-400',
             title: `Error on create post`,
           });
         },
@@ -47,13 +47,13 @@ const PostsList = () => {
       deletePostMutation.mutate(postId, {
         onSuccess: () => {
           toast({
-            className: 'bg-woodsmoke-950 text-green-400 p-4',
+            className: 'p-4 bg-white text-green-600 dark:bg-woodsmoke-950 dark:text-green-400',
             title: `${t('posts.post')} deleted`,
           });
         },
         onError: () => {
           toast({
-            className: 'bg-woodsmoke-950 text-red-400 p-4',
+            className: 'p-4 bg-white text-red-600 dark:bg-woodsmoke-950 dark:text-red-400',
             title: `Error on delete post`,
           });
         },

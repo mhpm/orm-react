@@ -13,7 +13,7 @@ const Modal = () => {
       onClick={closeModal}
     >
       <div
-        className="bg-woodsmoke-950 rounded-lg shadow-lg p-6 w-full max-w-lg"
+        className="rounded-lg shadow-lg p-6 w-full max-w-lg bg-white text-gray-900 dark:bg-woodsmoke-950 dark:text-white"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-2xl font-bold text-center mb-10">{title}</h2>
