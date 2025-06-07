@@ -24,9 +24,9 @@ export const PostCard = ({
   const { t } = useTranslation();
 
   return (
-    <div className="bg-dark rounded-lg shadow-md overflow-hidden border-4 border-primary">
+    <div className="rounded-lg shadow-md overflow-hidden border-4 border-primary bg-white text-gray-900 dark:bg-dark dark:text-white">
       <div className="relative">
-        <div className="pr-2 flex justify-start items-center absolute z-10 bottom-2 right-3 bg-dark rounded-lg">
+        <div className="pr-2 flex justify-start items-center absolute z-10 bottom-2 right-3 rounded-lg bg-gray-200 dark:bg-dark">
           <Button
             variant="ghost"
             size="icon"
@@ -56,9 +56,9 @@ export const PostCard = ({
           alt={`${post.user_email}'s post`}
           className="w-full h-48 object-cover rounded-sm"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent rounded-lg" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent dark:from-dark/90 rounded-lg" />
       </div>
-      <div className="p-6 text-white">
+      <div className="p-6 text-gray-900 dark:text-white">
         <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
         <p className="text-sm mb-4">{post.content}</p>
         <div className="flex items-center justify-between">
