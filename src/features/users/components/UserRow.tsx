@@ -26,7 +26,7 @@ const UserRow = memo(({ user, isLoading, onDelete }: UserRowProps) => {
   }, [openModal, user, t]);
 
   return (
-    <div className="flex gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left text-gray-800 dark:text-woodsmoke-300 h-fit md:h-[50px] hover:bg-gray-200 dark:hover:bg-dark hover:rounded-lg">
+    <div className="flex gap-2 flex-col text-center md:flex-row justify-between items-center md:text-left text-gray-800 dark:text-woodsmoke-300 h-fit md:h-[50px] hover:bg-gray-200 dark:hover:bg-gray-900 hover:rounded-lg">
       <div className="hidden md:block md:w-[20px]">{user.id}</div>
       <div className="md:w-[50px]">
         <Avatar>

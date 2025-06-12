@@ -1,13 +1,13 @@
 import { Moon, Sun } from 'lucide-react';
-import { useTheme } from '@/components/theme-provider';
 import { Toggle } from './ui/toggle';
+import useTheme from '@/hooks/useTheme';
 
 export default function ToggleTheme() {
   const { theme, setTheme } = useTheme();
 
   return (
     <Toggle
-      className="rounded-full text-white"
+      className="rounded-full text-primary"
       aria-label="Toggle Theme"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
