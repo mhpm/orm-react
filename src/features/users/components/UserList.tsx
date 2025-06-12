@@ -23,7 +23,8 @@ const UserList = memo(() => {
   const showSuccessToast = useCallback(
     (message: string) => {
       toast({
-        className: 'p-4 bg-white text-green-600 dark:bg-woodsmoke-950 dark:text-green-400',
+        className:
+          'p-4 bg-white text-green-600 dark:bg-woodsmoke-950 dark:text-green-400',
         title: message,
       });
     },
@@ -33,7 +34,8 @@ const UserList = memo(() => {
   const showErrorToast = useCallback(
     (message: string) => {
       toast({
-        className: 'p-4 bg-white text-red-600 dark:bg-woodsmoke-950 dark:text-red-400',
+        className:
+          'p-4 bg-white text-red-600 dark:bg-woodsmoke-950 dark:text-red-400',
         title: message,
       });
     },
@@ -51,7 +53,8 @@ const UserList = memo(() => {
         avatar: faker.image.avatarGitHub(),
       },
       {
-        onSuccess: () => showSuccessToast(`${t('users.user')} created successfully`),
+        onSuccess: () =>
+          showSuccessToast(`${t('users.user')} created successfully`),
         onError: () => showErrorToast('Error on create user'),
       }
     );
@@ -72,7 +75,7 @@ const UserList = memo(() => {
   return (
     <div className="flex flex-col flex-1">
       <h2
-        className="flex justify-between items-center font-extrabold text-center mb-4"
+        className="flex justify-between items-center font-extrabold text-center mb-4 text-primary dark:text-white"
         role="status"
         aria-live="polite"
       >

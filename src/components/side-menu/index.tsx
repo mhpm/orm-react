@@ -12,7 +12,12 @@ import {
 import React from 'react';
 import { useMenuTrigger } from './useMenuTrigger';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
-import { MenuItem, NavItemProps, NavLinksProps, SubMenuItem } from './interfaces/interfaces';
+import {
+  MenuItem,
+  NavItemProps,
+  NavLinksProps,
+  SubMenuItem,
+} from './interfaces/interfaces';
 import { IconType } from 'react-icons';
 
 const SideMenu = memo(() => {
@@ -33,7 +38,7 @@ const SideMenu = memo(() => {
     >
       <div className={`w-full pt-1 ${isOpen ? 'text-center' : 'text-right'}`}>
         <button
-          className="text-white"
+          className="text-primary"
           onClick={toggleMenu}
           aria-label={isOpen ? 'Open navigation menu' : 'Close navigation menu'}
         >
