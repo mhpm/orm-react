@@ -11,6 +11,7 @@ export default function ConfirmLogoutModal() {
     await signOut();
     closeModal();
     navigate('/');
+    window.location.reload();
   };
 
   return (

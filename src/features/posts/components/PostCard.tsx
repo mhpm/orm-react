@@ -56,7 +56,7 @@ export const PostCard = ({
           alt={`${post.user_email}'s post`}
           className="w-full h-48 object-cover rounded-sm"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent dark:from-dark/90 rounded-lg" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent dark:from-dark" />
       </div>
       <div className="p-6 text-gray-900 dark:text-white">
         <h3 className="text-xl font-semibold mb-2">{post.title}</h3>

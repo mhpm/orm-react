@@ -7,14 +7,14 @@ export default function ToggleTheme() {
 
   return (
     <Toggle
-      className="rounded-full text-primary"
+      className="rounded-full text-primary hover:bg-slate-400 dark:hover:bg-slate-800"
       aria-label="Toggle Theme"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       {theme === 'dark' ? (
-        <Sun className="h-4 w-4" />
+        <Sun className="h-4 w-4 " />
       ) : (
-        <Moon className="h-4 w-4" />
+        <Moon className="h-4 w-4 text-dark" />
       )}
     </Toggle>
   );
