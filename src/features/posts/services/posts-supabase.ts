@@ -59,3 +59,18 @@ export const deletePost = async (id: number): Promise<Post> => {
 
   return data;
 };
+
+export const getPostsPaginated = async (
+  page: number,
+  pageSize: number = 10
+) => {
+  const offset = (page - 1) * pageSize;
+  const { data, error } = await supabaseClient
+    .from('posts')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .range(offset, offset + pageSize - 1);
+
+  if (error) throw new Error(error.message);
+  return data;
+};

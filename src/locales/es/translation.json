@@ -25,7 +25,9 @@
     "posts": "Noticias",
     "newsList": "Lista de Noticias",
     "post": "Noticia",
-    "likes": "Me gusta"
+    "likes": "Me gusta",
+    "noMorePosts": "No hay más noticias disponibles",
+    "addPost": "Agregar Noticia"
   },
   "common": {
     "loading": "Cargando",
