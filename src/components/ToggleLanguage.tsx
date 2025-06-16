@@ -93,7 +93,7 @@ export default function ToggleLanguage() {
 
   return (
     <Toggle
-      className="rounded-full"
+      className="rounded-full hover:bg-slate-400 dark:hover:bg-slate-800"
       aria-label="Toggle Language"
       onClick={() => changeLanguage(lang === 'es' ? 'en' : 'es')}
     >
