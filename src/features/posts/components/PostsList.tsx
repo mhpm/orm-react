@@ -17,8 +17,14 @@ const PostsList = () => {
   const [deletingPostId, setDeletingPostId] = useState<number>(0);
   const { useGetInfinitePosts, createPostMutation, deletePostMutation } =
     usePosts();
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useGetInfinitePosts(6);
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isError,
+  } = useGetInfinitePosts(6);
   const { user } = useCurrentUser();
   const [likes, setLikes] = useState<{ [key: number]: number }>({});
 
@@ -135,6 +141,10 @@ const PostsList = () => {
             <CgSpinner className="animate-spin h-7 w-7" />
           </div>
         )}
+        {isError && (
+          <p className="text-red-500">{t('posts.errorLoadingPosts')}</p>
+        )}
+
         {!hasNextPage && (
           <div className="text-center text-gray-500 mt-4">
             {t('posts.noMorePosts')}

@@ -27,7 +27,8 @@
     "post": "Post",
     "likes": "Likes",
     "noMorePosts": "No more posts available",
-    "addPost": "Add Post"
+    "addPost": "Add Post",
+    "errorLoadingPosts": "Error loading posts"
   },
   "common": {
     "loading": "Loading",
