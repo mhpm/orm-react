@@ -42,7 +42,6 @@
     "posts": "Noticias",
     "challenges": {
       "challenges": "Desafíos",
-      "tictactoe": "Tic Tac Toe",
       "localStorage": "Almacenamiento Local",
       "accordion": "Acordeón",
       "habitChart": "Gráfico de Hábitos"
