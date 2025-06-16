@@ -25,7 +25,9 @@
     "posts": "Posts",
     "newsList": "News List",
     "post": "Post",
-    "likes": "Likes"
+    "likes": "Likes",
+    "noMorePosts": "No more posts available",
+    "addPost": "Add Post"
   },
   "common": {
     "loading": "Loading",
