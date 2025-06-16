@@ -51,7 +51,6 @@ export const PostCard = ({
           )}
         </div>
         <img
-          loading="lazy"
           src={`https://picsum.photos/seed/${post.id}/800/600`}
           alt={`${post.user_email}'s post`}
           className="w-full h-48 object-cover rounded-sm"
