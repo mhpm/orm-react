@@ -27,7 +27,8 @@
     "post": "Noticia",
     "likes": "Me gusta",
     "noMorePosts": "No hay más noticias disponibles",
-    "addPost": "Agregar Noticia"
+    "addPost": "Agregar Noticia",
+    "errorLoadingPosts": "Error al cargar las noticias"
   },
   "common": {
     "loading": "Cargando",
