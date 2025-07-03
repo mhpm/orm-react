@@ -1,15 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useCallback, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { faker } from '@faker-js/faker';
 import { usePosts } from '../hooks/usePosts';
 import { CgSpinner } from 'react-icons/cg';
-import { useCallback, useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import { PostCard } from './PostCard';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
-import { Skeleton } from '@/components/ui/skeleton';
 import { usePostsTranslations } from '../hooks/usePostsTranslations';
 
 const PostsList = () => {
@@ -26,9 +24,13 @@ const PostsList = () => {
     isError,
   } = useGetInfinitePosts(6);
   const { user } = useCurrentUser();
-  const [likes, setLikes] = useState<{ [key: number]: number }>({});
 
   const { ref, inView } = useInView();
+
+  const posts = useMemo(
+    () => data?.pages.flatMap((page) => page) ?? [],
+    [data]
+  );
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -36,7 +38,7 @@ const PostsList = () => {
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  const handleCreate = () => {
+  const handleCreate = useCallback(() => {
     createPostMutation.mutate(
       {
         title: faker.company.name(),
@@ -61,7 +63,7 @@ const PostsList = () => {
         },
       }
     );
-  };
+  }, [createPostMutation, translations, user?.email]);
 
   const handleDelete = useCallback(
     (postId: number) => {
@@ -89,13 +91,6 @@ const PostsList = () => {
     [deletePostMutation, translations]
   );
 
-  const handleLike = useCallback((postId: number) => {
-    setLikes((prevLikes) => ({
-      ...prevLikes,
-      [postId]: (prevLikes[postId] || 0) + 1,
-    }));
-  }, []);
-
   if (isLoading) {
     return <CgSpinner className="animate-spin h-7 w-7 self-center" />;
   }
@@ -110,31 +105,15 @@ const PostsList = () => {
         </Button>
       </div>
       <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {createPostMutation.isPending && (
-          <div className="rounded-lg shadow-md overflow-hidden border-4 border-primary bg-white dark:bg-dark p-6 flex flex-col gap-4">
-            <Skeleton className="h-6 w-1/2 mb-2" />
-            <Skeleton className="h-4 w-full mb-2" />
-            <Skeleton className="h-4 w-5/6 mb-2" />
-            <Skeleton className="h-4 w-2/3 mb-2" />
-            <div className="flex gap-2 mt-4">
-              <Skeleton className="h-8 w-20" />
-              <Skeleton className="h-8 w-20" />
-            </div>
-          </div>
-        )}
-        {data?.pages.flatMap((page) =>
-          page.map((post) => (
-            <PostCard
-              key={post.id}
-              post={post}
-              likes={likes[post.id!] || 0}
-              isDeleting={deletingPostId === post.id}
-              canDelete={post.user_email === user?.email}
-              onLike={handleLike}
-              onDelete={handleDelete}
-            />
-          ))
-        )}
+        {posts.map((post) => (
+          <PostCard
+            key={post.id}
+            post={post}
+            isDeleting={deletingPostId === post.id}
+            canDelete={post.user_email === user?.email}
+            onDelete={handleDelete}
+          />
+        ))}
       </div>
       <div ref={ref} className="h-10">
         {isFetchingNextPage && (
