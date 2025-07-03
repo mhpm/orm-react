@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components';
 import { ThumbsUp, Trash } from 'lucide-react';
@@ -13,7 +14,7 @@ interface PostCardProps {
   onDelete: (postId: number) => void;
 }
 
-export const PostCard = ({
+const PostCardComponent = ({
   post,
   likes,
   isDeleting,
@@ -79,3 +80,5 @@ export const PostCard = ({
     </div>
   );
 };
+
+export const PostCard = memo(PostCardComponent);
