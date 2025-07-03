@@ -7,19 +7,16 @@ import { useTranslation } from 'react-i18next';
 
 interface PostCardProps {
   post: Post;
-  likes: number;
   isDeleting: boolean;
   canDelete: boolean;
-  onLike: (postId: number) => void;
+  onLike?: (postId: number) => void;
   onDelete: (postId: number) => void;
 }
 
 const PostCardComponent = ({
   post,
-  likes,
   isDeleting,
   canDelete,
-  onLike,
   onDelete,
 }: PostCardProps) => {
   const { t } = useTranslation();
@@ -28,17 +25,10 @@ const PostCardComponent = ({
     <div className="rounded-lg shadow-md overflow-hidden border-4 border-primary bg-white text-gray-900 dark:bg-dark dark:text-white">
       <div className="relative">
         <div className="pr-2 flex justify-start items-center absolute z-10 bottom-2 right-3 rounded-lg bg-gray-200 dark:bg-dark">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-blue-400"
-            onClick={() => onLike(post.id!)}
-          >
+          <Button variant="ghost" size="icon" className="text-blue-400">
             <ThumbsUp />
           </Button>
-          <div className="text-sm text-gray-400">
-            {likes || 0} {t('posts.likes')}
-          </div>
+          <div className="text-sm text-gray-400">7 {t('posts.likes')}</div>
           {canDelete && (
             <Button
               disabled={isDeleting}
