@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, useCallback, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { faker } from '@faker-js/faker';
 import { usePosts } from '../hooks/usePosts';
 import { CgSpinner } from 'react-icons/cg';
-import { useCallback, useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
@@ -30,13 +29,15 @@ const PostsList = () => {
 
   const { ref, inView } = useInView();
 
+  const posts = useMemo(() => data?.pages.flatMap((page) => page) ?? [], [data]);
+
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  const handleCreate = () => {
+  const handleCreate = useCallback(() => {
     createPostMutation.mutate(
       {
         title: faker.company.name(),
@@ -61,7 +62,7 @@ const PostsList = () => {
         },
       }
     );
-  };
+  }, [createPostMutation, translations, user?.email]);
 
   const handleDelete = useCallback(
     (postId: number) => {
@@ -122,19 +123,17 @@ const PostsList = () => {
             </div>
           </div>
         )}
-        {data?.pages.flatMap((page) =>
-          page.map((post) => (
-            <PostCard
-              key={post.id}
-              post={post}
-              likes={likes[post.id!] || 0}
-              isDeleting={deletingPostId === post.id}
-              canDelete={post.user_email === user?.email}
-              onLike={handleLike}
-              onDelete={handleDelete}
-            />
-          ))
-        )}
+        {posts.map((post) => (
+          <PostCard
+            key={post.id}
+            post={post}
+            likes={likes[post.id!] || 0}
+            isDeleting={deletingPostId === post.id}
+            canDelete={post.user_email === user?.email}
+            onLike={handleLike}
+            onDelete={handleDelete}
+          />
+        ))}
       </div>
       <div ref={ref} className="h-10">
         {isFetchingNextPage && (
