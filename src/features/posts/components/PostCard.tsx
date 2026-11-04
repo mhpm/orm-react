@@ -42,9 +42,17 @@ const PostCardComponent = ({
           )}
         </div>
         <img
-          src={`https://picsum.photos/seed/${post.id}/800/600`}
+          src={`https://picsum.photos/seed/${post.id}/400/300`}
+          srcSet={`
+            https://picsum.photos/seed/${post.id}/400/300 400w,
+            https://picsum.photos/seed/${post.id}/800/600 800w
+          `}
+          sizes="(max-width: 640px) 400px, 800px"
           alt={`${post.user_email}'s post`}
           className="w-full h-48 object-cover rounded-sm"
+          loading={post.id === 1 ? 'eager' : 'lazy'} // Eager for first post, lazy for others
+          width={800}
+          height={300}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent dark:from-dark" />
       </div>
